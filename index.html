@@ -37,117 +37,139 @@
 
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/source-sans-3-variable.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/libre-caslon-display-normal-400.woff2" crossorigin>
+<script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="assets/css/common.css">
 <link rel="stylesheet" href="assets/css/top.css">
-<script src="assets/js/common.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+<script src="assets/js/footer-smoke.js" defer></script>
 </head>
 <body data-route="home">
-<div id="app"></div>
-<template id="tpl">
-
-
 <div id="top" class="app__div">
 <a href="#main" class="app__a">Skip to content</a>
 
-<header class="site-header header__header" style="box-shadow:{{ hdrShadow }}">
+<header class="site-header header__header">
   <div class="header__div">
     <a href="#home" aria-label="Marci Metzger Homes, home" class="header__a">
       <img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="154" height="48" class="header__img">
     </a>
-    <sc-if value="{{ hdrDesktop }}" hint-placeholder-val="{{ true }}">
-      <nav class="nav-menu header__nav" aria-label="Main">
+    
+      <nav class="nav-menu hide-below-1180 header__nav" aria-label="Main">
         <ul class="header__ul">
-          <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
-            <li><a href="{{ item.href }}" aria-current="{{ item.current }}" style="border-bottom:2px solid {{ item.line }};color:{{ item.color }};font-weight:{{ item.weight }}" style-hover="color:var(--ink)" class="header__a-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="color:{{ item.iconColor }}" class="header__svg"><path d="{{ item.i1 }}"></path><path d="{{ item.i2 }}"></path><path d="{{ item.i3 }}"></path></svg>{{ item.label }}</a></li>
-          </sc-for>
+          
+            <li><a href="#home" data-nav-link="" class="header__a-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-5h4v5"></path></svg>Home</a></li>
+          
+            <li><a href="#about" data-nav-link="" class="header__a-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M4 21a8 8 0 0 1 16 0"></path><path d=""></path></svg>About</a></li>
+          
+            <li><a href="#listings" data-nav-link="" class="header__a-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg"><path d="M11 18a7 7 0 1 0 0-14a7 7 0 1 0 0 14"></path><path d="M20 20l-3.5-3.5"></path><path d=""></path></svg>Search Homes</a></li>
+          
+            <li><a href="#gallery" data-nav-link="" class="header__a-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg"><path d="M4 5h16v14H4z"></path><path d="M4 16l5-5 4 4 3-3 4 4"></path><path d=""></path></svg>Gallery</a></li>
+          
+            <li><a href="#contact" data-nav-link="" class="header__a-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M3 7l9 6 9-6"></path><path d=""></path></svg>Contact</a></li>
+          
         </ul>
         <div class="header__div-2">
-          <button type="button" onclick="{{ togglePages }}" aria-expanded="{{ pagesOpenStr }}" aria-controls="pages-menu" style="border-bottom:2px solid {{ pagesLine }};color:{{ pagesColor }};font-weight:{{ pagesWeight }}" style-hover="color:var(--ink)" class="header__button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg-2"><path d="M4 5h7v7H4z"></path><path d="M13 5h7v7h-7z"></path><path d="M4 14h16v5H4z"></path></svg>Pages<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="transform:{{ pagesChev }}" class="header__svg-3"><path d="M6 9l6 6 6-6"></path></svg></button>
-          <sc-if value="{{ pagesOpen }}" hint-placeholder-val="{{ false }}">
-            <div id="pages-menu" class="header__div-3">
+          <button type="button" aria-expanded="false" aria-controls="pages-menu" data-on-click="togglePagesMenu" data-pages-toggle="" class="header__button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg-2"><path d="M4 5h7v7H4z"></path><path d="M13 5h7v7h-7z"></path><path d="M4 14h16v5H4z"></path></svg>Pages<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg-3"><path d="M6 9l6 6 6-6"></path></svg></button>
+          
+            <div id="pages-menu" data-show="pages-menu" hidden="" class="header__div-3">
               <ul class="header__ul-2">
-                <sc-for list="{{ pageItems }}" as="p" hint-placeholder-count="3">
-                  <li><a href="{{ p.href }}" aria-current="{{ p.current }}" onclick="{{ closePages }}" style="background:{{ p.bg }}" style-hover="background:var(--bg-2);color:var(--ink)" class="header__a-3"><span class="header__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="{{ p.i1 }}"></path><path d="{{ p.i2 }}"></path><path d="{{ p.i3 }}"></path></svg></span><span class="header__span-2"><span class="header__span-3">{{ p.label }}</span><span class="header__span-4">{{ p.desc }}</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg-4"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a></li>
-                </sc-for>
+                
+                  <li><a href="listings.html" data-on-click="closePagesMenu" class="header__a-3"><span class="header__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-5h4v5"></path></svg></span><span class="header__span-2"><span class="header__span-3">Listings</span><span class="header__span-4">Current listings and what's new</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg-4"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a></li>
+                
+                  <li><a href="lets-move.html" data-on-click="closePagesMenu" class="header__a-3"><span class="header__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 19a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg></span><span class="header__span-2"><span class="header__span-3">Let's Move</span><span class="header__span-4">Contact us, hours and directions</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg-4"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a></li>
+                
+                  <li><a href="about-us.html" data-on-click="closePagesMenu" class="header__a-3"><span class="header__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M4 21a8 8 0 0 1 16 0"></path><path d=""></path></svg></span><span class="header__span-2"><span class="header__span-3">About Us</span><span class="header__span-4">Meet Marci J Metzger</span></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="header__svg-4"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a></li>
+                
               </ul>
             </div>
-          </sc-if>
+          
         </div>
         <a href="tel:2069196886" class="header__a-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>Call now</a>
       </nav>
-    </sc-if>
-    <sc-if value="{{ hdrMobile }}" hint-placeholder-val="{{ false }}">
-      <a href="tel:2069196886" aria-label="Call Marci Metzger at (206) 919-6886" class="header__a-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></a>
-      <button type="button" onclick="{{ toggleMenu }}" aria-expanded="{{ menuOpenStr }}" aria-controls="mobile-nav" aria-label="{{ menuLabel }}" class="header__button-2">
-        <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></sc-if>
-        <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg></sc-if>
-        <span aria-hidden="true">{{ menuText }}</span>
+    
+    
+      <a href="tel:2069196886" aria-label="Call Marci Metzger at (206) 919-6886" class="hide-from-1180 header__a-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></a>
+      <button type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="hide-from-1180 header__button-2" data-on-click="toggleMobileMenu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false" data-show="menu-open" hidden=""><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false" data-show="menu-closed"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+        <span aria-hidden="true" data-text="menuText">Menu</span>
       </button>
-    </sc-if>
+    
   </div>
 </header>
-<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
-  <div aria-hidden="true" onclick="{{ closeMenu }}" class="app__div-2"></div>
-  <nav id="mobile-nav" aria-label="Main" class="app__nav">
-    <div class="app__div-3">
-      <a href="#home" onclick="{{ closeMenu }}" aria-label="Marci Metzger Homes, home" class="app__a-2"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="128" height="40" class="app__img"></a>
-      <button type="button" onclick="{{ closeMenu }}" aria-label="Close menu" class="app__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>Close</button>
+
+  <div aria-hidden="true" data-show="menu-open" hidden="" data-on-click="closeMobileMenu" class="app__div-2"></div>
+  <nav id="mobile-nav" aria-label="Main" data-show="menu-open" hidden="" class="drawer__nav">
+    <div class="drawer__div">
+      <a href="#home" aria-label="Marci Metzger Homes, home" data-on-click="closeMobileMenu" class="drawer__a"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="128" height="40" class="drawer__img"></a>
+      <button type="button" aria-label="Close menu" data-on-click="closeMobileMenu" class="drawer__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>Close</button>
     </div>
-    <ul class="app__ul">
-      <sc-for list="{{ drawerNav }}" as="p" hint-placeholder-count="5">
-          <li class="app__li"><a href="{{ p.href }}" aria-current="{{ p.current }}" onclick="{{ closeMenu }}" style="background:{{ p.bg }};color:{{ p.color }}" style-hover="background:var(--bg-2)" class="app__a-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="app__svg"><path d="{{ p.i1 }}"></path><path d="{{ p.i2 }}"></path><path d="{{ p.i3 }}"></path></svg><span class="app__span">{{ p.label }}</span></a></li>
-        </sc-for>
+    <ul class="drawer__ul">
+      
+          <li class="drawer__li"><a href="#home" data-on-click="closeMobileMenu" data-drawer-link="" class="drawer__a-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-5h4v5"></path></svg><span class="drawer__span">Home</span></a></li>
+        
+          <li class="drawer__li"><a href="#about" data-on-click="closeMobileMenu" data-drawer-link="" class="drawer__a-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M4 21a8 8 0 0 1 16 0"></path><path d=""></path></svg><span class="drawer__span">About</span></a></li>
+        
+          <li class="drawer__li"><a href="#listings" data-on-click="closeMobileMenu" data-drawer-link="" class="drawer__a-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg"><path d="M11 18a7 7 0 1 0 0-14a7 7 0 1 0 0 14"></path><path d="M20 20l-3.5-3.5"></path><path d=""></path></svg><span class="drawer__span">Search Homes</span></a></li>
+        
+          <li class="drawer__li"><a href="#gallery" data-on-click="closeMobileMenu" data-drawer-link="" class="drawer__a-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg"><path d="M4 5h16v14H4z"></path><path d="M4 16l5-5 4 4 3-3 4 4"></path><path d=""></path></svg><span class="drawer__span">Gallery</span></a></li>
+        
+          <li class="drawer__li"><a href="#contact" data-on-click="closeMobileMenu" data-drawer-link="" class="drawer__a-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M3 7l9 6 9-6"></path><path d=""></path></svg><span class="drawer__span">Contact</span></a></li>
+        
     </ul>
-    <p class="app__p">Pages</p>
-    <ul class="app__ul">
-      <sc-for list="{{ pageItems }}" as="p" hint-placeholder-count="3">
-          <li class="app__li"><a href="{{ p.href }}" aria-current="{{ p.current }}" onclick="{{ closeMenu }}" style="background:{{ p.bg }};color:{{ p.color }}" style-hover="background:var(--bg-2)" class="app__a-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="app__svg"><path d="{{ p.i1 }}"></path><path d="{{ p.i2 }}"></path><path d="{{ p.i3 }}"></path></svg><span class="app__span">{{ p.label }}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="app__svg-2"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a></li>
-        </sc-for>
+    <p class="drawer__p">Pages</p>
+    <ul class="drawer__ul">
+      
+          <li class="drawer__li"><a href="listings.html" data-on-click="closeMobileMenu" class="drawer__a-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-5h4v5"></path></svg><span class="drawer__span">Listings</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg-2"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a></li>
+        
+          <li class="drawer__li"><a href="lets-move.html" data-on-click="closeMobileMenu" class="drawer__a-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg"><path d="M8 19a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg><span class="drawer__span">Let's Move</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg-2"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a></li>
+        
+          <li class="drawer__li"><a href="about-us.html" data-on-click="closeMobileMenu" class="drawer__a-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M4 21a8 8 0 0 1 16 0"></path><path d=""></path></svg><span class="drawer__span">About Us</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="drawer__svg-2"><path d="M7 17L17 7"></path><path d="M8 7h9v9"></path></svg></a></li>
+        
     </ul>
-    <div class="app__div-4">
-      <a href="tel:2069196886" class="app__a-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>Call now · (206) 919-6886</a>
-      <p class="app__p-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Open daily 8:00 am - 7:00 pm</p>
+    <div class="drawer__div-2">
+      <a href="tel:2069196886" class="drawer__a-4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>Call now · (206) 919-6886</a>
+      <p class="drawer__p-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Open daily 8:00 am - 7:00 pm</p>
     </div>
   </nav>
-</sc-if>
-<sc-if value="{{ pagesOpen }}" hint-placeholder-val="{{ false }}"><div aria-hidden="true" onclick="{{ closePages }}" class="app__div-5"></div></sc-if>
+
+<div aria-hidden="true" data-show="pages-menu" hidden="" data-on-click="closePagesMenu" class="app__div-3"></div>
 
 <main id="main" tabindex="-1" class="app__main">
 
 
-<section id="home" ref="{{ heroRef }}" aria-labelledby="hero-title" data-screen-label="Hero" style="height:{{ heroH }}" class="hero__section">
+<section id="home" aria-labelledby="hero-title" data-screen-label="Hero" data-ref="hero" class="hero__section">
   <div class="hero__div">
-    <div ref="{{ heroFrame }}" class="hero__div-2">
+    <div data-ref="hero-frame" class="hero__div-2">
       <img src="assets/img/top/img_hero_01_w1280.jpg" srcset="assets/img/top/img_hero_01_w1280.jpg 1280w, assets/img/top/img_hero_01_hq.jpg 2400w" sizes="100vw" alt="Green lawn and a pond with fountains in front of tall pines, desert mountains and a clear blue sky in the Pahrump valley" width="2400" height="1594" fetchpriority="high" decoding="async" class="hero__img">
       <div aria-hidden="true" class="hero__div-3"></div>
       <div aria-hidden="true" class="hero__div-4"></div>
     </div>
-    <div ref="{{ heroText }}" class="hero__div-5">
+    <div data-ref="hero-text" class="hero__div-5">
       <div class="hero__div-6">
-        <h1 id="hero-title" style="margin-bottom:{{ h1Mb }}" class="hero__h1">
-          <span style="opacity:{{ hl0.op }};transform:{{ hl0.tf }};transition:opacity 700ms var(--ease) {{ hl0.d }}, transform 700ms var(--ease) {{ hl0.d }}" class="hero__span">
+        <h1 id="hero-title" class="hero__h1">
+          <span class="hero__span">
             <span>Marci Metzger</span>
             <span aria-hidden="true" class="hero__span-2"></span>
             <span>The Ridge Realty Group</span>
           </span>
-          <span style="opacity:{{ hl1.op }};transform:{{ hl1.tf }};transition:opacity 700ms var(--ease) {{ hl1.d }}, transform 700ms var(--ease) {{ hl1.d }}" class="hero__span-3"><span style="animation:{{ heroDrift }}" class="hero__span-4">Pahrump Realtor</span></span>
+          <span class="hero__span-3"><span class="hero__span-4">Pahrump Realtor</span></span>
         </h1>
-        <div style="flex-direction:{{ ctaDir }};align-items:{{ ctaAlign }}" class="hero__div-7">
-          <div style="opacity:{{ hl2.op }};transform:{{ hl2.tf }};transition:opacity 700ms var(--ease) {{ hl2.d }}, transform 700ms var(--ease) {{ hl2.d }}" class="hero__div-8">
+        <div class="hero__div-7">
+          <div class="hero__div-8">
           <a href="tel:2069196886" class="hero__a"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>Call now</a>
           <a href="#listings" class="hero__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>Search listings</a>
         </div>
           <a href="#about" aria-label="Scroll down to meet Marci" class="hero__a-3">
-          <svg viewBox="0 0 140 140" aria-hidden="true" focusable="false" style="animation:{{ badgeSpin }}" class="hero__svg">
+          <svg viewBox="0 0 140 140" aria-hidden="true" focusable="false" class="hero__svg">
             <defs><path id="mm-ring" d="M70 70 m-54 0 a54 54 0 1 1 108 0 a54 54 0 1 1 -108 0"></path></defs>
             <text fill="#FFFFFF" class="hero__text"><textPath href="#mm-ring" textLength="336" lengthAdjust="spacing">Pahrump Realtor · Get it Sold · Let's Move · </textPath></text>
           </svg>
-          <span class="hero__span-5"><svg width="46%" height="46%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="animation:{{ chevBob }}"><path d="M6 9l6 6 6-6"></path></svg></span>
+          <span class="hero__span-5"><svg width="46%" height="46%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="hero__svg-2"><path d="M6 9l6 6 6-6"></path></svg></span>
         </a>
         </div>
       </div>
     </div>
-    <div ref="{{ heroCaption }}" aria-hidden="true" class="hero__div-9">
+    <div aria-hidden="true" data-ref="hero-caption" class="hero__div-9">
       <p class="hero__p">
         <span class="hero__span-6"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Open daily, 8:00 am - 7:00 pm</span>
         <span class="hero__span-7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>206-919-6886</span>
@@ -158,12 +180,12 @@
 
 <section id="about" aria-labelledby="about-title" data-screen-label="About" class="about__section">
   <div class="about__div">
-    <div data-reveal="img" style="max-width:{{ aboutMax }};min-height:{{ aboutMinH }};justify-self:{{ aboutJs2 }};aspect-ratio:{{ aboutRatio }}" class="about__div-2">
+    <div data-reveal="img" class="about__div-2">
       <img src="assets/img/about/img_about_01_hq.jpg" alt="Portrait of Marci Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" loading="lazy" decoding="async" class="about__img">
       <div aria-hidden="true" class="about__div-3"></div>
     </div>
     <div class="about__div-4">
-      <h2 id="about-title" class="about__h2"><span style="animation:{{ nameGlint }}" class="about__span">Marci Metzger</span></h2>
+      <h2 id="about-title" class="about__h2"><span class="about__span">Marci Metzger</span></h2>
       <p class="about__p">Realtor for nearly 3 decades</p>
       <div class="about__div-5">
         <a href="tel:2069196886" class="about__a"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>Call Marci</a>
@@ -172,14 +194,35 @@
       <div class="about__div-6">
         <p id="affil-label" class="about__p-2">Brokerage &amp; affiliations</p>
         <ul aria-labelledby="affil-label" class="about__ul">
-        <sc-for list="{{ badges }}" as="b" hint-placeholder-count="4">
-          <sc-if value="{{ b.ok }}" hint-placeholder-val="{{ false }}">
-            <li data-reveal="up" data-reveal-i="{{ $index }}" class="about__li">
-              <span class="about__span-2"><img decoding="async" src="{{ b.src }}" alt="{{ b.alt }}" width="60" height="60" loading="lazy" onerror="{{ b.onError }}" class="about__img-2"></span>
-              <span class="about__span-3">{{ b.alt }}</span>
+        
+          
+            <li data-reveal="up" data-reveal-i="0" class="about__li">
+              <span class="about__span-2"><img decoding="async" src="assets/img/top/icn_badge_01.png" alt="The Ridge Realty Group" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></span>
+              <span class="about__span-3">The Ridge Realty Group</span>
             </li>
-          </sc-if>
-        </sc-for>
+          
+        
+          
+            <li data-reveal="up" data-reveal-i="1" class="about__li">
+              <span class="about__span-2"><img decoding="async" src="assets/img/top/icn_badge_02.png" alt="Equal Housing Opportunity" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></span>
+              <span class="about__span-3">Equal Housing Opportunity</span>
+            </li>
+          
+        
+          
+            <li data-reveal="up" data-reveal-i="2" class="about__li">
+              <span class="about__span-2"><img decoding="async" src="assets/img/top/icn_badge_03.png" alt="REALTOR® member pin" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></span>
+              <span class="about__span-3">REALTOR® member pin</span>
+            </li>
+          
+        
+          
+            <li data-reveal="up" data-reveal-i="3" class="about__li">
+              <span class="about__span-2"><img decoding="async" src="assets/img/top/icn_badge_04.png" alt="Pahrump Valley Chamber of Commerce" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></span>
+              <span class="about__span-3">Pahrump Valley Chamber of Commerce</span>
+            </li>
+          
+        
         </ul>
       </div>
     </div>
@@ -188,15 +231,15 @@
 
 <section id="get-it-sold" aria-labelledby="sold-title" data-screen-label="Get it sold" class="get-it-sold__section">
   <div class="get-it-sold__div">
-    <div style="text-align:{{ soldHeadText }};align-items:{{ soldHeadAlign }}" class="get-it-sold__div-2">
-      <h2 id="sold-title" class="get-it-sold__h2">Get it <span data-mark="0" class="get-it-sold__span">sold<span aria-hidden="true" style="clip-path:{{ mark0 }}" class="get-it-sold__span-2"></span></span></h2>
+    <div class="get-it-sold__div-2">
+      <h2 id="sold-title" class="get-it-sold__h2">Get it <span data-mark="0" class="get-it-sold__span">sold<span aria-hidden="true" class="get-it-sold__span-2"></span></span></h2>
       <p class="get-it-sold__p">Our team works hard everyday to grow and learn, so that we may continue to excel in our market. Our clients deserve our best, &amp; we want to make sure our best is better every year.</p>
     </div>
-    <div ref="{{ tlRef }}" class="get-it-sold__div-3">
-      <div aria-hidden="true" style="left:{{ lineLeft }}" class="get-it-sold__div-4"></div>
-      <div ref="{{ tlFill }}" aria-hidden="true" style="left:{{ lineLeft }}" class="get-it-sold__div-5"></div>
-    <div data-tl="0" style="grid-template-columns:{{ tlCols }};column-gap:{{ tlGap }}" class="get-it-sold__div-6">
-      <article style="opacity:{{ tl0.op }};grid-column:{{ cardL }};transform:{{ tl0.cardTf }}" class="get-it-sold__article">
+    <div data-ref="timeline" class="get-it-sold__div-3">
+      <div aria-hidden="true" class="get-it-sold__div-4"></div>
+      <div aria-hidden="true" data-ref="timeline-fill" class="get-it-sold__div-5"></div>
+    <div data-tl="0" class="get-it-sold__div-6">
+      <article class="get-it-sold__article">
         <div class="get-it-sold__div-7">
           <img src="assets/img/top/img_sold_01.jpg" alt="Bright open-plan kitchen with a white stone island, pendant lights and a living room with a stone fireplace beyond" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
@@ -205,25 +248,25 @@
           </div>
         </div>
         <div class="get-it-sold__div-10">
-          <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><p class="get-it-sold__p-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg>Results</p></sc-if>
+          <p class="hide-from-960 get-it-sold__p-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg>Results</p>
           <p class="get-it-sold__p">We helped nearly 90 clients in 2021, and closed 28.5 million in sales!</p>
           <ul aria-label="Highlights" class="get-it-sold__ul"><li class="get-it-sold__li">Nearly 90 clients in 2021</li><li class="get-it-sold__li">28.5 million closed</li><li class="get-it-sold__li">Last 5 years</li></ul>
         </div>
       </article>
-      <div aria-hidden="true" style="margin-top:{{ markTop }};grid-column:{{ markCol }};align-self:{{ markAlign }}" class="get-it-sold__div-11">
-        <span style="animation:{{ tl0.ripple }}" class="get-it-sold__span-3"></span>
-        <span style="animation:{{ tl0.ripple2 }}" class="get-it-sold__span-3"></span>
-        <span style="background:{{ tl0.dotBg }};transform:{{ tl0.dotTf }}" class="get-it-sold__span-4"></span>
+      <div aria-hidden="true" class="get-it-sold__div-11">
+        <span class="get-it-sold__span-3"></span>
+        <span class="get-it-sold__span-4"></span>
+        <span class="get-it-sold__span-5"></span>
       </div>
-      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
-        <div style="opacity:{{ tl0.op }};transform:{{ tl0.sideTf }}" class="get-it-sold__div-12">
-          <span aria-hidden="true" style="color:{{ tl0.numColor }}" class="get-it-sold__span-5">01</span>
+      
+        <div class="hide-below-960 get-it-sold__div-12">
+          <span aria-hidden="true" class="get-it-sold__span-6">01</span>
           <p class="get-it-sold__p-3"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 20V10"></path><path d="M10 20V4"></path><path d="M16 20v-7"></path><path d="M22 20H2"></path></svg>Results</p>
         </div>
-      </sc-if>
+      
     </div>
-    <div data-tl="1" style="grid-template-columns:{{ tlCols }};column-gap:{{ tlGap }}" class="get-it-sold__div-6">
-      <article style="opacity:{{ tl1.op }};grid-column:{{ cardR }};transform:{{ tl1.cardTf }}" class="get-it-sold__article">
+    <div data-tl="1" class="get-it-sold__div-6">
+      <article class="get-it-sold__article-2">
         <div class="get-it-sold__div-7">
           <img src="assets/img/top/img_sold_02.jpg" alt="A white stucco home with a tile roof, lit covered patio and a free-form pool at dusk, mountains behind" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
@@ -232,25 +275,25 @@
           </div>
         </div>
         <div class="get-it-sold__div-10">
-          <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><p class="get-it-sold__p-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12V4h8l10 10-8 8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>Selling</p></sc-if>
+          <p class="hide-from-960 get-it-sold__p-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12V4h8l10 10-8 8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>Selling</p>
           <p class="get-it-sold__p">Get it SOLD! We exhaust every avenue to ensure our listings are at the fingertips of every possible buyer, getting you top dollar for your home.</p>
           <ul aria-label="Highlights" class="get-it-sold__ul"><li class="get-it-sold__li">Every possible buyer</li><li class="get-it-sold__li">Top dollar for your home</li></ul>
         </div>
       </article>
-      <div aria-hidden="true" style="margin-top:{{ markTop }};grid-column:{{ markCol }};align-self:{{ markAlign }}" class="get-it-sold__div-11">
-        <span style="animation:{{ tl1.ripple }}" class="get-it-sold__span-3"></span>
-        <span style="animation:{{ tl1.ripple2 }}" class="get-it-sold__span-3"></span>
-        <span style="background:{{ tl1.dotBg }};transform:{{ tl1.dotTf }}" class="get-it-sold__span-4"></span>
+      <div aria-hidden="true" class="get-it-sold__div-11">
+        <span class="get-it-sold__span-3"></span>
+        <span class="get-it-sold__span-4"></span>
+        <span class="get-it-sold__span-5"></span>
       </div>
-      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
-        <div style="opacity:{{ tl1.op }};transform:{{ tl1.sideTf }}" class="get-it-sold__div-13">
-          <span aria-hidden="true" style="color:{{ tl1.numColor }}" class="get-it-sold__span-5">02</span>
+      
+        <div class="hide-below-960 get-it-sold__div-13">
+          <span aria-hidden="true" class="get-it-sold__span-6">02</span>
           <p class="get-it-sold__p-3"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 12V4h8l10 10-8 8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>Selling</p>
         </div>
-      </sc-if>
+      
     </div>
-    <div data-tl="2" style="grid-template-columns:{{ tlCols }};column-gap:{{ tlGap }}" class="get-it-sold__div-6">
-      <article style="opacity:{{ tl2.op }};grid-column:{{ cardL }};transform:{{ tl2.cardTf }}" class="get-it-sold__article">
+    <div data-tl="2" class="get-it-sold__div-6">
+      <article class="get-it-sold__article">
         <div class="get-it-sold__div-7">
           <img src="assets/img/top/img_sold_03.jpg" alt="House keys on a red house-shaped key ring, resting on weathered wood" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
@@ -259,22 +302,22 @@
           </div>
         </div>
         <div class="get-it-sold__div-10">
-          <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}"><p class="get-it-sold__p-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg>Buying</p></sc-if>
+          <p class="hide-from-960 get-it-sold__p-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg>Buying</p>
           <p class="get-it-sold__p">Nobody knows the market like we do. Enjoy having a pro at your service. Market analysis, upgrades lists, contractors on speed dial, &amp; more!</p>
           <ul aria-label="Highlights" class="get-it-sold__ul"><li class="get-it-sold__li">Market analysis</li><li class="get-it-sold__li">Upgrades lists</li><li class="get-it-sold__li">Contractors on speed dial</li></ul>
         </div>
       </article>
-      <div aria-hidden="true" style="margin-top:{{ markTop }};grid-column:{{ markCol }};align-self:{{ markAlign }}" class="get-it-sold__div-11">
-        <span style="animation:{{ tl2.ripple }}" class="get-it-sold__span-3"></span>
-        <span style="animation:{{ tl2.ripple2 }}" class="get-it-sold__span-3"></span>
-        <span style="background:{{ tl2.dotBg }};transform:{{ tl2.dotTf }}" class="get-it-sold__span-4"></span>
+      <div aria-hidden="true" class="get-it-sold__div-11">
+        <span class="get-it-sold__span-3"></span>
+        <span class="get-it-sold__span-4"></span>
+        <span class="get-it-sold__span-5"></span>
       </div>
-      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
-        <div style="opacity:{{ tl2.op }};transform:{{ tl2.sideTf }}" class="get-it-sold__div-12">
-          <span aria-hidden="true" style="color:{{ tl2.numColor }}" class="get-it-sold__span-5">03</span>
+      
+        <div class="hide-below-960 get-it-sold__div-12">
+          <span aria-hidden="true" class="get-it-sold__span-6">03</span>
           <p class="get-it-sold__p-3"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg>Buying</p>
         </div>
-      </sc-if>
+      
     </div>
     </div>
   </div>
@@ -282,23 +325,53 @@
 
 <section id="listings" aria-labelledby="search-title" data-screen-label="Find your dream home" class="find-your-dream-home__section">
   <div class="find-your-dream-home__div">
-    <h2 id="search-title" class="find-your-dream-home__h2">Find Your <span data-mark="1" class="find-your-dream-home__span">Dream Home<span aria-hidden="true" style="clip-path:{{ mark1 }}" class="find-your-dream-home__span-2"></span></span></h2>
+    <h2 id="search-title" class="find-your-dream-home__h2">Find Your <span data-mark="1" class="find-your-dream-home__span">Dream Home<span aria-hidden="true" class="find-your-dream-home__span-2"></span></span></h2>
     <div class="find-your-dream-home__div-2"><a href="listings.html" class="find-your-dream-home__a">Browse current listings<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a></div>
   </div>
-  <form data-reveal="form" data-reveal-i="0" name="listing-search" onsubmit="{{ onSearch }}" novalidate="" class="find-your-dream-home__form">
+  <form data-reveal="form" data-reveal-i="0" name="listing-search" novalidate="" data-on-submit="searchListings" class="find-your-dream-home__form">
     <h3 class="find-your-dream-home__h3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>Search Listings</h3>
     <div class="find-your-dream-home__div-3">
-      <sc-for list="{{ selects }}" as="f" hint-placeholder-count="4">
+      
         <div class="find-your-dream-home__div-4">
-          <label for="{{ f.id }}" class="find-your-dream-home__label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="{{ f.icon1 }}"></path><path d="{{ f.icon2 }}"></path><path d="{{ f.icon3 }}"></path></svg>{{ f.label }}</label>
+          <label for="f-location" class="find-your-dream-home__label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><path d="M12 12.5a2.5 2.5 0 1 0 0-5a2.5 2.5 0 1 0 0 5"></path><path d=""></path></svg>Location</label>
           <div class="find-your-dream-home__div-5">
-            <x-select id="{{ f.id }}" name="{{ f.name }}" class="find-your-dream-home__select">
-              <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="1"><x-option value="{{ o }}">{{ o }}</x-option></sc-for>
-            </x-select>
+            <select id="f-location" name="location" class="find-your-dream-home__select">
+              <option value="Any">Any</option><option value="Alamo">Alamo</option><option value="Alton">Alton</option><option value="Amargosa Valley">Amargosa Valley</option><option value="Beatty">Beatty</option><option value="Beryl">Beryl</option><option value="Blue Diamond">Blue Diamond</option><option value="Boulder City">Boulder City</option><option value="Brian Head">Brian Head</option><option value="Cal Nev Ari">Cal Nev Ari</option><option value="Caliente">Caliente</option><option value="Cedar City">Cedar City</option><option value="Cold Creek">Cold Creek</option><option value="Crystal">Crystal</option><option value="Duck Creek Village">Duck Creek Village</option><option value="Dyer">Dyer</option><option value="Elko">Elko</option><option value="Ely">Ely</option><option value="Goldfield">Goldfield</option><option value="Goodsprings">Goodsprings</option><option value="Hatch">Hatch</option><option value="Henderson">Henderson</option><option value="Indian Springs">Indian Springs</option><option value="Jean">Jean</option><option value="Las Vegas">Las Vegas</option><option value="Laughlin">Laughlin</option><option value="Logandale">Logandale</option><option value="Mc Gill">Mc Gill</option><option value="Mesquite">Mesquite</option><option value="Moapa">Moapa</option><option value="Mount Charleston">Mount Charleston</option><option value="Mountain Springs">Mountain Springs</option><option value="Nelson">Nelson</option><option value="North Las Vegas">North Las Vegas</option><option value="Other">Other</option><option value="Overton">Overton</option><option value="Pahrump">Pahrump</option><option value="Palm Gardens">Palm Gardens</option><option value="Panaca">Panaca</option><option value="Parowan">Parowan</option><option value="Pioche">Pioche</option><option value="Ruth">Ruth</option><option value="Sandy Valley">Sandy Valley</option><option value="Searchlight">Searchlight</option><option value="Tonopah">Tonopah</option>
+            </select>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="find-your-dream-home__svg"><path d="M6 9l6 6 6-6"></path></svg>
           </div>
         </div>
-      </sc-for>
+      
+        <div class="find-your-dream-home__div-4">
+          <label for="f-type" class="find-your-dream-home__label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21h18"></path><path d="M5 21V10l7-5 7 5v11"></path><path d="M10 21v-6h4v6"></path></svg>Type</label>
+          <div class="find-your-dream-home__div-5">
+            <select id="f-type" name="type" class="find-your-dream-home__select">
+              <option value="Any">Any</option><option value="Land">Land</option><option value="Residential Lease">Residential Lease</option><option value="High Rise">High Rise</option><option value="Residential">Residential</option>
+            </select>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="find-your-dream-home__svg"><path d="M6 9l6 6 6-6"></path></svg>
+          </div>
+        </div>
+      
+        <div class="find-your-dream-home__div-4">
+          <label for="f-beds" class="find-your-dream-home__label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 18V7"></path><path d="M3 14h18v4"></path><path d="M21 14v-2a3 3 0 0 0-3-3h-7v5"></path></svg>Bedrooms</label>
+          <div class="find-your-dream-home__div-5">
+            <select id="f-beds" name="beds" class="find-your-dream-home__select">
+              <option value="Any Number">Any Number</option><option value="Studio">Studio</option><option value="1+">1+</option><option value="2+">2+</option><option value="3+">3+</option><option value="4+">4+</option><option value="5+">5+</option><option value="6+">6+</option>
+            </select>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="find-your-dream-home__svg"><path d="M6 9l6 6 6-6"></path></svg>
+          </div>
+        </div>
+      
+        <div class="find-your-dream-home__div-4">
+          <label for="f-baths" class="find-your-dream-home__label"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"></path><path d="M6 12V5a2 2 0 0 1 4 0"></path><path d="M7 19l-1 2M17 19l1 2"></path></svg>Baths</label>
+          <div class="find-your-dream-home__div-5">
+            <select id="f-baths" name="baths" class="find-your-dream-home__select">
+              <option value="Any Number">Any Number</option><option value="1+">1+</option><option value="2+">2+</option><option value="3+">3+</option><option value="4+">4+</option><option value="5+">5+</option><option value="6+">6+</option>
+            </select>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="find-your-dream-home__svg"><path d="M6 9l6 6 6-6"></path></svg>
+          </div>
+        </div>
+      
       <div class="find-your-dream-home__div-4">
         <label for="f-min" class="find-your-dream-home__label-2">Min Price</label>
         <div class="find-your-dream-home__div-5">
@@ -310,54 +383,164 @@
         <label for="f-max" class="find-your-dream-home__label-2">Max Price</label>
         <div class="find-your-dream-home__div-5">
           <span aria-hidden="true" class="find-your-dream-home__span-3">$</span>
-          <input id="f-max" name="max" inputmode="numeric" autocomplete="off" placeholder="No maximum" aria-describedby="search-msg" aria-invalid="{{ priceInvalid }}" style="border:1px solid {{ priceBorder }}" class="find-your-dream-home__input-2">
+          <input id="f-max" name="max" inputmode="numeric" autocomplete="off" placeholder="No maximum" aria-describedby="search-msg" aria-invalid="false" data-validate="" class="find-your-dream-home__input-2">
         </div>
       </div>
       <div class="find-your-dream-home__div-4">
         <label for="f-sort" class="find-your-dream-home__label-2">Sort By</label>
         <div class="find-your-dream-home__div-5">
-          <x-select id="f-sort" name="sort" class="find-your-dream-home__select">
-            <sc-for list="{{ sorts }}" as="o" hint-placeholder-count="1"><x-option value="{{ o }}">{{ o }}</x-option></sc-for>
-          </x-select>
+          <select id="f-sort" name="sort" class="find-your-dream-home__select">
+            <option value="Newest">Newest</option><option value="Oldest">Oldest</option><option value="Least Expensive to Most">Least Expensive to Most</option><option value="Most Expensive to Least">Most Expensive to Least</option><option value="Bedrooms (Low to High)">Bedrooms (Low to High)</option><option value="Bedrooms (High to Low)">Bedrooms (High to Low)</option><option value="Bathrooms (Low to High)">Bathrooms (Low to High)</option><option value="Bathrooms (High to Low)">Bathrooms (High to Low)</option>
+          </select>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="find-your-dream-home__svg"><path d="M6 9l6 6 6-6"></path></svg>
         </div>
       </div>
       <div class="find-your-dream-home__div-6">
-        <button type="submit" disabled="{{ searchBusy }}" class="find-your-dream-home__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>{{ searchLabel }}</button>
+        <button type="submit" class="find-your-dream-home__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span data-text="searchLabel">Search Now</span></button>
       </div>
     </div>
-    <p id="search-msg" role="status" aria-live="polite" style="color:{{ searchMsgColor }}" class="find-your-dream-home__p">{{ searchMsg }}</p>
+    <p id="search-msg" role="status" aria-live="polite" data-text="searchMsg" data-msg="search" class="find-your-dream-home__p"></p>
   </form>
 </section>
 
 <section id="gallery" aria-labelledby="gallery-title" data-screen-label="Photo gallery" class="photo-gallery__section">
   <div class="photo-gallery__div">
-    <h2 id="gallery-title" class="photo-gallery__h2">Photo <span data-mark="2" class="photo-gallery__span">Gallery<span aria-hidden="true" style="clip-path:{{ mark2 }}" class="photo-gallery__span-2"></span></span></h2>
+    <h2 id="gallery-title" class="photo-gallery__h2">Photo <span data-mark="2" class="photo-gallery__span">Gallery<span aria-hidden="true" class="photo-gallery__span-2"></span></span></h2>
     <p class="photo-gallery__p"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg>7 photos · select one to enlarge</p>
   </div>
-  <div style="grid-template-columns:{{ galleryCols }}" class="photo-gallery__div-2">
-    <sc-for list="{{ galleryColumns }}" as="col" hint-placeholder-count="3">
-      <ul class="photo-gallery__ul">
-        <sc-for list="{{ col.items }}" as="g" hint-placeholder-count="2">
-          <li data-gal="{{ g.idx }}" style="{{ g.cell }}">
-            <button type="button" onclick="{{ g.open }}" onmouseenter="{{ g.enter }}" onmouseleave="{{ g.leave }}" onfocus="{{ g.enter }}" onblur="{{ g.leave }}" aria-label="{{ g.label }}" class="photo-gallery__button">
-              <sc-if value="{{ g.ok }}" hint-placeholder-val="{{ false }}">
-                <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" decoding="async" onerror="{{ g.onError }}" style="transform:{{ g.imgTf }}" class="photo-gallery__img">
-              </sc-if>
-              <sc-if value="{{ g.failed }}" hint-placeholder-val="{{ false }}">
-                <span class="photo-gallery__span-3">{{ g.file }} · photo unavailable</span>
-              </sc-if>
+  <div class="photo-gallery__div-2">
+    
+      <ul data-gal-col="" class="photo-gallery__ul">
+        
+          <li data-gal="0" data-ratio="4/5">
+            <button type="button" aria-label="Enlarge photo 1 of 7: Community clubhouse" data-on-click="openLightbox" class="photo-gallery__button">
+              
+                <img src="assets/img/top/img_gallery_01_hq.jpg" alt="Aerial view of a community clubhouse with tennis and pickleball courts, a lawn and palm trees, with the valley behind" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+              
+              
+                <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_01_hq.jpg · photo unavailable</span>
+              
               <span aria-hidden="true" class="photo-gallery__span-4"></span>
-              <span aria-hidden="true" style="opacity:{{ g.hovOp }};transform:{{ g.iconTf }}" class="photo-gallery__span-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></span>
+              <span aria-hidden="true" class="photo-gallery__span-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></span>
               <span aria-hidden="true" class="photo-gallery__span-6">
-                <span class="photo-gallery__span-7">{{ g.title }}</span>
-                <span style="grid-template-rows:{{ g.descRows }}" class="photo-gallery__span-8"><span class="photo-gallery__span-9"><span style="opacity:{{ g.hovOp }}" class="photo-gallery__span-10">{{ g.desc }}</span></span></span>
+                <span class="photo-gallery__span-7">Community clubhouse</span>
+                <span class="photo-gallery__span-8"><span class="photo-gallery__span-9"><span class="photo-gallery__span-10">Tennis and pickleball courts beside the lawn</span></span></span>
               </span>
             </button>
           </li>
-        </sc-for>
+        
+          <li data-gal="3" data-ratio="1/1">
+            <button type="button" aria-label="Enlarge photo 4 of 7: Sunlit reading corner" data-on-click="openLightbox" class="photo-gallery__button">
+              
+                <img src="assets/img/top/img_gallery_04_hq.jpg" alt="Sunlit corner room with a red leather armchair and floor-to-ceiling windows onto a desert garden" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+              
+              
+                <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_04_hq.jpg · photo unavailable</span>
+              
+              <span aria-hidden="true" class="photo-gallery__span-4"></span>
+              <span aria-hidden="true" class="photo-gallery__span-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></span>
+              <span aria-hidden="true" class="photo-gallery__span-6">
+                <span class="photo-gallery__span-7">Sunlit reading corner</span>
+                <span class="photo-gallery__span-8"><span class="photo-gallery__span-9"><span class="photo-gallery__span-10">Floor-to-ceiling windows onto a desert garden</span></span></span>
+              </span>
+            </button>
+          </li>
+        
       </ul>
-    </sc-for>
+    
+      <ul data-gal-col="" class="photo-gallery__ul">
+        
+          <li data-gal="1" data-ratio="3/2">
+            <button type="button" aria-label="Enlarge photo 2 of 7: Single-story homes" data-on-click="openLightbox" class="photo-gallery__button">
+              
+                <img src="assets/img/top/img_gallery_02_hq.jpg" alt="Aerial view of a row of single-story homes along a street, with a green lawn and pond behind" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+              
+              
+                <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_02_hq.jpg · photo unavailable</span>
+              
+              <span aria-hidden="true" class="photo-gallery__span-4"></span>
+              <span aria-hidden="true" class="photo-gallery__span-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></span>
+              <span aria-hidden="true" class="photo-gallery__span-6">
+                <span class="photo-gallery__span-7">Single-story homes</span>
+                <span class="photo-gallery__span-8"><span class="photo-gallery__span-9"><span class="photo-gallery__span-10">A quiet street backing onto a pond and lawn</span></span></span>
+              </span>
+            </button>
+          </li>
+        
+          <li data-gal="4" data-ratio="1/1">
+            <button type="button" aria-label="Enlarge photo 5 of 7: Cul-de-sac living" data-on-click="openLightbox" class="photo-gallery__button">
+              
+                <img src="assets/img/top/img_gallery_05_hq.jpg" alt="Aerial view of a cul-de-sac of tile-roofed homes with desert landscaping and snow-capped mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+              
+              
+                <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_05_hq.jpg · photo unavailable</span>
+              
+              <span aria-hidden="true" class="photo-gallery__span-4"></span>
+              <span aria-hidden="true" class="photo-gallery__span-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></span>
+              <span aria-hidden="true" class="photo-gallery__span-6">
+                <span class="photo-gallery__span-7">Cul-de-sac living</span>
+                <span class="photo-gallery__span-8"><span class="photo-gallery__span-9"><span class="photo-gallery__span-10">Tile roofs, desert landscaping and mountain views</span></span></span>
+              </span>
+            </button>
+          </li>
+        
+          <li data-gal="5" data-ratio="3/2">
+            <button type="button" aria-label="Enlarge photo 6 of 7: Private pool and spa" data-on-click="openLightbox" class="photo-gallery__button">
+              
+                <img src="assets/img/top/img_gallery_06_hq.jpg" alt="Aerial view of a tile-roofed home with a private pool and spa, trees and snow-capped mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+              
+              
+                <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_06_hq.jpg · photo unavailable</span>
+              
+              <span aria-hidden="true" class="photo-gallery__span-4"></span>
+              <span aria-hidden="true" class="photo-gallery__span-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></span>
+              <span aria-hidden="true" class="photo-gallery__span-6">
+                <span class="photo-gallery__span-7">Private pool and spa</span>
+                <span class="photo-gallery__span-8"><span class="photo-gallery__span-9"><span class="photo-gallery__span-10">Backing onto open land with the mountains beyond</span></span></span>
+              </span>
+            </button>
+          </li>
+        
+      </ul>
+    
+      <ul data-gal-col="" class="photo-gallery__ul">
+        
+          <li data-gal="2" data-ratio="1/1">
+            <button type="button" aria-label="Enlarge photo 3 of 7: Resort-style pool" data-on-click="openLightbox" class="photo-gallery__button">
+              
+                <img src="assets/img/top/img_gallery_03_hq.jpg" alt="Aerial view of a resort-style community pool among palm trees, beside a golf course and lake with mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+              
+              
+                <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_03_hq.jpg · photo unavailable</span>
+              
+              <span aria-hidden="true" class="photo-gallery__span-4"></span>
+              <span aria-hidden="true" class="photo-gallery__span-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></span>
+              <span aria-hidden="true" class="photo-gallery__span-6">
+                <span class="photo-gallery__span-7">Resort-style pool</span>
+                <span class="photo-gallery__span-8"><span class="photo-gallery__span-9"><span class="photo-gallery__span-10">Palms, a lake and the golf course beyond</span></span></span>
+              </span>
+            </button>
+          </li>
+        
+          <li data-gal="6" data-ratio="4/5">
+            <button type="button" aria-label="Enlarge photo 7 of 7: Clubhouse and courts" data-on-click="openLightbox" class="photo-gallery__button">
+              
+                <img src="assets/img/top/img_gallery_07_hq.jpg" alt="Aerial view of a community clubhouse with pickleball courts and a roundabout, mountains on the horizon" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+              
+              
+                <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_07_hq.jpg · photo unavailable</span>
+              
+              <span aria-hidden="true" class="photo-gallery__span-4"></span>
+              <span aria-hidden="true" class="photo-gallery__span-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5"></path><path d="M20 9V4h-5"></path><path d="M4 15v5h5"></path><path d="M20 15v5h-5"></path></svg></span>
+              <span aria-hidden="true" class="photo-gallery__span-6">
+                <span class="photo-gallery__span-7">Clubhouse and courts</span>
+                <span class="photo-gallery__span-8"><span class="photo-gallery__span-9"><span class="photo-gallery__span-10">Pickleball courts with mountains on the horizon</span></span></span>
+              </span>
+            </button>
+          </li>
+        
+      </ul>
+    
   </div>
 </section>
 
@@ -366,23 +549,23 @@
     <div class="our-services__div-2">
       <div class="our-services__div-3">
         <p class="our-services__p">Our Services</p>
-        <h2 id="services-title" class="our-services__h2">Real Estate <span data-mark="3" class="our-services__span">Done Right<span aria-hidden="true" style="clip-path:{{ mark3 }}" class="our-services__span-2"></span></span></h2>
+        <h2 id="services-title" class="our-services__h2">Real Estate <span data-mark="3" class="our-services__span">Done Right<span aria-hidden="true" class="our-services__span-2"></span></span></h2>
       </div>
-      <div style="text-align:{{ svcTa }};justify-self:{{ svcJs }};align-items:{{ svcAi }}" class="our-services__div-3"><p class="our-services__p-2">Commercial &amp; Residential</p><a href="lets-move.html" class="our-services__a">Ready to move? Let's talk<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a></div>
+      <div class="our-services__div-4"><p class="our-services__p-2">Commercial &amp; Residential</p><a href="lets-move.html" class="our-services__a">Ready to move? Let's talk<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a></div>
     </div>
     <ul class="our-services__ul">
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-4"><img src="assets/img/top/img_services_01.jpg" alt="White pallet coffee table with a plant, a hyacinth and books in front of a grey sofa" width="737" height="722" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 21V5l8-2v18"></path><path d="M12 9h8v12"></path><path d="M2 21h20"></path><path d="M7 8h2"></path><path d="M7 12h2"></path><path d="M7 16h2"></path><path d="M15 13h2"></path><path d="M15 17h2"></path></svg></span></div>
+        <div class="our-services__div-5"><img src="assets/img/top/img_services_01.jpg" alt="White pallet coffee table with a plant, a hyacinth and books in front of a grey sofa" width="737" height="722" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 21V5l8-2v18"></path><path d="M12 9h8v12"></path><path d="M2 21h20"></path><path d="M7 8h2"></path><path d="M7 12h2"></path><path d="M7 16h2"></path><path d="M15 13h2"></path><path d="M15 17h2"></path></svg></span></div>
         <h3 class="our-services__h3">Nervous about your property adventure? Don't be.</h3>
         <p class="our-services__p-3">Whether you're getting ready to buy or sell your residence, looking at investment properties, or just curious about the markets, our team ensures you get the best experience possible!</p>
       </li>
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-4"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="15" r="4"></circle><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg></span></div>
+        <div class="our-services__div-5"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="15" r="4"></circle><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg></span></div>
         <h3 class="our-services__h3">Large or small, condo or mansion</h3>
         <p class="our-services__p-3">We can find it and get at the price that's right. Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. Happy to help you find where to put your hard-earned dollars.</p>
       </li>
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-4"><img src="assets/img/top/img_services_03.jpg" alt="Smiling client shaking hands across a table with a laptop" width="600" height="520" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span></div>
+        <div class="our-services__div-5"><img src="assets/img/top/img_services_03.jpg" alt="Smiling client shaking hands across a table with a laptop" width="600" height="520" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span></div>
         <h3 class="our-services__h3">Rely on Expertise</h3>
         <p class="our-services__p-3">If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to get the answers you need in a timely fashion. We make sure you feel confident and educated every step of the way.</p>
       </li>
@@ -392,18 +575,18 @@
 
 <section id="contact" aria-labelledby="contact-title" data-screen-label="Contact" class="contact__section">
   <div class="contact__div">
-    <h2 id="contact-title" class="contact__h2">Call or <span data-mark="4" class="contact__span">Visit<span aria-hidden="true" style="clip-path:{{ mark4 }}" class="contact__span-2"></span></span></h2>
+    <h2 id="contact-title" class="contact__h2">Call or <span data-mark="4" class="contact__span">Visit<span aria-hidden="true" class="contact__span-2"></span></span></h2>
     <div class="contact__div-2">
       <p class="contact__p">Our office</p>
-      <h3 style="white-space:{{ officeWs }}" class="contact__h3">Marci Metzger - The Ridge Realty Group</h3>
+      <h3 class="contact__h3">Marci Metzger - The Ridge Realty Group</h3>
     </div>
   </div>
   <div class="contact__div-3">
     <div class="contact__div-4">
-      <div data-reveal="img" style="aspect-ratio:{{ mapRatio }}" class="contact__div-5">
+      <div data-reveal="img" class="contact__div-5">
         <iframe title="Map showing 3190 HW-160, Suite F, Pahrump, Nevada" src="https://maps.google.com/maps?q=3190%20HW-160%20Suite%20F%2C%20Pahrump%2C%20NV%2089048&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="contact__iframe"></iframe>
         <div aria-hidden="true" class="contact__div-6">
-          <span style="animation:{{ pinPulse }}" class="contact__span-3"></span>
+          <span class="contact__span-3"></span>
           <span class="contact__span-4"></span>
           <svg width="40" height="52" viewBox="0 0 40 52" class="contact__svg"><path d="M20 51s17-17.6 17-31A17 17 0 0 0 3 20c0 13.4 17 31 17 31z" fill="#6F5A5A" stroke="#FAF8F5" stroke-width="2"></path><path d="M13 21.5l7-5.5 7 5.5V28h-4.5v-4h-5v4H13z" fill="#FAF8F5"></path></svg>
           <span class="contact__span-5">The Ridge Realty Group</span>
@@ -418,7 +601,7 @@
         </div>
         <div data-reveal="up" data-reveal-i="3" class="contact__div-7"><span aria-hidden="true" class="contact__span-6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
           <div class="contact__div-10">
-            <div class="contact__div-11"><span class="contact__span-7">Office Hours</span><span class="contact__span-9"><span aria-hidden="true" style="background:{{ openDot }}" class="contact__span-10"></span>{{ openLabel }}</span></div>
+            <div class="contact__div-11"><span class="contact__span-7">Office Hours</span><span class="contact__span-9"><span aria-hidden="true" class="contact__span-10"></span><span data-text="openLabel">Closed now</span></span></div>
             <p class="contact__p-2"><span class="contact__span-11">Open daily</span><span class="contact__span-12">8:00 am - 7:00 pm</span></p>
             <p class="contact__p-3">Appointments outside office hours available upon request. Just call!</p>
           </div>
@@ -426,7 +609,7 @@
       </address>
       <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3190+HW-160+Suite+F+Pahrump+NV+89048" target="_blank" rel="noopener" class="contact__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11l18-8-8 18-2-8z"></path></svg>Get directions<span class="contact__span-13"> (opens Google Maps in a new tab)</span></a>
     </div>
-    <form data-reveal="form" data-reveal-i="0" name="contact" method="POST" onsubmit="{{ onContact }}" novalidate="" class="contact__form">
+    <form data-reveal="form" data-reveal-i="0" name="contact" method="POST" novalidate="" data-on-submit="sendContactMessage" class="contact__form">
       <input type="hidden" name="form-name" value="contact">
       <h3 class="contact__h3-2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>Send Message</h3>
       <div class="contact__div-12">
@@ -435,17 +618,17 @@
       </div>
       <div class="contact__div-12">
         <label for="c-email" class="contact__label">Email <span aria-hidden="true" class="contact__span-14">*</span><span class="contact__span-13">(required)</span></label>
-        <input id="c-email" name="email" type="email" autocomplete="email" required="" aria-invalid="{{ emailInvalid }}" aria-describedby="c-email-err" style="border:1px solid {{ emailBorder }}" class="contact__input-2">
-        <sc-if value="{{ emailErr }}" hint-placeholder-val="{{ false }}">
-          <p id="c-email-err" class="contact__p-4">Enter an email address like name@example.com so Marci can reply.</p>
-        </sc-if>
+        <input id="c-email" name="email" type="email" autocomplete="email" required="" aria-invalid="false" aria-describedby="c-email-err" data-validate="" class="contact__input-2">
+        
+          <p id="c-email-err" data-show="email-error" hidden="" class="contact__p-4">Enter an email address like name@example.com so Marci can reply.</p>
+        
       </div>
       <div class="contact__div-12">
         <label for="c-msg" class="contact__label">Message <span class="contact__span-15">(optional)</span></label>
         <textarea id="c-msg" name="message" rows="4" class="contact__textarea"></textarea>
       </div>
-      <button type="submit" disabled="{{ contactBusy }}" class="contact__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 3L10 14"></path><path d="M21 3l-7 18-4-7-7-4z"></path></svg>{{ contactLabel }}</button>
-      <p role="status" aria-live="polite" style="color:{{ contactMsgColor }}" class="contact__p-5">{{ contactMsg }}</p>
+      <button type="submit" class="contact__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 3L10 14"></path><path d="M21 3l-7 18-4-7-7-4z"></path></svg><span data-text="contactLabel">Send</span></button>
+      <p role="status" aria-live="polite" data-text="contactMsg" data-msg="contact" class="contact__p-5"></p>
     </form>
   </div>
 
@@ -460,74 +643,245 @@
 <footer id="site-footer" class="site-footer footer__footer" data-screen-label="Footer">
   <mm-smoke class="footer__mm-smoke"></mm-smoke>
   <div class="footer__div">
-    <button type="button" onclick="{{ toTop }}" aria-label="Back to top" class="footer__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
-    <div style="grid-template-columns:{{ footCols }}" class="footer__div-2">
-      <div style="grid-column:{{ footBrand }}" class="footer__div-3">
+    <button type="button" aria-label="Back to top" data-on-click="scrollBackToTop" class="footer__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
+    <div class="footer__div-2">
+      <div class="footer__div-3">
         <a data-link="" href="#home" aria-label="Marci Metzger Homes, home" class="footer__a"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></a>
         <p class="footer__p">Marci Metzger - THE RIDGE REALTY GROUP</p>
       </div>
       <nav aria-labelledby="ft-explore" class="footer__nav">
         <h2 id="ft-explore" class="footer__h2">Explore</h2>
-        <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
-          <a data-link="" href="{{ item.href }}" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="{{ item.i1 }}"></path><path d="{{ item.i2 }}"></path><path d="{{ item.i3 }}"></path></svg>{{ item.label }}</a>
-        </sc-for>
+        
+          <a data-link="" href="#home" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-5h4v5"></path></svg>Home</a>
+        
+          <a data-link="" href="#about" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M4 21a8 8 0 0 1 16 0"></path><path d=""></path></svg>About</a>
+        
+          <a data-link="" href="#listings" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="M11 18a7 7 0 1 0 0-14a7 7 0 1 0 0 14"></path><path d="M20 20l-3.5-3.5"></path><path d=""></path></svg>Search Homes</a>
+        
+          <a data-link="" href="#gallery" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="M4 5h16v14H4z"></path><path d="M4 16l5-5 4 4 3-3 4 4"></path><path d=""></path></svg>Gallery</a>
+        
+          <a data-link="" href="#contact" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M3 7l9 6 9-6"></path><path d=""></path></svg>Contact</a>
+        
       </nav>
       <nav aria-labelledby="ft-pages" class="footer__nav">
         <h2 id="ft-pages" class="footer__h2">Pages</h2>
-        <sc-for list="{{ pageItems }}" as="p" hint-placeholder-count="3">
-          <a data-link="" href="{{ p.href }}" aria-current="{{ p.current }}" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="{{ p.i1 }}"></path><path d="{{ p.i2 }}"></path><path d="{{ p.i3 }}"></path></svg>{{ p.label }}</a>
-        </sc-for>
+        
+          <a data-link="" href="listings.html" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><path d="M10 20v-5h4v5"></path></svg>Listings</a>
+        
+          <a data-link="" href="lets-move.html" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="M8 19a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg>Let's Move</a>
+        
+          <a data-link="" href="about-us.html" class="footer__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg"><path d="M12 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8"></path><path d="M4 21a8 8 0 0 1 16 0"></path><path d=""></path></svg>About Us</a>
+        
       </nav>
-      <div style="grid-column:{{ footWide }}" class="footer__nav">
+      <div class="footer__div-4">
         <h2 class="footer__h2">Call or Visit</h2>
         <a data-link="" href="tel:2069196886" class="footer__a-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-soft)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>(206) 919-6886</a>
         <a data-link="" href="https://www.google.com/maps/dir/?api=1&amp;destination=3190+HW-160+Suite+F+Pahrump+NV+89048" target="_blank" rel="noopener" class="footer__a-4"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-soft)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg-2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span>3190 HW-160, Suite F<br>Pahrump, Nevada 89048</span></a>
         <p class="footer__p-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent-soft)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="footer__svg-2"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Open daily 8:00 am - 7:00 pm</p>
       </div>
-      <nav aria-labelledby="ft-follow" style="grid-column:{{ footWide }}" class="footer__nav">
+      <nav aria-labelledby="ft-follow" class="footer__div-4">
         <h2 id="ft-follow" class="footer__h2">Follow</h2>
         <ul class="footer__ul">
-        <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
-          <li><a data-link="" href="{{ s.href }}" target="_blank" rel="noopener" aria-label="{{ s.aria }}" class="footer__a-5">
-            <span class="footer__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="{{ s.path }}"></path></svg></span>
-            <span>{{ s.label }}</span>
+        
+          <li><a data-link="" href="https://www.facebook.com/MarciHomes/" target="_blank" rel="noopener" aria-label="Marci Metzger on Facebook (opens in a new tab)" class="footer__a-5">
+            <span class="footer__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20 12.047C20 7.603 16.418 4 12 4s-8 3.603-8 8.047c0 4.017 2.925 7.346 6.75 7.95v-5.624H8.719v-2.326h2.031v-1.773c0-2.017 1.194-3.13 3.022-3.13.875 0 1.79.157 1.79.157v1.98h-1.008c-.994 0-1.304.62-1.304 1.257v1.51h2.219l-.355 2.325H13.25v5.624c3.825-.604 6.75-3.933 6.75-7.95z"></path></svg></span>
+            <span>Facebook</span>
           </a></li>
-        </sc-for>
+        
+          <li><a data-link="" href="https://www.instagram.com/marcimetzger_theridge/" target="_blank" rel="noopener" aria-label="Marci Metzger on Instagram (opens in a new tab)" class="footer__a-5">
+            <span class="footer__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M14.667 12a2.57 2.57 0 0 0-.782-1.885A2.57 2.57 0 0 0 12 9.333a2.57 2.57 0 0 0-1.885.782A2.57 2.57 0 0 0 9.333 12c0 .736.26 1.365.782 1.885.52.521 1.149.782 1.885.782a2.57 2.57 0 0 0 1.885-.782c.521-.52.782-1.149.782-1.885zm1.437 0c0 1.139-.4 2.108-1.198 2.906-.798.799-1.767 1.198-2.906 1.198-1.139 0-2.108-.4-2.906-1.198-.799-.798-1.198-1.767-1.198-2.906 0-1.139.4-2.108 1.198-2.906.798-.799 1.767-1.198 2.906-1.198 1.139 0 2.108.4 2.906 1.198.799.798 1.198 1.767 1.198 2.906zm1.125-4.27c0 .263-.094.489-.281.676a.923.923 0 0 1-.677.282.923.923 0 0 1-.677-.282.923.923 0 0 1-.281-.677c0-.264.093-.49.28-.677a.923.923 0 0 1 .678-.281c.264 0 .49.094.677.281a.923.923 0 0 1 .281.677zM12 5.437l-.797-.006a56.514 56.514 0 0 0-1.099 0c-.25.004-.585.014-1.005.032-.42.017-.778.052-1.073.104a4.177 4.177 0 0 0-.745.192c-.347.14-.653.34-.916.605-.264.263-.466.569-.605.916-.076.202-.14.45-.192.745a8.255 8.255 0 0 0-.104 1.073c-.018.42-.028.755-.032 1.005-.003.25-.003.616 0 1.1l.006.796-.006.797c-.003.483-.003.849 0 1.099.004.25.014.585.032 1.005.017.42.052.778.104 1.073.052.295.116.543.192.745.14.347.34.653.605.916.263.264.569.466.916.605.202.076.45.14.745.192.295.052.653.087 1.073.104.42.018.755.028 1.005.032.25.003.616.003 1.1 0l.796-.005.797.005c.483.003.849.003 1.099 0 .25-.004.585-.014 1.005-.032.42-.017.778-.052 1.073-.104.295-.052.543-.116.745-.192.347-.14.653-.34.916-.605.264-.263.466-.569.605-.916.076-.202.14-.45.192-.745.052-.295.087-.653.104-1.073.018-.42.028-.755.032-1.005.003-.25.003-.616 0-1.1L18.562 12l.006-.797c.003-.483.003-.849 0-1.099a38.59 38.59 0 0 0-.032-1.005 8.255 8.255 0 0 0-.104-1.073 4.177 4.177 0 0 0-.192-.745 2.703 2.703 0 0 0-.605-.916 2.703 2.703 0 0 0-.916-.605 4.177 4.177 0 0 0-.745-.192 8.255 8.255 0 0 0-1.073-.104c-.42-.018-.755-.028-1.005-.032-.25-.003-.616-.003-1.1 0L12 5.438zM20 12c0 1.59-.017 2.691-.052 3.302-.07 1.445-.5 2.563-1.292 3.354-.791.792-1.91 1.222-3.354 1.292-.611.035-1.712.052-3.302.052s-2.691-.017-3.302-.052c-1.445-.07-2.563-.5-3.354-1.292-.792-.791-1.222-1.91-1.292-3.354C4.017 14.691 4 13.59 4 12s.017-2.691.052-3.302c.07-1.445.5-2.563 1.292-3.354.791-.792 1.91-1.222 3.354-1.292C9.309 4.017 10.41 4 12 4s2.691.017 3.302.052c1.445.07 2.563.5 3.354 1.292.792.791 1.222 1.91 1.292 3.354.035.611.052 1.712.052 3.302z"></path></svg></span>
+            <span>Instagram</span>
+          </a></li>
+        
+          <li><a data-link="" href="https://www.linkedin.com/in/marci-metzger-30642496/" target="_blank" rel="noopener" aria-label="Marci Metzger on LinkedIn (opens in a new tab)" class="footer__a-5">
+            <span class="footer__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.181 4h13.634C19.468 4 20 4.518 20 5.153v13.692c0 .638-.532 1.155-1.184 1.155H5.181C4.53 20 4 19.483 4 18.845V5.153c0-.636.53-1.152 1.181-1.152zm3.754 3.574a1.376 1.376 0 00-2.752 0A1.38 1.38 0 007.56 8.95c.758 0 1.375-.618 1.375-1.376zM8.75 9.998H6.372v7.635H8.75V9.999zm1.485 0h.003v7.633h2.371v-3.777c0-.995.19-1.96 1.425-1.96 1.217 0 1.233 1.14 1.233 2.025v3.714h2.372v-4.188c0-2.056-.444-3.637-2.847-3.637-1.159 0-1.933.633-2.25 1.233h-.031V9.999h-2.273v-.002l-.003.002z"></path></svg></span>
+            <span>LinkedIn</span>
+          </a></li>
+        
+          <li><a data-link="" href="https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w" target="_blank" rel="noopener" aria-label="Marci Metzger on Yelp (opens in a new tab)" class="footer__a-5">
+            <span class="footer__span"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M9.988 14.158c-.037.01-3.983 1.134-4.224 1.134-.554-.029-.674-.515-.726-.99a6.35 6.35 0 0 1 .011-1.487c.07-.596.201-1.431.883-1.396.175 0 2.447.822 4.11 1.41.624.215.679 1.136-.054 1.33zm2.112-3.616c.065 1.213-.93 1.54-1.722.454L6.501 5.663c-.055-.21.011-.394.193-.553.57-.523 3.626-1.263 4.432-1.082.273.06.441.194.503.4.048.263.42 5.314.47 6.114zm-.051 5.232c0 .146.007 3.696-.062 3.857-.084.19-.256.308-.522.356-.368.054-.988-.06-1.86-.34-.803-.257-2.068-.682-1.798-1.349.102-.219 1.874-1.994 2.82-2.971.437-.483 1.45-.175 1.422.447zm6.572-3.74c-.204.118-4.041.896-4.307.972l.01-.02c-.66.15-1.29-.586-.85-1.098.136-.117 2.404-2.933 2.656-3.08.19-.113.412-.12.667-.018.671.28 2.01 2.003 2.094 2.686-.004.092.044.371-.27.558zm.368 4.15c-.098.654-1.623 2.33-2.327 2.571-.251.083-.47.064-.645-.063-.183-.111-2.254-3.083-2.367-3.248-.398-.514.248-1.263.933-1.054 0 0 4.03 1.133 4.184 1.25.19.131.262.312.222.544z"></path></svg></span>
+            <span>Yelp</span>
+          </a></li>
+        
         </ul>
       </nav>
     </div>
-    <div style="padding:24px 0 {{ footPad }}" class="footer__div-4">
+    <div class="footer__div-5">
       <p>Copyright © 2026 Marci METZGER - All Rights Reserved</p>
       <p>Equal Housing Opportunity</p>
     </div>
   </div>
 </footer>
 
-<button type="button" onclick="{{ toTop }}" aria-label="Back to top" tabindex="{{ topTab }}" aria-hidden="{{ topHidden }}" style="bottom:{{ topBottom }};opacity:{{ topOp }};visibility:{{ topVis }};transform:{{ topTf }};transition:opacity 200ms var(--ease), transform 200ms var(--ease), visibility 0s linear {{ topDelay }}" class="app__button-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
+<button type="button" aria-label="Back to top" tabindex="-1" aria-hidden="true" data-on-click="scrollBackToTop" data-floating="" class="app__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
 
-<sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
-  <div role="dialog" aria-modal="true" aria-label="{{ lbLabel }}" onclick="{{ lbBackdrop }}" ontouchstart="{{ lbTouchStart }}" ontouchmove="{{ lbTouchMove }}" ontouchend="{{ lbTouchEnd }}" class="app__div-6">
-    <button type="button" data-lb-close="1" onclick="{{ lbClose }}" aria-label="Close photo viewer" class="app__button-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
-    <sc-if value="{{ lbOk }}" hint-placeholder-val="{{ false }}">{{ lbImage }}</sc-if>
-    <sc-if value="{{ lbFailed }}" hint-placeholder-val="{{ false }}"><p class="app__p-3">This photo could not be loaded.</p></sc-if>
-    <div class="app__div-7">
-      <button type="button" onclick="{{ lbPrev }}" aria-label="Previous photo" class="app__button-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg></button>
-      <span class="app__span-2">
-        <span aria-live="polite" class="app__span-3">{{ lbCount }}</span>
-        <span class="app__span-4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 7l-5 5 5 5"></path><path d="M16 7l5 5-5 5"></path></svg>{{ lbHint }}</span>
+
+  <div role="dialog" aria-modal="true" aria-label="Photo viewer" data-show="lightbox" hidden="" data-on-click="closeLightboxFromBackdrop" class="lightbox__div">
+    <button type="button" data-lb-close="1" aria-label="Close photo viewer" data-on-click="closeLightbox" class="lightbox__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+    <div class="lightbox__viewport" data-ref="lightbox-viewport"><div class="lightbox__track" data-ref="lightbox-track"></div></div>
+    
+    <div class="lightbox__div-2">
+      <button type="button" aria-label="Previous photo" data-on-click="showPreviousPhoto" class="lightbox__button-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5"></path><path d="M11 6l-6 6 6 6"></path></svg></button>
+      <span class="lightbox__span">
+        <span aria-live="polite" data-text="lbCount" class="lightbox__span-2"></span>
+        <span class="lightbox__span-3"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8 7l-5 5 5 5"></path><path d="M16 7l5 5-5 5"></path></svg><span data-text="lbHint">Use arrow keys or buttons to browse</span></span>
       </span>
-      <button type="button" onclick="{{ lbNext }}" aria-label="Next photo" class="app__button-4"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></button>
+      <button type="button" aria-label="Next photo" data-on-click="showNextPhoto" class="lightbox__button-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></button>
     </div>
   </div>
-</sc-if>
 
-<sc-if value="{{ showCookie }}" hint-placeholder-val="{{ false }}">
-  <div role="region" aria-label="Cookie notice" class="app__div-8">
-    <p class="app__p-4"><strong class="app__strong">This website uses cookies.</strong> We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
-    <button type="button" onclick="{{ acceptCookies }}" class="app__button-5">Accept</button>
+
+
+  <div role="region" aria-label="Cookie notice" data-show="cookie" hidden="" class="app__div-4">
+    <p class="app__p"><strong class="app__strong">This website uses cookies.</strong> We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
+    <button type="button" data-on-click="acceptCookies" class="app__button-2">Accept</button>
   </div>
-</sc-if>
+
 </div>
-</template>
+<script type="application/json" id="site-data">
+{
+  "gallery": [
+    {
+      "src": "assets/img/top/img_gallery_01_hq.jpg",
+      "alt": "Aerial view of a community clubhouse with tennis and pickleball courts, a lawn and palm trees, with the valley behind",
+      "title": "Community clubhouse"
+    },
+    {
+      "src": "assets/img/top/img_gallery_02_hq.jpg",
+      "alt": "Aerial view of a row of single-story homes along a street, with a green lawn and pond behind",
+      "title": "Single-story homes"
+    },
+    {
+      "src": "assets/img/top/img_gallery_03_hq.jpg",
+      "alt": "Aerial view of a resort-style community pool among palm trees, beside a golf course and lake with mountains beyond",
+      "title": "Resort-style pool"
+    },
+    {
+      "src": "assets/img/top/img_gallery_04_hq.jpg",
+      "alt": "Sunlit corner room with a red leather armchair and floor-to-ceiling windows onto a desert garden",
+      "title": "Sunlit reading corner"
+    },
+    {
+      "src": "assets/img/top/img_gallery_05_hq.jpg",
+      "alt": "Aerial view of a cul-de-sac of tile-roofed homes with desert landscaping and snow-capped mountains beyond",
+      "title": "Cul-de-sac living"
+    },
+    {
+      "src": "assets/img/top/img_gallery_06_hq.jpg",
+      "alt": "Aerial view of a tile-roofed home with a private pool and spa, trees and snow-capped mountains beyond",
+      "title": "Private pool and spa"
+    },
+    {
+      "src": "assets/img/top/img_gallery_07_hq.jpg",
+      "alt": "Aerial view of a community clubhouse with pickleball courts and a roundabout, mountains on the horizon",
+      "title": "Clubhouse and courts"
+    }
+  ],
+  "galleryLayouts": {
+    "1": [
+      [
+        [
+          0,
+          "4/5"
+        ],
+        [
+          1,
+          "3/2"
+        ],
+        [
+          2,
+          "1/1"
+        ],
+        [
+          3,
+          "4/5"
+        ],
+        [
+          4,
+          "3/2"
+        ],
+        [
+          5,
+          "1/1"
+        ],
+        [
+          6,
+          "3/2"
+        ]
+      ]
+    ],
+    "2": [
+      [
+        [
+          0,
+          "4/5"
+        ],
+        [
+          2,
+          "3/2"
+        ],
+        [
+          4,
+          "1/1"
+        ],
+        [
+          6,
+          "3/2"
+        ]
+      ],
+      [
+        [
+          1,
+          "1/1"
+        ],
+        [
+          3,
+          "4/5"
+        ],
+        [
+          5,
+          "4/5"
+        ]
+      ]
+    ],
+    "3": [
+      [
+        [
+          0,
+          "4/5"
+        ],
+        [
+          3,
+          "1/1"
+        ]
+      ],
+      [
+        [
+          1,
+          "3/2"
+        ],
+        [
+          4,
+          "1/1"
+        ],
+        [
+          5,
+          "3/2"
+        ]
+      ],
+      [
+        [
+          2,
+          "1/1"
+        ],
+        [
+          6,
+          "4/5"
+        ]
+      ]
+    ]
+  }
+}
+</script>
 </body>
 </html>
