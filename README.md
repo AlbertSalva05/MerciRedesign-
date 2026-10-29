@@ -45,9 +45,11 @@ assets/
     listings.css    Listings-only components
     lets-move.css   Let's Move-only components
     about.css       About Us-only components
+  fonts/            self-hosted WOFF2 (Libre Caslon Display/Text, Source Sans 3; OFL)
   js/
     common.js       runtime + footer smoke + app logic (all pages)
     light-beam.js   Three.js light beam (Listings, Let's Move, About Us)
+    vendor/three.module.min.js   three.js r160 (MIT), self-hosted
   img/
     common/         logo, brush highlights, og-image.jpg, icons/ (favicons, app icons)
     top/            home: hero, gallery, Get it Sold, services, partner badges
