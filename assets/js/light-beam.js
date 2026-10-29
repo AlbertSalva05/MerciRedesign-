@@ -1,3 +1,4 @@
+/* Marci Metzger Homes: light-beam.js. Three.js light beam on the Listings, Let's Move and About Us dark bands. */
 (function () {
   if (customElements.get('mm-light-beam')) return;
   const BEAM = `
@@ -35,6 +36,7 @@
       Object.assign(renderer.domElement.style, { position: 'absolute', inset: '0', width: '100%', height: '100%' });
       this.appendChild(renderer.domElement);
       this.renderer = renderer;
+      THREE.ColorManagement.enabled = false;
       const scene = new THREE.Scene();
       const camera = new THREE.Camera();
       const uniforms = {
