@@ -36,22 +36,197 @@
 
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/source-sans-3-variable.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/libre-caslon-display-normal-400.woff2" crossorigin>
-<link rel="preload" as="image" href="assets/img/listings/img_listings_01.jpg" fetchpriority="high">
+<link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/listings/img_listings_01_w640.webp 640w, assets/img/listings/img_listings_01_w1061.webp 1061w" imagesizes="(min-width:1280px) 560px, (min-width:640px) 45vw, calc(100vw - 48px)" fetchpriority="high">
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="assets/css/common.css">
-<link rel="stylesheet" href="assets/css/listings.css">
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/footer-smoke.js" defer></script>
-<script src="assets/js/light-beam.js" defer></script>
+<style>
+@font-face { font-family: "Libre Caslon Display"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/libre-caslon-display-normal-400.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Libre Caslon Text"; font-style: italic; font-weight: 400; font-display: swap; src: url("assets/fonts/libre-caslon-text-italic-400.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Libre Caslon Text"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/libre-caslon-text-normal-400.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("assets/fonts/source-sans-3-variable.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+:root { --bg: #FAF8F5; --bg-2: #F1EDE8; --surface: #FFFFFF; --ink: #1B1B1B; --ink-2: #575757; --line: #DCD6D0; --accent: #6F5A5A; --accent-hover: #574545; --accent-soft: #AD8C8C; --dark: #161616; --on-dark: #F6F3F0; --on-dark-2: #C9C1BB; --display: 'Libre Caslon Display',Georgia,serif; --serif: 'Libre Caslon Text',Georgia,serif; --sans: 'Source Sans 3','Source Sans Pro',Arial,sans-serif; --ease: cubic-bezier(.2,.8,.2,1); --shadow-2: 0 4px 12px rgba(22,22,22,.10); --shadow-3: 0 12px 32px rgba(22,22,22,.16); }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+*, ::before, ::after { box-sizing: border-box; }
+body { margin: 0px; background: var(--bg); color: var(--ink); font-size: 1rem; font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p { margin: 0px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+:where(a):hover { color: var(--accent-hover); }
+@media (max-width: 767px){[data-link] { text-underline-offset: 4px; text-decoration: underline !important; }
+}
+@media (min-width: 768px){[data-link]:hover { text-underline-offset: 4px; text-decoration: underline !important; }
+}
+@media (min-width: 768px){:where(header nav a):hover { text-decoration: underline; text-underline-offset: 8px; }
+}
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+input, select, textarea, button { color: inherit; font: inherit; }
+[hidden] { display: none !important; }
+@media (max-width: 1179.98px){.hide-below-1180 { display: none !important; }
+}
+@media (min-width: 1180px){.hide-from-1180 { display: none !important; }
+}
+:root { --header-shadow: none; --hero-h: 180vh; --intro-op: 1; --intro-tf: none; --hero-h1-mb: 0; --hero-cta-dir: column; --hero-cta-align: flex-start; --svc-ta: left; --svc-js: start; --svc-ai: flex-start; --about-max: 100%; --about-min-h: 0; --about-js: stretch; --about-ratio: 4/5; --sold-head-ta: left; --sold-head-ai: flex-start; --tl-line-left: 15.5px; --tl-cols: 32px minmax(0,1fr); --tl-gap: 16px; --tl-card-l: 2; --tl-card-r: 2; --tl-mark-col: 1; --tl-mark-align: start; --tl-mark-top: 28px; --gallery-cols: repeat(1,minmax(0,1fr)); --office-ws: normal; --map-ratio: 16/10; --wall-cols: minmax(0,1fr); --wall-h: 280px; --lm-contact-cols: minmax(0,1fr); --about-hero-cols: minmax(0,1fr); --about-img-max: 100%; --about-img-js: start; --about-img-ratio: 1/1; --foot-cols: repeat(2,minmax(0,1fr)); --foot-brand: 1 / -1; --foot-wide: 1 / -1; --foot-pad: 28px; --open-dot: var(--accent-soft); --top-op: 0; --top-vis: hidden; --top-tf: translateY(8px); --top-delay: 200ms; --top-bottom: 24px; }
+@media (min-width: 560px){:root { --gallery-cols: repeat(2,minmax(0,1fr)); }
+}
+@media (min-width: 600px){:root { --about-ratio: 4/3; }
+}
+@media (min-width: 640px){:root { --hero-h1-mb: -48px; --hero-cta-dir: row; --hero-cta-align: flex-end; --svc-ta: right; --svc-js: end; --svc-ai: flex-end; --map-ratio: 5/2; --wall-cols: minmax(0,1fr) minmax(0,1fr); --wall-h: 400px; --about-hero-cols: minmax(0,5fr) minmax(0,7fr); --about-img-max: 400px; --about-img-ratio: 4/5; --foot-cols: repeat(4,minmax(0,1fr)); --foot-wide: auto; }
+}
+@media (min-width: 720px){:root { --about-img-js: end; }
+}
+@media (min-width: 880px){:root { --about-max: 480px; --about-min-h: 424px; --about-js: end; --about-ratio: auto; }
+}
+@media (min-width: 960px){:root { --sold-head-ta: center; --sold-head-ai: center; --tl-line-left: calc(50% - .5px); --tl-cols: minmax(0,1fr) 72px minmax(0,1fr); --tl-gap: 24px; --tl-card-l: 1; --tl-card-r: 3; --tl-mark-col: 2; --tl-mark-align: center; --tl-mark-top: 0px; --gallery-cols: repeat(3,minmax(0,1fr)); --map-ratio: 7/2; --wall-h: 440px; }
+}
+@media (min-width: 1100px){:root { --office-ws: nowrap; --lm-contact-cols: repeat(2,minmax(0,1fr)); --foot-cols: 1.6fr 1fr 1fr 1.4fr 1fr; --foot-brand: auto; }
+}
+@media (prefers-reduced-motion: reduce){:root { --hero-h: calc(100dvh - 80px); }
+}
+html.js:not(.is-hero-in) { --intro-op: 0; --intro-tf: translateY(16px); }
+[data-nav-link] { --nav-line: transparent; --nav-color: var(--ink-2); --nav-weight: 400; --nav-icon: currentColor; }
+[data-pages-toggle] { --pages-color: var(--ink-2); --pages-chev: none; }
+body:not([data-route="home"]) [data-pages-toggle], [data-pages-toggle][aria-expanded="true"] { --pages-color: var(--ink); }
+.app__div { min-height: 100vh; background: var(--bg); color: var(--ink); }
+.app__a { position: absolute; top: -80px; left: 16px; z-index: 100; padding: 16px; background: var(--ink); color: var(--bg); text-decoration: none; }
+.header__header { position: sticky; top: 0px; z-index: 40; border-bottom: 1px solid var(--line); background: var(--bg); box-shadow: var(--header-shadow); transition: box-shadow 200ms var(--ease); }
+.header__div { display: flex; max-width: 1280px; height: 80px; margin: 0px auto; padding: 0px clamp(24px, 5vw, 56px); align-items: center; gap: 16px; }
+.header__a { display: flex; min-height: 48px; margin-right: auto; align-items: center; }
+.header__img { width: auto; height: 48px; }
+.header__nav { display: flex; align-items: center; gap: 24px; }
+.header__ul { display: flex; margin: 0px; padding: 0px; list-style: none; gap: 4px; }
+.header__a-2 { display: flex; min-height: 48px; padding: 0px 16px; border-bottom: 2px solid var(--nav-line); color: var(--nav-color); font-size: 1rem; font-weight: var(--nav-weight); white-space: nowrap; text-decoration: none; align-items: center; gap: 8px; transition: color 160ms var(--ease), border-color 160ms var(--ease); }
+.header__svg { color: var(--nav-icon); flex: 0 0 auto; }
+.header__div-2 { position: relative; }
+.header__svg-2 { color: var(--accent); flex: 0 0 auto; }
+.header__svg-3 { flex: 0 0 auto; transform: var(--pages-chev); transition: transform 200ms var(--ease); }
+.header__div-3 { position: absolute; top: calc(100% + 16px); right: 0px; z-index: 50; width: 360px; padding: 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); box-shadow: var(--shadow-3); animation: mmFade 160ms var(--ease); }
+.header__ul-2 { display: flex; margin: 0px; padding: 0px; list-style: none; flex-direction: column; gap: 4px; }
+.header__a-3 { display: flex; padding: 16px; border-radius: 4px; background: transparent; color: var(--ink); text-decoration: none; align-items: center; gap: 16px; transition: background 160ms var(--ease); }
+.header__span { display: grid; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-2); color: var(--accent); place-items: center; flex: 0 0 auto; }
+.header__span-2 { display: flex; min-width: 0px; flex-direction: column; gap: 0px; }
+.header__span-3 { font-size: 1rem; font-weight: 600; line-height: 1.5; }
+.header__span-4 { color: var(--ink-2); font-size: 0.875rem; line-height: 1.5; }
+.header__svg-4 { margin-left: auto; color: var(--ink-2); flex: 0 0 auto; }
+.header__a-4 { display: inline-flex; min-height: 48px; padding: 0px 24px; border-radius: 2px; background: var(--accent); color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; text-decoration: none; letter-spacing: 0.06em; align-items: center; gap: 8px; text-transform: uppercase; transition: background 200ms var(--ease); }
+.header__a-5 { display: inline-flex; width: 48px; height: 48px; border-radius: 2px; background: var(--accent); color: rgb(255, 255, 255); align-items: center; justify-content: center; }
+.header__button-2 { display: inline-flex; min-width: 120px; min-height: 48px; padding: 0px 16px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); font-size: 1rem; font-weight: 600; cursor: pointer; align-items: center; justify-content: center; gap: 8px; }
+.app__main { outline: none; }
+.header__button-3 { display: flex; min-height: 48px; padding: 0px 16px; border-top: 0px; border-right: 0px; border-left: 0px; border-image: none; border-bottom: 2px solid var(--accent); background: transparent; color: var(--pages-color); font-size: 1rem; font-weight: 600; white-space: nowrap; cursor: pointer; align-items: center; gap: 8px; transition: color 160ms var(--ease); }
+.header__a-6 { display: flex; padding: 16px; border-radius: 4px; background: var(--bg-2); color: var(--ink); text-decoration: none; align-items: center; gap: 16px; transition: background 160ms var(--ease); }
+.header__a-2:hover { color: var(--ink); }
+.header__a-3:hover { background: var(--bg-2); color: var(--ink); }
+.header__a-4:hover { background: var(--accent-hover); color: rgb(255, 255, 255); }
+.header__button-3:hover { color: var(--ink); }
+.header__a-6:hover { background: var(--bg-2); color: var(--ink); }
+.app__a:focus { top: 16px; }
+@keyframes mmWallUp { 
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes mmWallDown { 
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0px); }
+}
+@keyframes mmFill { 
+  0%, 8% { background-position: 100% 0px; }
+  42%, 58% { background-position: 0px 0px; }
+  92%, 100% { background-position: 100% 0px; }
+}
+@keyframes mmLineUp { 
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes mmPop { 
+  0% { opacity: 0; transform: scale(0.4); }
+  60% { opacity: 1; transform: scale(1.12); }
+  80% { transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes mmDrawer { 
+  0% { transform: translateX(100%); }
+  100% { transform: none; }
+}
+@keyframes mmFade { 
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes mmDrift { 
+  0% { transform: scale(1.04) translate3d(0px, 0px, 0px); }
+  100% { transform: scale(1.12) translate3d(-2%, -1.5%, 0px); }
+}
+@keyframes mmShimmer { 
+  0% { transform: translateX(-120%) skewX(-14deg); }
+  45%, 100% { transform: translateX(320%) skewX(-14deg); }
+}
+@keyframes mmSpin { 
+  100% { transform: rotate(360deg); }
+}
+@keyframes mmPin { 
+  0% { opacity: 0.9; transform: scale(0.4); }
+  100% { opacity: 0; transform: scale(2.2); }
+}
+@keyframes mmBob { 
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(3px); }
+}
+@keyframes mmDrift { 
+  0% { background-position: 0px 100%, 0px 100%, 0px 100%, 0px 0px; }
+  100% { background-position: -72em 100%, -48em 100%, -24em 100%, 0px 0px; }
+}
+@keyframes mmGlint { 
+  0% { background-position: 120% 0px, 0px 0px; }
+  35%, 100% { background-position: -20% 0px, 0px 0px; }
+}
+@keyframes mmRipple { 
+  0% { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 0; transform: scale(3.4); }
+}
+@media (prefers-reduced-motion: reduce){html { scroll-behavior: auto; }
+* { transition: none !important; animation: auto ease 0s 1 normal none running none !important; }
+}
+picture { display: contents; }
+.icon-toggle:not([hidden]) { display: contents; }
+.listings-hero__section { position: relative; overflow: hidden; background: var(--dark); color: var(--on-dark); }
+.listings-hero__mm-light-beam { position: absolute; z-index: 0; inset: 0px; pointer-events: none; }
+.listings-hero__div { position: relative; z-index: 1; max-width: 1280px; margin: 0px auto; padding: clamp(24px, 3vw, 40px) clamp(24px, 5vw, 56px) clamp(40px, 5vw, 64px); }
+.listings-hero__nav { display: flex; margin-bottom: clamp(16px, 2vw, 24px); }
+.listings-hero__ol { display: flex; margin: 0px; padding: 0px; color: rgb(230, 223, 218); font-size: 1rem; line-height: 1; white-space: nowrap; list-style: none; flex: 0 0 auto; flex-wrap: wrap; align-items: center; gap: 8px; text-shadow: rgba(22, 22, 22, 0.9) 0px 1px 8px; }
+.listings-hero__li { display: flex; align-items: center; flex: 0 0 auto; }
+.listings-hero__a { display: inline-flex; min-height: 48px; color: rgb(230, 223, 218); line-height: 1; white-space: nowrap; text-decoration: none; align-items: center; gap: 8px; }
+.listings-hero__svg { display: block; flex: 0 0 auto; }
+.listings-hero__li-2 { display: flex; color: rgb(168, 157, 151); align-items: center; }
+.listings-hero__li-3 { display: flex; min-height: 48px; color: rgb(255, 255, 255); font-weight: 600; line-height: 1; white-space: nowrap; align-items: center; flex: 0 0 auto; }
+.listings-hero__div-2 { display: grid; grid-template-columns: var(--wall-cols); gap: 32px clamp(32px, 5vw, 72px); align-items: center; }
+.listings-hero__div-3 { display: flex; min-width: 0px; max-width: 640px; flex-direction: column; align-items: flex-start; gap: 16px; }
+.listings-hero__h1 { font-size: clamp(2.25rem, 4.5vw, 4rem); font-weight: 400; font-family: var(--display); line-height: 1.1; letter-spacing: -0.015em; text-wrap: balance; -webkit-text-stroke: 1px var(--accent-soft); background-image: linear-gradient(90deg,var(--accent-soft) 0 50%,#F2ECE8 50% 100%); background-size: 200% 100%; background-position: 100% 0px; color: transparent; background-clip: text; -webkit-text-fill-color: transparent; animation: 9s cubic-bezier(0.65, 0, 0.35, 1) 600ms infinite normal none running mmFill; }
+.listings-hero__p { max-width: 40ch; color: var(--on-dark-2); font-size: clamp(1.25rem, 2.2vw, 1.5rem); font-family: var(--serif); line-height: 1.5; font-style: italic; text-wrap: balance; }
+.listings-hero__a-2 { display: inline-flex; flex: 0 0 auto; min-height: 56px; margin-top: 8px; padding: 0px 24px; border-radius: 2px; background: var(--accent); color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; text-decoration: none; white-space: nowrap; letter-spacing: 0.06em; align-items: center; gap: 8px; text-transform: uppercase; transition: background 200ms var(--ease); }
+.listings-hero__span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); }
+.listings-hero__div-4 { position: relative; height: var(--wall-h); overflow: hidden; mask-image: linear-gradient(transparent 0px, rgb(0, 0, 0) 12%, rgb(0, 0, 0) 88%, transparent 100%); }
+.listings-hero__div-5 { display: grid; grid-template-columns: minmax(0px, 1fr); gap: 16px; align-items: start; }
+.listings-hero__ul { display: flex; min-width: 0px; margin: 0px; padding: 0px; list-style: none; flex-direction: column; animation: 40s linear 0s infinite normal none running mmWallUp; will-change: transform; }
+.listings-hero__li-4 { padding-bottom: 16px; }
+.listings-hero__img { width: 100%; height: auto; border-radius: 4px; background: rgb(42, 38, 37); aspect-ratio: 4 / 3; object-fit: cover; }
+.listings-hero__a:hover { color: rgb(255, 255, 255); text-decoration: underline; }
+.listings-hero__a-2:hover { background: var(--accent-hover); color: rgb(255, 255, 255); }
+@media (max-width: 639.98px){.listings-hero__div-4 { order: -1; }
+}
+</style>
+<link rel="stylesheet" href="assets/css/common.css?v=d495pf" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="assets/css/listings.css?v=16k9tc" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="assets/css/common.css?v=d495pf"><link rel="stylesheet" href="assets/css/listings.css?v=16k9tc"></noscript>
+<script src="assets/js/main.min.js?v=umqtkp" defer></script>
+<script src="assets/js/footer-smoke.min.js?v=yja6v3" defer></script>
+<script src="assets/js/light-beam.min.js?v=1a7ji1" defer></script>
 </head>
 <body data-route="listings">
 <div id="top" class="app__div">
 <a href="#main" class="app__a">Skip to content</a>
 
+<!-- Start of header area -->
 <header class="site-header header__header">
   <div class="header__div">
     <a href="index.html" aria-label="Marci Metzger Homes, home" class="header__a">
-      <img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="154" height="48" class="header__img">
+      <picture><source type="image/webp" srcset="assets/img/common/img_logo_01_w384.webp 384w" sizes="154px"><img src="assets/img/common/img_logo_01.png" decoding="async" alt="Marci Metzger Homes" width="154" height="48" class="header__img"></picture>
     </a>
     
       <nav class="nav-menu hide-below-1180 header__nav" aria-label="Main">
@@ -90,18 +265,20 @@
     
       <a href="tel:2069196886" aria-label="Call Marci Metzger at (206) 919-6886" class="hide-from-1180 header__a-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></a>
       <button type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="hide-from-1180 header__button-2" data-on-click="toggleMobileMenu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false" data-show="menu-open" hidden=""><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false" data-show="menu-closed"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+        <span class="icon-toggle" data-show="menu-open" hidden=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></span>
+        <span class="icon-toggle" data-show="menu-closed"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg></span>
         <span aria-hidden="true" data-text="menuText">Menu</span>
       </button>
     
   </div>
 </header>
+<!-- End of header area -->
 
-  <div aria-hidden="true" data-show="menu-open" hidden="" data-on-click="closeMobileMenu" class="app__div-2"></div>
-  <nav id="mobile-nav" aria-label="Main" data-show="menu-open" hidden="" class="drawer__nav">
+  <div data-show="menu-open" hidden="" data-on-click="closeMobileMenu" class="app__div-2"></div>
+  <!-- Start of mobile menu area -->
+<nav id="mobile-nav" aria-label="Main" data-show="menu-open" hidden="" class="drawer__nav">
     <div class="drawer__div">
-      <a href="index.html" aria-label="Marci Metzger Homes, home" data-on-click="closeMobileMenu" class="drawer__a"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="128" height="40" class="drawer__img"></a>
+      <a href="index.html" aria-label="Marci Metzger Homes, home" data-on-click="closeMobileMenu" class="drawer__a"><picture><source type="image/webp" srcset="assets/img/common/img_logo_01_w384.webp 384w" sizes="128px"><img src="assets/img/common/img_logo_01.png" decoding="async" alt="Marci Metzger Homes" width="128" height="40" class="drawer__img"></picture></a>
       <button type="button" aria-label="Close menu" data-on-click="closeMobileMenu" class="drawer__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>Close</button>
     </div>
     <ul class="drawer__ul">
@@ -132,13 +309,16 @@
       <p class="drawer__p-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Open daily 8:00 am - 7:00 pm</p>
     </div>
   </nav>
+<!-- End of mobile menu area -->
 
-<div aria-hidden="true" data-show="pages-menu" hidden="" data-on-click="closePagesMenu" class="app__div-3"></div>
+<div data-show="pages-menu" hidden="" data-on-click="closePagesMenu" class="app__div-3"></div>
 
+<!-- Start of main content area -->
 <main id="main" tabindex="-1" class="app__main">
 
 
 
+<!-- Start of listings hero area -->
 <section id="page-hero" aria-labelledby="page-title" data-screen-label="Listings hero" class="listings-hero__section">
   <mm-light-beam class="listings-hero__mm-light-beam"></mm-light-beam>
   <div class="listings-hero__div">
@@ -156,12 +336,14 @@
     <a href="https://www.zillow.com/profile/marcimetzger" target="_blank" rel="noopener" class="listings-hero__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21h18"></path><path d="M5 21V10l7-5 7 5v11"></path><path d="M10 21v-6h4v6"></path></svg>Current Listings<span class="listings-hero__span"> (opens in a new tab)</span></a>
   </div>
     <div role="group" aria-label="Featured homes" class="listings-hero__div-4">
-      <div class="listings-hero__div-5"><ul class="listings-hero__ul"><li class="listings-hero__li-4"><img fetchpriority="high" src="assets/img/listings/img_listings_01.jpg" alt="Covered patio with a stone fireplace, wicker seating and a ceiling fan, overlooking a pool and lawn" width="1061" height="820" fetchpriority="high" decoding="async" class="listings-hero__img"></li><li class="listings-hero__li-4"><img src="assets/img/listings/img_listings_02.jpg" alt="Mediterranean-style home with a lit covered patio and free-form pool at dusk" width="1059" height="820" loading="lazy" decoding="async" class="listings-hero__img"></li><li class="listings-hero__li-4"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="listings-hero__img"></li><li aria-hidden="true" class="listings-hero__li-4"><img src="assets/img/listings/img_listings_01.jpg" alt="Covered patio with a stone fireplace, wicker seating and a ceiling fan, overlooking a pool and lawn" width="1061" height="820" loading="lazy" decoding="async" class="listings-hero__img"></li><li aria-hidden="true" class="listings-hero__li-4"><img src="assets/img/listings/img_listings_02.jpg" alt="Mediterranean-style home with a lit covered patio and free-form pool at dusk" width="1059" height="820" loading="lazy" decoding="async" class="listings-hero__img"></li><li aria-hidden="true" class="listings-hero__li-4"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="listings-hero__img"></li></ul></div>
+      <div class="listings-hero__div-5"><ul class="listings-hero__ul"><li class="listings-hero__li-4"><picture><source type="image/webp" srcset="assets/img/listings/img_listings_01_w640.webp 640w, assets/img/listings/img_listings_01_w1061.webp 1061w" sizes="(min-width:1280px) 560px, (min-width:640px) 45vw, calc(100vw - 48px)"><img src="assets/img/listings/img_listings_01.jpg" fetchpriority="high" alt="Covered patio with a stone fireplace, wicker seating and a ceiling fan, overlooking a pool and lawn" width="1061" height="820" decoding="async" class="listings-hero__img"></picture></li><li class="listings-hero__li-4"><picture><source type="image/webp" srcset="assets/img/listings/img_listings_02_w640.webp 640w, assets/img/listings/img_listings_02_w1059.webp 1059w" sizes="(min-width:1280px) 560px, (min-width:640px) 45vw, calc(100vw - 48px)"><img src="assets/img/listings/img_listings_02.jpg" alt="Mediterranean-style home with a lit covered patio and free-form pool at dusk" width="1059" height="820" loading="lazy" decoding="async" class="listings-hero__img"></picture></li><li class="listings-hero__li-4"><picture><source type="image/webp" srcset="assets/img/listings/img_listings_03_w640.webp 640w, assets/img/listings/img_listings_03_w1059.webp 1059w" sizes="(min-width:1280px) 560px, (min-width:640px) 45vw, calc(100vw - 48px)"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="listings-hero__img"></picture></li><li aria-hidden="true" class="listings-hero__li-4"><picture><source type="image/webp" srcset="assets/img/listings/img_listings_01_w640.webp 640w, assets/img/listings/img_listings_01_w1061.webp 1061w" sizes="(min-width:1280px) 560px, (min-width:640px) 45vw, calc(100vw - 48px)"><img src="assets/img/listings/img_listings_01.jpg" alt="Covered patio with a stone fireplace, wicker seating and a ceiling fan, overlooking a pool and lawn" width="1061" height="820" loading="lazy" decoding="async" class="listings-hero__img"></picture></li><li aria-hidden="true" class="listings-hero__li-4"><picture><source type="image/webp" srcset="assets/img/listings/img_listings_02_w640.webp 640w, assets/img/listings/img_listings_02_w1059.webp 1059w" sizes="(min-width:1280px) 560px, (min-width:640px) 45vw, calc(100vw - 48px)"><img src="assets/img/listings/img_listings_02.jpg" alt="Mediterranean-style home with a lit covered patio and free-form pool at dusk" width="1059" height="820" loading="lazy" decoding="async" class="listings-hero__img"></picture></li><li aria-hidden="true" class="listings-hero__li-4"><picture><source type="image/webp" srcset="assets/img/listings/img_listings_03_w640.webp 640w, assets/img/listings/img_listings_03_w1059.webp 1059w" sizes="(min-width:1280px) 560px, (min-width:640px) 45vw, calc(100vw - 48px)"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="listings-hero__img"></picture></li></ul></div>
     </div>
   </div>
   </div>
 </section>
+<!-- End of listings hero area -->
 
+<!-- Start of what's new area -->
 <section id="whats-new" aria-labelledby="new-title" data-screen-label="What's new" class="what-s-new__section">
   <h2 id="new-title" class="what-s-new__h2">What's New at The Ridge...</h2>
   <div data-reveal="up" class="what-s-new__div">
@@ -170,7 +352,7 @@
   </div>
   <ul class="what-s-new__ul">
     <li data-reveal="up" data-reveal-i="0"><a href="https://www.zillow.com/profile/marcimetzger" target="_blank" rel="noopener" aria-label="$1,850,000, 4 bd, 5 bth, 5,530 sq. ft., 4751 W Adkisson Street, Pahrump, NV, virtual showing (opens in a new tab)" class="what-s-new__a-2">
-      <img src="assets/img/top/img_gallery_06_hq.jpg" alt="Aerial view of a tile-roofed home with a private pool and spa, trees and snow-capped mountains beyond" width="1600" height="1067" loading="lazy" decoding="async" class="what-s-new__img">
+      <picture><source type="image/webp" srcset="assets/img/top/img_gallery_06_w640.webp 640w, assets/img/top/img_gallery_06_w828.webp 828w, assets/img/top/img_gallery_06_w1280.webp 1280w, assets/img/top/img_gallery_06_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_06_hq.jpg" alt="Aerial view of a tile-roofed home with a private pool and spa, trees and snow-capped mountains beyond" width="1600" height="1067" loading="lazy" decoding="async" class="what-s-new__img"></picture>
       <div aria-hidden="true" class="what-s-new__div-2"></div>
       <span class="what-s-new__span-2">Virtual Showing</span>
       <div class="what-s-new__div-3">
@@ -181,7 +363,7 @@
       </div>
     </a></li>
     <li data-reveal="up" data-reveal-i="1"><a href="https://www.zillow.com/profile/marcimetzger" target="_blank" rel="noopener" aria-label="$1,300,000, 3 bd, 3 bth, 1,876 sq. ft., 2221 W Windsong Lane, Pahrump, NV, virtual showing (opens in a new tab)" class="what-s-new__a-2">
-      <img src="assets/img/top/img_gallery_02_hq.jpg" alt="Aerial view of a row of single-story homes along a street, with a green lawn and pond behind" width="1600" height="1067" loading="lazy" decoding="async" class="what-s-new__img">
+      <picture><source type="image/webp" srcset="assets/img/top/img_gallery_02_w640.webp 640w, assets/img/top/img_gallery_02_w828.webp 828w, assets/img/top/img_gallery_02_w1280.webp 1280w, assets/img/top/img_gallery_02_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_02_hq.jpg" alt="Aerial view of a row of single-story homes along a street, with a green lawn and pond behind" width="1600" height="1067" loading="lazy" decoding="async" class="what-s-new__img"></picture>
       <div aria-hidden="true" class="what-s-new__div-2"></div>
       <span class="what-s-new__span-2">Virtual Showing</span>
       <div class="what-s-new__div-3">
@@ -192,7 +374,7 @@
       </div>
     </a></li>
     <li data-reveal="up" data-reveal-i="2"><a href="https://www.zillow.com/profile/marcimetzger" target="_blank" rel="noopener" aria-label="$1,275,000, 3 bd, 3 bth, 2,456 sq. ft., 4190 N Equus Court, Pahrump, NV, virtual showing (opens in a new tab)" class="what-s-new__a-2">
-      <img src="assets/img/top/img_gallery_05_hq.jpg" alt="Aerial view of a cul-de-sac of tile-roofed homes with desert landscaping and snow-capped mountains beyond" width="1600" height="1067" loading="lazy" decoding="async" class="what-s-new__img">
+      <picture><source type="image/webp" srcset="assets/img/top/img_gallery_05_w640.webp 640w, assets/img/top/img_gallery_05_w828.webp 828w, assets/img/top/img_gallery_05_w1280.webp 1280w, assets/img/top/img_gallery_05_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_05_hq.jpg" alt="Aerial view of a cul-de-sac of tile-roofed homes with desert landscaping and snow-capped mountains beyond" width="1600" height="1067" loading="lazy" decoding="async" class="what-s-new__img"></picture>
       <div aria-hidden="true" class="what-s-new__div-2"></div>
       <span class="what-s-new__span-2">Virtual Showing</span>
       <div class="what-s-new__div-3">
@@ -204,6 +386,7 @@
     </a></li>
   </ul>
 </section>
+<!-- End of what's new area -->
 
 
 
@@ -211,14 +394,16 @@
 
 
 </main>
+<!-- End of main content area -->
 
+<!-- Start of footer area -->
 <footer id="site-footer" class="site-footer footer__footer" data-screen-label="Footer">
   <mm-smoke class="footer__mm-smoke"></mm-smoke>
   <div class="footer__div">
     <button type="button" aria-label="Back to top" data-on-click="scrollBackToTop" class="footer__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
     <div class="footer__div-2">
       <div class="footer__div-3">
-        <a data-link="" href="index.html" aria-label="Marci Metzger Homes, home" class="footer__a"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></a>
+        <a data-link="" href="index.html" aria-label="Marci Metzger Homes, home" class="footer__a"><picture><source type="image/webp" srcset="assets/img/common/img_logo_01_w384.webp 384w" sizes="192px"><img src="assets/img/common/img_logo_01.png" decoding="async" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></picture></a>
         <p class="footer__p">Marci Metzger - THE RIDGE REALTY GROUP</p>
       </div>
       <nav aria-labelledby="ft-explore" class="footer__nav">
@@ -284,18 +469,23 @@
     </div>
   </div>
 </footer>
+<!-- End of footer area -->
 
+<!-- Start of back to top button area -->
 <button type="button" aria-label="Back to top" tabindex="-1" aria-hidden="true" data-on-click="scrollBackToTop" data-floating="" class="app__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
+<!-- End of back to top button area -->
 
 
   
 
 
 
-  <div role="region" aria-label="Cookie notice" data-show="cookie" hidden="" class="app__div-4">
+  <!-- Start of cookie notice area -->
+<div role="region" aria-label="Cookie notice" data-show="cookie" hidden="" class="app__div-4">
     <p class="app__p"><strong class="app__strong">This website uses cookies.</strong> We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
     <button type="button" data-on-click="acceptCookies" class="app__button-2">Accept</button>
   </div>
+<!-- End of cookie notice area -->
 
 </div>
 </body>

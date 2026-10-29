@@ -33,24 +33,202 @@
 <link rel="apple-touch-icon" href="assets/img/common/icons/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Marci Metzger - The Ridge Realty Group","url":"https://marci-metzger-homes.onrender.com/","image":"https://marci-metzger-homes.onrender.com/assets/img/common/og-image.jpg","telephone":"+1-206-919-6886","address":{"@type":"PostalAddress","streetAddress":"3190 HW-160, Suite F","addressLocality":"Pahrump","addressRegion":"NV","postalCode":"89048","addressCountry":"US"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"19:00"},"sameAs":["https://www.facebook.com/MarciHomes/","https://www.instagram.com/marcimetzger_theridge/","https://www.linkedin.com/in/marci-metzger-30642496/","https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w"]}</script>
-<link rel="preload" as="image" href="assets/img/top/img_hero_01_w1280.jpg" imagesrcset="assets/img/top/img_hero_01_w1280.jpg 1280w, assets/img/top/img_hero_01_hq.jpg 2400w" imagesizes="100vw">
+<link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/top/img_hero_01_w640.webp 640w, assets/img/top/img_hero_01_w828.webp 828w, assets/img/top/img_hero_01_w1280.webp 1280w, assets/img/top/img_hero_01_w1920.webp 1920w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" type="image/svg+xml" href="assets/img/top/img_hero_window_front.svg?v=2">
+<link rel="preload" as="image" type="image/svg+xml" href="assets/img/top/img_hero_window_mid.svg?v=2">
+<link rel="preload" as="image" type="image/svg+xml" href="assets/img/top/img_hero_window_back.svg?v=2">
 
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/source-sans-3-variable.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/libre-caslon-display-normal-400.woff2" crossorigin>
 <script>document.documentElement.classList.add('js')</script>
-<link rel="stylesheet" href="assets/css/common.css">
-<link rel="stylesheet" href="assets/css/top.css">
-<script src="assets/js/main.js" defer></script>
-<script src="assets/js/footer-smoke.js" defer></script>
+<style>
+@font-face { font-family: "Libre Caslon Display"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/libre-caslon-display-normal-400.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Libre Caslon Text"; font-style: italic; font-weight: 400; font-display: swap; src: url("assets/fonts/libre-caslon-text-italic-400.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Libre Caslon Text"; font-style: normal; font-weight: 400; font-display: swap; src: url("assets/fonts/libre-caslon-text-normal-400.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("assets/fonts/source-sans-3-variable.woff2") format("woff2"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+:root { --bg: #FAF8F5; --bg-2: #F1EDE8; --surface: #FFFFFF; --ink: #1B1B1B; --ink-2: #575757; --line: #DCD6D0; --accent: #6F5A5A; --accent-hover: #574545; --accent-soft: #AD8C8C; --dark: #161616; --on-dark: #F6F3F0; --on-dark-2: #C9C1BB; --display: 'Libre Caslon Display',Georgia,serif; --serif: 'Libre Caslon Text',Georgia,serif; --sans: 'Source Sans 3','Source Sans Pro',Arial,sans-serif; --ease: cubic-bezier(.2,.8,.2,1); --shadow-2: 0 4px 12px rgba(22,22,22,.10); --shadow-3: 0 12px 32px rgba(22,22,22,.16); }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+*, ::before, ::after { box-sizing: border-box; }
+body { margin: 0px; background: var(--bg); color: var(--ink); font-size: 1rem; font-family: var(--sans); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p { margin: 0px; }
+a { color: var(--accent); text-underline-offset: 3px; }
+:where(a):hover { color: var(--accent-hover); }
+@media (min-width: 768px){:where(header nav a):hover { text-decoration: underline; text-underline-offset: 8px; }
+}
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+input, select, textarea, button { color: inherit; font: inherit; }
+[hidden] { display: none !important; }
+@media (max-width: 1179.98px){.hide-below-1180 { display: none !important; }
+}
+@media (min-width: 1180px){.hide-from-1180 { display: none !important; }
+}
+:root { --header-shadow: none; --hero-h: 180vh; --intro-op: 1; --intro-tf: none; --hero-h1-mb: 0; --hero-cta-dir: column; --hero-cta-align: flex-start; --svc-ta: left; --svc-js: start; --svc-ai: flex-start; --about-max: 100%; --about-min-h: 0; --about-js: stretch; --about-ratio: 4/5; --sold-head-ta: left; --sold-head-ai: flex-start; --tl-line-left: 15.5px; --tl-cols: 32px minmax(0,1fr); --tl-gap: 16px; --tl-card-l: 2; --tl-card-r: 2; --tl-mark-col: 1; --tl-mark-align: start; --tl-mark-top: 28px; --gallery-cols: repeat(1,minmax(0,1fr)); --office-ws: normal; --map-ratio: 16/10; --wall-cols: minmax(0,1fr); --wall-h: 280px; --lm-contact-cols: minmax(0,1fr); --about-hero-cols: minmax(0,1fr); --about-img-max: 100%; --about-img-js: start; --about-img-ratio: 1/1; --foot-cols: repeat(2,minmax(0,1fr)); --foot-brand: 1 / -1; --foot-wide: 1 / -1; --foot-pad: 28px; --open-dot: var(--accent-soft); --top-op: 0; --top-vis: hidden; --top-tf: translateY(8px); --top-delay: 200ms; --top-bottom: 24px; }
+@media (min-width: 560px){:root { --gallery-cols: repeat(2,minmax(0,1fr)); }
+}
+@media (min-width: 600px){:root { --about-ratio: 4/3; }
+}
+@media (min-width: 640px){:root { --hero-h1-mb: -48px; --hero-cta-dir: row; --hero-cta-align: flex-end; --svc-ta: right; --svc-js: end; --svc-ai: flex-end; --map-ratio: 5/2; --wall-cols: minmax(0,1fr) minmax(0,1fr); --wall-h: 400px; --about-hero-cols: minmax(0,5fr) minmax(0,7fr); --about-img-max: 400px; --about-img-ratio: 4/5; --foot-cols: repeat(4,minmax(0,1fr)); --foot-wide: auto; }
+}
+@media (min-width: 720px){:root { --about-img-js: end; }
+}
+@media (min-width: 880px){:root { --about-max: 480px; --about-min-h: 424px; --about-js: end; --about-ratio: auto; }
+}
+@media (min-width: 960px){:root { --sold-head-ta: center; --sold-head-ai: center; --tl-line-left: calc(50% - .5px); --tl-cols: minmax(0,1fr) 72px minmax(0,1fr); --tl-gap: 24px; --tl-card-l: 1; --tl-card-r: 3; --tl-mark-col: 2; --tl-mark-align: center; --tl-mark-top: 0px; --gallery-cols: repeat(3,minmax(0,1fr)); --map-ratio: 7/2; --wall-h: 440px; }
+}
+@media (min-width: 1100px){:root { --office-ws: nowrap; --lm-contact-cols: repeat(2,minmax(0,1fr)); --foot-cols: 1.6fr 1fr 1fr 1.4fr 1fr; --foot-brand: auto; }
+}
+@media (prefers-reduced-motion: reduce){:root { --hero-h: calc(100dvh - 80px); }
+}
+html.js:not(.is-hero-in) { --intro-op: 0; --intro-tf: translateY(16px); }
+[data-nav-link] { --nav-line: transparent; --nav-color: var(--ink-2); --nav-weight: 400; --nav-icon: currentColor; }
+[data-pages-toggle] { --pages-color: var(--ink-2); --pages-chev: none; }
+body:not([data-route="home"]) [data-pages-toggle], [data-pages-toggle][aria-expanded="true"] { --pages-color: var(--ink); }
+.app__div { min-height: 100vh; background: var(--bg); color: var(--ink); }
+.app__a { position: absolute; top: -80px; left: 16px; z-index: 100; padding: 16px; background: var(--ink); color: var(--bg); text-decoration: none; }
+.header__header { position: sticky; top: 0px; z-index: 40; border-bottom: 1px solid var(--line); background: var(--bg); box-shadow: var(--header-shadow); transition: box-shadow 200ms var(--ease); }
+.header__div { display: flex; max-width: 1280px; height: 80px; margin: 0px auto; padding: 0px clamp(24px, 5vw, 56px); align-items: center; gap: 16px; }
+.header__a { display: flex; min-height: 48px; margin-right: auto; align-items: center; }
+.header__img { width: auto; height: 48px; }
+.header__nav { display: flex; align-items: center; gap: 24px; }
+.header__ul { display: flex; margin: 0px; padding: 0px; list-style: none; gap: 4px; }
+.header__a-2 { display: flex; min-height: 48px; padding: 0px 16px; border-bottom: 2px solid var(--nav-line); color: var(--nav-color); font-size: 1rem; font-weight: var(--nav-weight); white-space: nowrap; text-decoration: none; align-items: center; gap: 8px; transition: color 160ms var(--ease), border-color 160ms var(--ease); }
+.header__svg { color: var(--nav-icon); flex: 0 0 auto; }
+.header__div-2 { position: relative; }
+.header__svg-2 { color: var(--accent); flex: 0 0 auto; }
+.header__svg-3 { flex: 0 0 auto; transform: var(--pages-chev); transition: transform 200ms var(--ease); }
+.header__div-3 { position: absolute; top: calc(100% + 16px); right: 0px; z-index: 50; width: 360px; padding: 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); box-shadow: var(--shadow-3); animation: mmFade 160ms var(--ease); }
+.header__ul-2 { display: flex; margin: 0px; padding: 0px; list-style: none; flex-direction: column; gap: 4px; }
+.header__a-3 { display: flex; padding: 16px; border-radius: 4px; background: transparent; color: var(--ink); text-decoration: none; align-items: center; gap: 16px; transition: background 160ms var(--ease); }
+.header__span { display: grid; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-2); color: var(--accent); place-items: center; flex: 0 0 auto; }
+.header__span-2 { display: flex; min-width: 0px; flex-direction: column; gap: 0px; }
+.header__span-3 { font-size: 1rem; font-weight: 600; line-height: 1.5; }
+.header__span-4 { color: var(--ink-2); font-size: 0.875rem; line-height: 1.5; }
+.header__svg-4 { margin-left: auto; color: var(--ink-2); flex: 0 0 auto; }
+.header__a-4 { display: inline-flex; min-height: 48px; padding: 0px 24px; border-radius: 2px; background: var(--accent); color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; text-decoration: none; letter-spacing: 0.06em; align-items: center; gap: 8px; text-transform: uppercase; transition: background 200ms var(--ease); }
+.header__a-5 { display: inline-flex; width: 48px; height: 48px; border-radius: 2px; background: var(--accent); color: rgb(255, 255, 255); align-items: center; justify-content: center; }
+.header__button-2 { display: inline-flex; min-width: 120px; min-height: 48px; padding: 0px 16px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); font-size: 1rem; font-weight: 600; cursor: pointer; align-items: center; justify-content: center; gap: 8px; }
+.app__main { outline: none; }
+.header__a-2:hover { color: var(--ink); }
+.header__a-3:hover { background: var(--bg-2); color: var(--ink); }
+.header__a-4:hover { background: var(--accent-hover); color: rgb(255, 255, 255); }
+.app__a:focus { top: 16px; }
+@keyframes mmWallUp { 
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes mmWallDown { 
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0px); }
+}
+@keyframes mmFill { 
+  0%, 8% { background-position: 100% 0px; }
+  42%, 58% { background-position: 0px 0px; }
+  92%, 100% { background-position: 100% 0px; }
+}
+@keyframes mmLineUp { 
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes mmPop { 
+  0% { opacity: 0; transform: scale(0.4); }
+  60% { opacity: 1; transform: scale(1.12); }
+  80% { transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes mmDrawer { 
+  0% { transform: translateX(100%); }
+  100% { transform: none; }
+}
+@keyframes mmFade { 
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes mmDrift { 
+  0% { transform: scale(1.04) translate3d(0px, 0px, 0px); }
+  100% { transform: scale(1.12) translate3d(-2%, -1.5%, 0px); }
+}
+@keyframes mmShimmer { 
+  0% { transform: translateX(-120%) skewX(-14deg); }
+  45%, 100% { transform: translateX(320%) skewX(-14deg); }
+}
+@keyframes mmSpin { 
+  100% { transform: rotate(360deg); }
+}
+@keyframes mmPin { 
+  0% { opacity: 0.9; transform: scale(0.4); }
+  100% { opacity: 0; transform: scale(2.2); }
+}
+@keyframes mmBob { 
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(3px); }
+}
+@keyframes mmDrift { 
+  0% { background-position: 0px 100%, 0px 100%, 0px 100%, 0px 0px; }
+  100% { background-position: -72em 100%, -48em 100%, -24em 100%, 0px 0px; }
+}
+@keyframes mmGlint { 
+  0% { background-position: 120% 0px, 0px 0px; }
+  35%, 100% { background-position: -20% 0px, 0px 0px; }
+}
+@keyframes mmRipple { 
+  0% { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 0; transform: scale(3.4); }
+}
+@media (prefers-reduced-motion: reduce){html { scroll-behavior: auto; }
+* { transition: none !important; animation: auto ease 0s 1 normal none running none !important; }
+}
+picture { display: contents; }
+.icon-toggle:not([hidden]) { display: contents; }
+.header__button { display: flex; min-height: 48px; padding: 0px 16px; border-width: 0px 0px 2px; border-style: none none solid; border-color: currentcolor currentcolor transparent; border-image: none; background: transparent; color: var(--pages-color); font-size: 1rem; font-weight: 500; white-space: nowrap; cursor: pointer; align-items: center; gap: 8px; transition: color 160ms var(--ease); }
+.hero__section { position: relative; height: var(--hero-h); }
+.hero__div { position: sticky; top: 80px; min-height: 520px; height: calc(100dvh - 80px); overflow: hidden; background: var(--bg); }
+.hero__div-2 { position: absolute; background: var(--bg-2); inset: 0px; clip-path: inset(0px); will-change: clip-path; }
+.hero__img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.hero__div-3 { position: absolute; background: linear-gradient(rgba(24, 20, 19, 0.22) 0%, rgba(24, 20, 19, 0.06) 24%, rgba(28, 23, 22, 0.28) 46%, rgba(26, 21, 20, 0.62) 68%, rgba(20, 17, 16, 0.84) 100%); inset: 0px; }
+.hero__div-4 { position: absolute; background: radial-gradient(95% 65% at 18% 96%, rgba(30, 24, 23, 0.5) 0%, rgba(30, 24, 23, 0.22) 50%, rgba(30, 24, 23, 0) 75%); inset: 0px; }
+.hero__div-5 { position: absolute; right: 0px; bottom: 0px; left: 0px; will-change: opacity, transform; }
+.hero__div-6 { display: flex; position: relative; max-width: 1280px; margin: 0px auto; padding: 0px clamp(24px, 5vw, 56px) clamp(32px, 7vh, 80px); flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 48px; }
+.hero__h1 { display: flex; min-width: 0px; margin-bottom: var(--hero-h1-mb); color: rgb(255, 255, 255); font-weight: 400; flex-direction: column; gap: 16px; }
+.hero__span { display: flex; color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; font-family: var(--sans); letter-spacing: 0.14em; opacity: var(--intro-op); flex-wrap: wrap; align-items: center; gap: 8px 16px; text-transform: uppercase; text-shadow: rgba(0, 0, 0, 0.55) 0px 1px 3px; transform: var(--intro-tf); transition: opacity 700ms var(--ease) 0ms, transform 700ms var(--ease) 0ms; }
+.hero__span-2 { width: 32px; height: 1px; background: rgb(246, 243, 240); }
+.hero__span-3 { display: block; opacity: var(--intro-op); filter: drop-shadow(rgba(0, 0, 0, 0.55) 0px 1px 2px) drop-shadow(rgba(0, 0, 0, 0.45) 0px 4px 18px); text-wrap: balance; transform: var(--intro-tf); transition: opacity 700ms var(--ease) 140ms, transform 700ms var(--ease) 140ms; }
+.hero__span-4 { display: inline; background-image: url("assets/img/top/img_hero_window_front.svg?v=2"), url("assets/img/top/img_hero_window_mid.svg?v=2"), url("assets/img/top/img_hero_window_back.svg?v=2"), linear-gradient(rgb(255, 251, 245) 0%, rgb(251, 241, 228) 55%, rgb(244, 230, 214) 100%); background-position: 0px 100%, 0px 100%, 0px 100%, 0px 0px; color: transparent; font-size: clamp(3.25rem, 10vw, 9rem); font-family: var(--display); line-height: 0.92; letter-spacing: -0.02em; background-size: 8em 1.15em, 12em 1.15em, 24em 1.15em, 100% 100%; background-repeat: repeat-x, repeat-x, repeat-x, no-repeat; background-clip: text; -webkit-text-fill-color: transparent; -webkit-box-decoration-break: clone; box-decoration-break: clone; animation: 480s linear 0s infinite normal none running mmDrift; }
+.hero__div-7 { display: flex; width: 100%; flex-direction: var(--hero-cta-dir); flex-wrap: wrap; align-items: var(--hero-cta-align); justify-content: space-between; gap: 24px 32px; }
+.hero__div-8 { display: flex; padding-bottom: 8px; opacity: var(--intro-op); flex-wrap: wrap; gap: 16px; transform: var(--intro-tf); transition: opacity 700ms var(--ease) 280ms, transform 700ms var(--ease) 280ms; }
+.hero__a { display: inline-flex; min-height: 56px; padding: 0px 24px; border-radius: 2px; background: var(--accent); color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; text-decoration: none; letter-spacing: 0.06em; align-items: center; gap: 8px; text-transform: uppercase; transition: background 200ms var(--ease); }
+.hero__a-2 { display: inline-flex; min-height: 56px; padding: 0px 24px; border: 1px solid rgb(255, 255, 255); border-radius: 2px; color: rgb(255, 255, 255); font-size: 1rem; font-weight: 600; text-decoration: none; letter-spacing: 0.06em; align-items: center; gap: 8px; text-transform: uppercase; transition: background 200ms var(--ease), color 200ms var(--ease); }
+.hero__a-3 { display: grid; position: relative; width: clamp(104px, 10vw, 144px); height: clamp(104px, 10vw, 144px); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 50%; background: rgba(24, 20, 19, 0.62); color: rgb(255, 255, 255); text-decoration: none; flex: 0 0 auto; place-items: center; backdrop-filter: blur(6px); transition: background 250ms var(--ease), transform 250ms var(--ease); }
+.hero__svg { position: absolute; width: 100%; height: 100%; inset: 0px; animation: 28s linear 0s infinite normal none running mmSpin; }
+.hero__text { font-size: 12px; font-weight: 600; font-family: "Source Sans 3", Arial, sans-serif; letter-spacing: 0.18em; text-transform: uppercase; }
+.hero__span-5 { display: grid; position: relative; width: 44%; height: 44%; border-radius: 50%; background: rgb(250, 248, 245); color: var(--accent); place-items: center; }
+.hero__svg-2 { animation: 1.6s ease-in-out 0s infinite normal none running mmBob; }
+.hero__div-9 { display: flex; position: absolute; right: 0px; bottom: 0px; left: 0px; height: 16%; opacity: 0; align-items: center; justify-content: center; pointer-events: none; }
+.hero__p { display: flex; padding: 0px 24px; color: var(--ink-2); font-size: 1rem; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 24px; }
+.hero__span-6 { display: inline-flex; font-family: var(--serif); align-items: center; gap: 8px; font-style: italic; }
+.hero__span-7 { display: inline-flex; color: var(--ink); font-weight: 600; align-items: center; gap: 8px; }
+.header__button:hover { color: var(--ink); }
+.hero__a:hover { background: var(--accent-hover); color: rgb(255, 255, 255); }
+.hero__a-2:hover { background: rgb(255, 255, 255); color: var(--ink); }
+.hero__a-3:hover { background: rgba(111, 90, 90, 0.7); color: rgb(255, 255, 255); transform: scale(1.04); }
+@media (max-width: 639.98px){[data-ref="hero-caption"] { height: 22%; }
+}
+</style>
+<link rel="stylesheet" href="assets/css/common.css?v=d495pf" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="assets/css/top.css?v=l7sq21" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="assets/css/common.css?v=d495pf"><link rel="stylesheet" href="assets/css/top.css?v=l7sq21"></noscript>
+<script src="assets/js/main.min.js?v=umqtkp" defer></script>
+<script src="assets/js/footer-smoke.min.js?v=yja6v3" defer></script>
 </head>
 <body data-route="home">
 <div id="top" class="app__div">
 <a href="#main" class="app__a">Skip to content</a>
 
+<!-- Start of header area -->
 <header class="site-header header__header">
   <div class="header__div">
     <a href="#home" aria-label="Marci Metzger Homes, home" class="header__a">
-      <img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="154" height="48" class="header__img">
+      <picture><source type="image/webp" srcset="assets/img/common/img_logo_01_w384.webp 384w" sizes="154px"><img src="assets/img/common/img_logo_01.png" decoding="async" alt="Marci Metzger Homes" width="154" height="48" class="header__img"></picture>
     </a>
     
       <nav class="nav-menu hide-below-1180 header__nav" aria-label="Main">
@@ -89,18 +267,20 @@
     
       <a href="tel:2069196886" aria-label="Call Marci Metzger at (206) 919-6886" class="hide-from-1180 header__a-5"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></a>
       <button type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="hide-from-1180 header__button-2" data-on-click="toggleMobileMenu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false" data-show="menu-open" hidden=""><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false" data-show="menu-closed"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+        <span class="icon-toggle" data-show="menu-open" hidden=""><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></span>
+        <span class="icon-toggle" data-show="menu-closed"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg></span>
         <span aria-hidden="true" data-text="menuText">Menu</span>
       </button>
     
   </div>
 </header>
+<!-- End of header area -->
 
-  <div aria-hidden="true" data-show="menu-open" hidden="" data-on-click="closeMobileMenu" class="app__div-2"></div>
-  <nav id="mobile-nav" aria-label="Main" data-show="menu-open" hidden="" class="drawer__nav">
+  <div data-show="menu-open" hidden="" data-on-click="closeMobileMenu" class="app__div-2"></div>
+  <!-- Start of mobile menu area -->
+<nav id="mobile-nav" aria-label="Main" data-show="menu-open" hidden="" class="drawer__nav">
     <div class="drawer__div">
-      <a href="#home" aria-label="Marci Metzger Homes, home" data-on-click="closeMobileMenu" class="drawer__a"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="128" height="40" class="drawer__img"></a>
+      <a href="#home" aria-label="Marci Metzger Homes, home" data-on-click="closeMobileMenu" class="drawer__a"><picture><source type="image/webp" srcset="assets/img/common/img_logo_01_w384.webp 384w" sizes="128px"><img src="assets/img/common/img_logo_01.png" decoding="async" alt="Marci Metzger Homes" width="128" height="40" class="drawer__img"></picture></a>
       <button type="button" aria-label="Close menu" data-on-click="closeMobileMenu" class="drawer__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>Close</button>
     </div>
     <ul class="drawer__ul">
@@ -131,16 +311,19 @@
       <p class="drawer__p-2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Open daily 8:00 am - 7:00 pm</p>
     </div>
   </nav>
+<!-- End of mobile menu area -->
 
-<div aria-hidden="true" data-show="pages-menu" hidden="" data-on-click="closePagesMenu" class="app__div-3"></div>
+<div data-show="pages-menu" hidden="" data-on-click="closePagesMenu" class="app__div-3"></div>
 
+<!-- Start of main content area -->
 <main id="main" tabindex="-1" class="app__main">
 
 
+<!-- Start of hero area -->
 <section id="home" aria-labelledby="hero-title" data-screen-label="Hero" data-ref="hero" class="hero__section">
   <div class="hero__div">
     <div data-ref="hero-frame" class="hero__div-2">
-      <img src="assets/img/top/img_hero_01_w1280.jpg" srcset="assets/img/top/img_hero_01_w1280.jpg 1280w, assets/img/top/img_hero_01_hq.jpg 2400w" sizes="100vw" alt="Green lawn and a pond with fountains in front of tall pines, desert mountains and a clear blue sky in the Pahrump valley" width="2400" height="1594" fetchpriority="high" decoding="async" class="hero__img">
+      <picture><source type="image/webp" srcset="assets/img/top/img_hero_01_w640.webp 640w, assets/img/top/img_hero_01_w828.webp 828w, assets/img/top/img_hero_01_w1280.webp 1280w, assets/img/top/img_hero_01_w1920.webp 1920w" sizes="100vw"><img src="assets/img/top/img_hero_01_w1280.jpg" alt="Green lawn and a pond with fountains in front of tall pines, desert mountains and a clear blue sky in the Pahrump valley" width="2400" height="1594" fetchpriority="high" decoding="async" class="hero__img"></picture>
       <div aria-hidden="true" class="hero__div-3"></div>
       <div aria-hidden="true" class="hero__div-4"></div>
     </div>
@@ -177,11 +360,13 @@
     </div>
   </div>
 </section>
+<!-- End of hero area -->
 
+<!-- Start of about area -->
 <section id="about" aria-labelledby="about-title" data-screen-label="About" class="about__section">
   <div class="about__div">
     <div data-reveal="img" class="about__div-2">
-      <img src="assets/img/about/img_about_01_hq.jpg" alt="Portrait of Marci Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" loading="lazy" decoding="async" class="about__img">
+      <picture><source type="image/webp" srcset="assets/img/about/img_about_01_w640.webp 640w, assets/img/about/img_about_01_w1000.webp 1000w" sizes="(min-width:880px) 480px, calc(100vw - 48px)"><img src="assets/img/about/img_about_01_hq.jpg" alt="Portrait of Marci Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" loading="lazy" decoding="async" class="about__img"></picture>
       <div aria-hidden="true" class="about__div-3"></div>
     </div>
     <div class="about__div-4">
@@ -197,28 +382,28 @@
         
           
             <li data-reveal="up" data-reveal-i="0" class="about__li">
-              <span class="about__span-2"><img decoding="async" src="assets/img/top/icn_badge_01.png" alt="The Ridge Realty Group" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></span>
+              <span class="about__span-2"><picture><source type="image/webp" srcset="assets/img/top/icn_badge_01_w240.webp 240w" sizes="60px"><img src="assets/img/top/icn_badge_01.png" decoding="async" alt="The Ridge Realty Group" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></picture></span>
               <span class="about__span-3">The Ridge Realty Group</span>
             </li>
           
         
           
             <li data-reveal="up" data-reveal-i="1" class="about__li">
-              <span class="about__span-2"><img decoding="async" src="assets/img/top/icn_badge_02.png" alt="Equal Housing Opportunity" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></span>
+              <span class="about__span-2"><picture><source type="image/webp" srcset="assets/img/top/icn_badge_02_w199.webp 199w" sizes="60px"><img src="assets/img/top/icn_badge_02.png" decoding="async" alt="Equal Housing Opportunity" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></picture></span>
               <span class="about__span-3">Equal Housing Opportunity</span>
             </li>
           
         
           
             <li data-reveal="up" data-reveal-i="2" class="about__li">
-              <span class="about__span-2"><img decoding="async" src="assets/img/top/icn_badge_03.png" alt="REALTOR® member pin" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></span>
+              <span class="about__span-2"><picture><source type="image/webp" srcset="assets/img/top/icn_badge_03_w223.webp 223w" sizes="60px"><img src="assets/img/top/icn_badge_03.png" decoding="async" alt="REALTOR® member pin" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></picture></span>
               <span class="about__span-3">REALTOR® member pin</span>
             </li>
           
         
           
             <li data-reveal="up" data-reveal-i="3" class="about__li">
-              <span class="about__span-2"><img decoding="async" src="assets/img/top/icn_badge_04.png" alt="Pahrump Valley Chamber of Commerce" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></span>
+              <span class="about__span-2"><picture><source type="image/webp" srcset="assets/img/top/icn_badge_04_w200.webp 200w" sizes="60px"><img src="assets/img/top/icn_badge_04.png" decoding="async" alt="Pahrump Valley Chamber of Commerce" width="60" height="60" loading="lazy" data-fallback="remove-card" class="about__img-2"></picture></span>
               <span class="about__span-3">Pahrump Valley Chamber of Commerce</span>
             </li>
           
@@ -228,7 +413,9 @@
     </div>
   </div>
 </section>
+<!-- End of about area -->
 
+<!-- Start of get it sold area -->
 <section id="get-it-sold" aria-labelledby="sold-title" data-screen-label="Get it sold" class="get-it-sold__section">
   <div class="get-it-sold__div">
     <div class="get-it-sold__div-2">
@@ -241,7 +428,7 @@
     <div data-tl="0" class="get-it-sold__div-6">
       <article class="get-it-sold__article">
         <div class="get-it-sold__div-7">
-          <img src="assets/img/top/img_sold_01.jpg" alt="Bright open-plan kitchen with a white stone island, pendant lights and a living room with a stone fireplace beyond" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
+          <picture><source type="image/webp" srcset="assets/img/top/img_sold_01_w640.webp 640w, assets/img/top/img_sold_01_w1600.webp 1600w" sizes="(min-width:1280px) 560px, (min-width:960px) 44vw, calc(100vw - 48px)"><img src="assets/img/top/img_sold_01.jpg" alt="Bright open-plan kitchen with a white stone island, pendant lights and a living room with a stone fireplace beyond" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img"></picture>
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
           <div class="get-it-sold__div-9">
             <h3 class="get-it-sold__h3">Top Residential Sales Last 5 Years</h3>
@@ -268,7 +455,7 @@
     <div data-tl="1" class="get-it-sold__div-6">
       <article class="get-it-sold__article-2">
         <div class="get-it-sold__div-7">
-          <img src="assets/img/top/img_sold_02.jpg" alt="A white stucco home with a tile roof, lit covered patio and a free-form pool at dusk, mountains behind" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
+          <picture><source type="image/webp" srcset="assets/img/top/img_sold_02_w640.webp 640w, assets/img/top/img_sold_02_w1600.webp 1600w" sizes="(min-width:1280px) 560px, (min-width:960px) 44vw, calc(100vw - 48px)"><img src="assets/img/top/img_sold_02.jpg" alt="A white stucco home with a tile roof, lit covered patio and a free-form pool at dusk, mountains behind" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img"></picture>
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
           <div class="get-it-sold__div-9">
             <h3 class="get-it-sold__h3">Don't Just List it...</h3>
@@ -295,7 +482,7 @@
     <div data-tl="2" class="get-it-sold__div-6">
       <article class="get-it-sold__article">
         <div class="get-it-sold__div-7">
-          <img src="assets/img/top/img_sold_03.jpg" alt="House keys on a red house-shaped key ring, resting on weathered wood" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
+          <picture><source type="image/webp" srcset="assets/img/top/img_sold_03_w640.webp 640w, assets/img/top/img_sold_03_w1600.webp 1600w" sizes="(min-width:1280px) 560px, (min-width:960px) 44vw, calc(100vw - 48px)"><img src="assets/img/top/img_sold_03.jpg" alt="House keys on a red house-shaped key ring, resting on weathered wood" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img"></picture>
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
           <div class="get-it-sold__div-9">
             <h3 class="get-it-sold__h3">Guide to Buyers</h3>
@@ -322,7 +509,9 @@
     </div>
   </div>
 </section>
+<!-- End of get it sold area -->
 
+<!-- Start of find your dream home area -->
 <section id="listings" aria-labelledby="search-title" data-screen-label="Find your dream home" class="find-your-dream-home__section">
   <div class="find-your-dream-home__div">
     <h2 id="search-title" class="find-your-dream-home__h2">Find Your <span data-mark="1" class="find-your-dream-home__span">Dream Home<span aria-hidden="true" class="find-your-dream-home__span-2"></span></span></h2>
@@ -402,7 +591,9 @@
     <p id="search-msg" role="status" aria-live="polite" data-text="searchMsg" data-msg="search" class="find-your-dream-home__p"></p>
   </form>
 </section>
+<!-- End of find your dream home area -->
 
+<!-- Start of photo gallery area -->
 <section id="gallery" aria-labelledby="gallery-title" data-screen-label="Photo gallery" class="photo-gallery__section">
   <div class="photo-gallery__div">
     <h2 id="gallery-title" class="photo-gallery__h2">Photo <span data-mark="2" class="photo-gallery__span">Gallery<span aria-hidden="true" class="photo-gallery__span-2"></span></span></h2>
@@ -415,7 +606,7 @@
           <li data-gal="0" data-ratio="4/5">
             <button type="button" aria-label="Enlarge photo 1 of 7: Community clubhouse" data-on-click="openLightbox" class="photo-gallery__button">
               
-                <img src="assets/img/top/img_gallery_01_hq.jpg" alt="Aerial view of a community clubhouse with tennis and pickleball courts, a lawn and palm trees, with the valley behind" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+                <picture><source type="image/webp" srcset="assets/img/top/img_gallery_01_w640.webp 640w, assets/img/top/img_gallery_01_w828.webp 828w, assets/img/top/img_gallery_01_w1280.webp 1280w, assets/img/top/img_gallery_01_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, (min-width:560px) 47vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_01_hq.jpg" alt="Aerial view of a community clubhouse with tennis and pickleball courts, a lawn and palm trees, with the valley behind" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img" width="1536" height="1025"></picture>
               
               
                 <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_01_hq.jpg · photo unavailable</span>
@@ -432,7 +623,7 @@
           <li data-gal="3" data-ratio="1/1">
             <button type="button" aria-label="Enlarge photo 4 of 7: Sunlit reading corner" data-on-click="openLightbox" class="photo-gallery__button">
               
-                <img src="assets/img/top/img_gallery_04_hq.jpg" alt="Sunlit corner room with a red leather armchair and floor-to-ceiling windows onto a desert garden" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+                <picture><source type="image/webp" srcset="assets/img/top/img_gallery_04_w640.webp 640w, assets/img/top/img_gallery_04_w828.webp 828w, assets/img/top/img_gallery_04_w1280.webp 1280w, assets/img/top/img_gallery_04_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, (min-width:560px) 47vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_04_hq.jpg" alt="Sunlit corner room with a red leather armchair and floor-to-ceiling windows onto a desert garden" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img" width="1536" height="1023"></picture>
               
               
                 <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_04_hq.jpg · photo unavailable</span>
@@ -453,7 +644,7 @@
           <li data-gal="1" data-ratio="3/2">
             <button type="button" aria-label="Enlarge photo 2 of 7: Single-story homes" data-on-click="openLightbox" class="photo-gallery__button">
               
-                <img src="assets/img/top/img_gallery_02_hq.jpg" alt="Aerial view of a row of single-story homes along a street, with a green lawn and pond behind" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+                <picture><source type="image/webp" srcset="assets/img/top/img_gallery_02_w640.webp 640w, assets/img/top/img_gallery_02_w828.webp 828w, assets/img/top/img_gallery_02_w1280.webp 1280w, assets/img/top/img_gallery_02_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, (min-width:560px) 47vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_02_hq.jpg" alt="Aerial view of a row of single-story homes along a street, with a green lawn and pond behind" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img" width="1536" height="1025"></picture>
               
               
                 <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_02_hq.jpg · photo unavailable</span>
@@ -470,7 +661,7 @@
           <li data-gal="4" data-ratio="1/1">
             <button type="button" aria-label="Enlarge photo 5 of 7: Cul-de-sac living" data-on-click="openLightbox" class="photo-gallery__button">
               
-                <img src="assets/img/top/img_gallery_05_hq.jpg" alt="Aerial view of a cul-de-sac of tile-roofed homes with desert landscaping and snow-capped mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+                <picture><source type="image/webp" srcset="assets/img/top/img_gallery_05_w640.webp 640w, assets/img/top/img_gallery_05_w828.webp 828w, assets/img/top/img_gallery_05_w1280.webp 1280w, assets/img/top/img_gallery_05_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, (min-width:560px) 47vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_05_hq.jpg" alt="Aerial view of a cul-de-sac of tile-roofed homes with desert landscaping and snow-capped mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img" width="1536" height="1023"></picture>
               
               
                 <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_05_hq.jpg · photo unavailable</span>
@@ -487,7 +678,7 @@
           <li data-gal="5" data-ratio="3/2">
             <button type="button" aria-label="Enlarge photo 6 of 7: Private pool and spa" data-on-click="openLightbox" class="photo-gallery__button">
               
-                <img src="assets/img/top/img_gallery_06_hq.jpg" alt="Aerial view of a tile-roofed home with a private pool and spa, trees and snow-capped mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+                <picture><source type="image/webp" srcset="assets/img/top/img_gallery_06_w640.webp 640w, assets/img/top/img_gallery_06_w828.webp 828w, assets/img/top/img_gallery_06_w1280.webp 1280w, assets/img/top/img_gallery_06_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, (min-width:560px) 47vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_06_hq.jpg" alt="Aerial view of a tile-roofed home with a private pool and spa, trees and snow-capped mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img" width="1536" height="1023"></picture>
               
               
                 <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_06_hq.jpg · photo unavailable</span>
@@ -508,7 +699,7 @@
           <li data-gal="2" data-ratio="1/1">
             <button type="button" aria-label="Enlarge photo 3 of 7: Resort-style pool" data-on-click="openLightbox" class="photo-gallery__button">
               
-                <img src="assets/img/top/img_gallery_03_hq.jpg" alt="Aerial view of a resort-style community pool among palm trees, beside a golf course and lake with mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+                <picture><source type="image/webp" srcset="assets/img/top/img_gallery_03_w640.webp 640w, assets/img/top/img_gallery_03_w828.webp 828w, assets/img/top/img_gallery_03_w1280.webp 1280w, assets/img/top/img_gallery_03_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, (min-width:560px) 47vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_03_hq.jpg" alt="Aerial view of a resort-style community pool among palm trees, beside a golf course and lake with mountains beyond" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img" width="1536" height="1023"></picture>
               
               
                 <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_03_hq.jpg · photo unavailable</span>
@@ -525,7 +716,7 @@
           <li data-gal="6" data-ratio="4/5">
             <button type="button" aria-label="Enlarge photo 7 of 7: Clubhouse and courts" data-on-click="openLightbox" class="photo-gallery__button">
               
-                <img src="assets/img/top/img_gallery_07_hq.jpg" alt="Aerial view of a community clubhouse with pickleball courts and a roundabout, mountains on the horizon" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img">
+                <picture><source type="image/webp" srcset="assets/img/top/img_gallery_07_w640.webp 640w, assets/img/top/img_gallery_07_w828.webp 828w, assets/img/top/img_gallery_07_w1280.webp 1280w, assets/img/top/img_gallery_07_w1536.webp 1536w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, (min-width:560px) 47vw, calc(100vw - 48px)"><img src="assets/img/top/img_gallery_07_hq.jpg" alt="Aerial view of a community clubhouse with pickleball courts and a roundabout, mountains on the horizon" loading="lazy" decoding="async" data-fallback="show-placeholder" class="photo-gallery__img" width="1536" height="1023"></picture>
               
               
                 <span data-show="photo-failed" hidden="" class="photo-gallery__span-3">img_gallery_07_hq.jpg · photo unavailable</span>
@@ -543,7 +734,9 @@
     
   </div>
 </section>
+<!-- End of photo gallery area -->
 
+<!-- Start of our services area -->
 <section id="services" aria-labelledby="services-title" data-screen-label="Our services" class="our-services__section">
   <div class="our-services__div">
     <div class="our-services__div-2">
@@ -555,24 +748,26 @@
     </div>
     <ul class="our-services__ul">
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-5"><img src="assets/img/top/img_services_01.jpg" alt="White pallet coffee table with a plant, a hyacinth and books in front of a grey sofa" width="737" height="722" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 21V5l8-2v18"></path><path d="M12 9h8v12"></path><path d="M2 21h20"></path><path d="M7 8h2"></path><path d="M7 12h2"></path><path d="M7 16h2"></path><path d="M15 13h2"></path><path d="M15 17h2"></path></svg></span></div>
+        <div class="our-services__div-5"><picture><source type="image/webp" srcset="assets/img/top/img_services_01_w737.webp 737w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, calc(100vw - 48px)"><img src="assets/img/top/img_services_01.jpg" alt="White pallet coffee table with a plant, a hyacinth and books in front of a grey sofa" width="737" height="722" loading="lazy" decoding="async" class="our-services__img"></picture><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 21V5l8-2v18"></path><path d="M12 9h8v12"></path><path d="M2 21h20"></path><path d="M7 8h2"></path><path d="M7 12h2"></path><path d="M7 16h2"></path><path d="M15 13h2"></path><path d="M15 17h2"></path></svg></span></div>
         <h3 class="our-services__h3">Nervous about your property adventure? Don't be.</h3>
         <p class="our-services__p-3">Whether you're getting ready to buy or sell your residence, looking at investment properties, or just curious about the markets, our team ensures you get the best experience possible!</p>
       </li>
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-5"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="15" r="4"></circle><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg></span></div>
+        <div class="our-services__div-5"><picture><source type="image/webp" srcset="assets/img/listings/img_listings_03_w640.webp 640w, assets/img/listings/img_listings_03_w1059.webp 1059w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, calc(100vw - 48px)"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="our-services__img"></picture><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="15" r="4"></circle><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg></span></div>
         <h3 class="our-services__h3">Large or small, condo or mansion</h3>
         <p class="our-services__p-3">We can find it and get at the price that's right. Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. Happy to help you find where to put your hard-earned dollars.</p>
       </li>
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-5"><img src="assets/img/top/img_services_03.jpg" alt="Smiling client shaking hands across a table with a laptop" width="600" height="520" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span></div>
+        <div class="our-services__div-5"><picture><source type="image/webp" srcset="assets/img/top/img_services_03_w600.webp 600w" sizes="(min-width:1280px) 400px, (min-width:960px) 31vw, calc(100vw - 48px)"><img src="assets/img/top/img_services_03.jpg" alt="Smiling client shaking hands across a table with a laptop" width="600" height="520" loading="lazy" decoding="async" class="our-services__img"></picture><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span></div>
         <h3 class="our-services__h3">Rely on Expertise</h3>
         <p class="our-services__p-3">If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to get the answers you need in a timely fashion. We make sure you feel confident and educated every step of the way.</p>
       </li>
     </ul>
   </div>
 </section>
+<!-- End of our services area -->
 
+<!-- Start of contact area -->
 <section id="contact" aria-labelledby="contact-title" data-screen-label="Contact" class="contact__section">
   <div class="contact__div">
     <h2 id="contact-title" class="contact__h2">Call or <span data-mark="4" class="contact__span">Visit<span aria-hidden="true" class="contact__span-2"></span></span></h2>
@@ -633,20 +828,23 @@
   </div>
 
 </section>
+<!-- End of contact area -->
 
 
 
 
 
 </main>
+<!-- End of main content area -->
 
+<!-- Start of footer area -->
 <footer id="site-footer" class="site-footer footer__footer" data-screen-label="Footer">
   <mm-smoke class="footer__mm-smoke"></mm-smoke>
   <div class="footer__div">
     <button type="button" aria-label="Back to top" data-on-click="scrollBackToTop" class="footer__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
     <div class="footer__div-2">
       <div class="footer__div-3">
-        <a data-link="" href="#home" aria-label="Marci Metzger Homes, home" class="footer__a"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></a>
+        <a data-link="" href="#home" aria-label="Marci Metzger Homes, home" class="footer__a"><picture><source type="image/webp" srcset="assets/img/common/img_logo_01_w384.webp 384w" sizes="192px"><img src="assets/img/common/img_logo_01.png" decoding="async" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></picture></a>
         <p class="footer__p">Marci Metzger - THE RIDGE REALTY GROUP</p>
       </div>
       <nav aria-labelledby="ft-explore" class="footer__nav">
@@ -712,11 +910,15 @@
     </div>
   </div>
 </footer>
+<!-- End of footer area -->
 
+<!-- Start of back to top button area -->
 <button type="button" aria-label="Back to top" tabindex="-1" aria-hidden="true" data-on-click="scrollBackToTop" data-floating="" class="app__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
+<!-- End of back to top button area -->
 
 
-  <div role="dialog" aria-modal="true" aria-label="Photo viewer" data-show="lightbox" hidden="" data-on-click="closeLightboxFromBackdrop" class="lightbox__div">
+  <!-- Start of lightbox area -->
+<div role="dialog" aria-modal="true" aria-label="Photo viewer" data-show="lightbox" hidden="" data-on-click="closeLightboxFromBackdrop" class="lightbox__div">
     <button type="button" data-lb-close="1" aria-label="Close photo viewer" data-on-click="closeLightbox" class="lightbox__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
     <div class="lightbox__viewport" data-ref="lightbox-viewport"><div class="lightbox__track" data-ref="lightbox-track"></div></div>
     
@@ -729,50 +931,53 @@
       <button type="button" aria-label="Next photo" data-on-click="showNextPhoto" class="lightbox__button-2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></button>
     </div>
   </div>
+<!-- End of lightbox area -->
 
 
 
-  <div role="region" aria-label="Cookie notice" data-show="cookie" hidden="" class="app__div-4">
+  <!-- Start of cookie notice area -->
+<div role="region" aria-label="Cookie notice" data-show="cookie" hidden="" class="app__div-4">
     <p class="app__p"><strong class="app__strong">This website uses cookies.</strong> We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
     <button type="button" data-on-click="acceptCookies" class="app__button-2">Accept</button>
   </div>
+<!-- End of cookie notice area -->
 
 </div>
 <script type="application/json" id="site-data">
 {
   "gallery": [
     {
-      "src": "assets/img/top/img_gallery_01_hq.jpg",
+      "src": "assets/img/top/img_gallery_01_w1536.webp",
       "alt": "Aerial view of a community clubhouse with tennis and pickleball courts, a lawn and palm trees, with the valley behind",
       "title": "Community clubhouse"
     },
     {
-      "src": "assets/img/top/img_gallery_02_hq.jpg",
+      "src": "assets/img/top/img_gallery_02_w1536.webp",
       "alt": "Aerial view of a row of single-story homes along a street, with a green lawn and pond behind",
       "title": "Single-story homes"
     },
     {
-      "src": "assets/img/top/img_gallery_03_hq.jpg",
+      "src": "assets/img/top/img_gallery_03_w1536.webp",
       "alt": "Aerial view of a resort-style community pool among palm trees, beside a golf course and lake with mountains beyond",
       "title": "Resort-style pool"
     },
     {
-      "src": "assets/img/top/img_gallery_04_hq.jpg",
+      "src": "assets/img/top/img_gallery_04_w1536.webp",
       "alt": "Sunlit corner room with a red leather armchair and floor-to-ceiling windows onto a desert garden",
       "title": "Sunlit reading corner"
     },
     {
-      "src": "assets/img/top/img_gallery_05_hq.jpg",
+      "src": "assets/img/top/img_gallery_05_w1536.webp",
       "alt": "Aerial view of a cul-de-sac of tile-roofed homes with desert landscaping and snow-capped mountains beyond",
       "title": "Cul-de-sac living"
     },
     {
-      "src": "assets/img/top/img_gallery_06_hq.jpg",
+      "src": "assets/img/top/img_gallery_06_w1536.webp",
       "alt": "Aerial view of a tile-roofed home with a private pool and spa, trees and snow-capped mountains beyond",
       "title": "Private pool and spa"
     },
     {
-      "src": "assets/img/top/img_gallery_07_hq.jpg",
+      "src": "assets/img/top/img_gallery_07_w1536.webp",
       "alt": "Aerial view of a community clubhouse with pickleball courts and a roundabout, mountains on the horizon",
       "title": "Clubhouse and courts"
     }
