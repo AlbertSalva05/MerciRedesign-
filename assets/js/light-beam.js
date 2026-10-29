@@ -1,4 +1,4 @@
-/* Marci Metzger Homes: light-beam.js. Three.js light beam on the Listings, Let's Move and About Us dark bands. */
+/* Marci Metzger Homes v4: light-beam.js. Three.js light beam on the Listings, Let's Move and About Us dark bands (<mm-light-beam>). */
 (function () {
   if (customElements.get('mm-light-beam')) return;
   const BEAM = `
@@ -26,7 +26,7 @@
     }
     async init() {
       let THREE;
-      try { THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'); } catch (e) { return; }
+      try { THREE = await import('./vendor/three.module.min.js'); } catch (e) { return; }
       if (this.dead) return;
       const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: 'low-power' });
