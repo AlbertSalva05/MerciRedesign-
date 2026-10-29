@@ -67,7 +67,7 @@ input,select,textarea,button{color:inherit;font:inherit}
 .find-your-dream-home__div{display:flex;margin-bottom:clamp(32px,4vw,48px);flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px}
 .find-your-dream-home__h2{max-width:12ch;font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:400;font-family:var(--display);line-height:1;letter-spacing:-.01em;text-wrap:balance}
 .find-your-dream-home__span{display:inline-block;position:relative;white-space:nowrap;isolation:isolate}
-.find-your-dream-home__span-2{position:absolute;right:-.16em;bottom:.02em;left:-.16em;z-index:-1;height:.78em;background:url(assets/img/common/img_mark_brush_light.svg?v=2) no-repeat center / 100% 100%;transition:clip-path 900ms cubic-bezier(.2,.8,.2,1) 150ms;pointer-events:none}
+.find-your-dream-home__span-2{position:absolute;right:-.16em;bottom:.02em;left:-.16em;z-index:-1;height:.78em;background:url(../img/common/img_mark_brush_light.svg?v=2) no-repeat center / 100% 100%;transition:clip-path 900ms cubic-bezier(.2,.8,.2,1) 150ms;pointer-events:none}
 .find-your-dream-home__form{padding:clamp(24px,3vw,40px);border:1px solid var(--line);border-radius:2px;background:var(--surface)}
 .find-your-dream-home__h3{display:flex;margin:0 0 24px;padding-bottom:16px;border-bottom:1px solid var(--line);color:var(--ink);font-size:1.375rem;font-weight:400;font-family:var(--serif);align-items:center;gap:8px;font-style:italic}
 .find-your-dream-home__div-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:24px}
