@@ -1,4 +1,4 @@
-/* Marci Metzger Homes: listings.css (generated from v2 by build/build-v3.js, do not hand-edit). Components used only on this page. */
+/* Marci Metzger Homes v4: listings.css (generated from v2 by build/build-v4.js, do not hand-edit). Components used only on this page. */
 
 .listings-hero__section{position:relative;overflow:hidden;background:var(--dark);color:var(--on-dark)}
 .listings-hero__mm-light-beam{position:absolute;z-index:0;inset:0;pointer-events:none}
@@ -10,15 +10,15 @@
 .listings-hero__svg{display:block;flex:none}
 .listings-hero__li-2{display:flex;color:#A89D97;align-items:center}
 .listings-hero__li-3{display:flex;min-height:48px;color:#FFFFFF;font-weight:600;line-height:1;white-space:nowrap;align-items:center;flex:none}
-.listings-hero__div-2{display:grid;gap:32px clamp(32px,5vw,72px);align-items:center}
+.listings-hero__div-2{display:grid;grid-template-columns:var(--wall-cols);gap:32px clamp(32px,5vw,72px);align-items:center}
 .listings-hero__div-3{display:flex;min-width:0;max-width:640px;flex-direction:column;align-items:flex-start;gap:16px}
-.listings-hero__h1{font-size:clamp(2.25rem,4.5vw,4rem);font-weight:400;font-family:var(--display);line-height:1.1;letter-spacing:-.015em;text-wrap:balance;-webkit-text-stroke:1px var(--accent-soft);background-image:linear-gradient(90deg,var(--accent-soft) 0 50%,#F2ECE8 50% 100%);background-size:200% 100%;background-position:100% 0;color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.listings-hero__h1{font-size:clamp(2.25rem,4.5vw,4rem);font-weight:400;font-family:var(--display);line-height:1.1;letter-spacing:-.015em;text-wrap:balance;-webkit-text-stroke:1px var(--accent-soft);background-image:linear-gradient(90deg,var(--accent-soft) 0 50%,#F2ECE8 50% 100%);background-size:200% 100%;background-position:100% 0;color:transparent;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:mmFill 9s cubic-bezier(.65,0,.35,1) 600ms infinite}
 .listings-hero__p{max-width:40ch;color:var(--on-dark-2);font-size:clamp(1.25rem,2.2vw,1.5rem);font-family:var(--serif);line-height:1.5;font-style:italic;text-wrap:balance}
 .listings-hero__a-2{display:inline-flex;flex:none;min-height:56px;margin-top:8px;padding:0 24px;border-radius:2px;background:var(--accent);color:#FFFFFF;font-size:1rem;font-weight:600;text-decoration:none;white-space:nowrap;letter-spacing:.06em;align-items:center;gap:8px;text-transform:uppercase;transition:background 200ms var(--ease)}
 .listings-hero__span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.listings-hero__div-4{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.listings-hero__div-4{position:relative;height:var(--wall-h);overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
 .listings-hero__div-5{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
-.listings-hero__ul{display:flex;min-width:0;margin:0;padding:0;list-style:none;flex-direction:column;will-change:transform}
+.listings-hero__ul{display:flex;min-width:0;margin:0;padding:0;list-style:none;flex-direction:column;animation:mmWallUp 40s linear infinite;will-change:transform}
 .listings-hero__li-4{padding-bottom:16px}
 .listings-hero__img{width:100%;height:auto;border-radius:4px;background:#2A2625;aspect-ratio:4/3;object-fit:cover}
 .what-s-new__section{max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(24px,5vw,56px)}
@@ -39,7 +39,7 @@
 .what-s-new__span-5{font-size:clamp(1.75rem,2.6vw,2rem);font-family:var(--display);line-height:1.2}
 .what-s-new__span-6{color:#E6E0DE;font-size:1rem;line-height:1.5}
 
-/* States */
+/* Hover and focus */
 .listings-hero__a:hover{color:#FFFFFF;text-decoration:underline}
 .listings-hero__a-2:hover{background:var(--accent-hover);color:#FFFFFF}
 .what-s-new__a:hover{color:var(--accent-hover)}
