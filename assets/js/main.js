@@ -1,34 +1,8 @@
-/* Marci Metzger Homes v4: main.js
-   Plain JavaScript, no framework. Shared by every page.
-   The HTML is complete without this file; this script only adds behaviour.
-   State is shown with classes on <html> (is-scrolled, is-menu-open, ...) and data attributes,
-   and the CSS reacts to them. List data (gallery photos and layouts) comes from the JSON block #site-data.
-
-   Contents
-     1. Helpers
-     2. Header: shadow, mobile menu, Pages dropdown
-     3. In-page links: scroll a section to just under the header
-     3b. Smooth wheel scrolling (mouse and trackpad, desktop only)
-     4. Scroll spy: highlight the menu item of the section in view
-     5. Home hero: intro fade and scroll-driven shrink
-     6. Brush highlights behind key words
-     7. "Get it sold" timeline
-     8. Photo gallery: column layout, reveal, lightbox, swipe
-     9. Scroll reveals: paragraphs, quote, service cards, [data-reveal] blocks
-    10. Forms: listing search, contact message
-    11. Office hours and week days
-    12. Back-to-top button
-    13. Cookie notice
-    14. Image fallbacks
-    15. Click actions and keyboard
-    16. Start-up
-*/
+/* Marci Metzger Homes main.js. Shared behaviour for every page. */
 (function () {
   'use strict';
 
-  /* ==========================================================================
-     1. Helpers
-     ========================================================================== */
+  /* 1. Helpers */
   const root = document.documentElement;
   const page = document.body.dataset.route || 'home';
   const reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -39,29 +13,24 @@
   function $(selector, scope) { return (scope || document).querySelector(selector); }
   function $$(selector, scope) { return Array.from((scope || document).querySelectorAll(selector)); }
 
-  // Read the JSON block that the build writes into each page.
   function readSiteData() {
     const el = document.getElementById('site-data');
     try { return el ? JSON.parse(el.textContent) : {}; } catch (err) { return {}; }
   }
 
-  // Show or hide every element of a named group, e.g. data-show="menu-open".
   function setGroupVisible(name, visible, scope) {
     $$('[data-show="' + name + '"]', scope).forEach(el => el.toggleAttribute('hidden', !visible));
   }
 
-  // Replace the text of every element tagged data-text="name".
   function setText(name, text, scope) {
     $$('[data-text="' + name + '"]', scope).forEach(el => { el.textContent = text; });
   }
 
-  // localStorage that never throws (private mode, blocked storage).
   const storage = {
     get(key) { try { return localStorage.getItem(key); } catch (err) { return null; } },
     set(key, value) { try { localStorage.setItem(key, value); } catch (err) { /* ignore */ } }
   };
 
-  // Run every registered task once per animation frame while scrolling or resizing.
   const scrollTasks = [];
   let scrollFrame = null;
   function onEveryScroll(task) { scrollTasks.push(task); }
@@ -69,22 +38,20 @@
     if (scrollFrame) return;
     scrollFrame = requestAnimationFrame(() => {
       scrollFrame = null;
-      scrollTasks.forEach(task => task());
+      const writes = scrollTasks.map(task => task()).filter(Boolean);
+      writes.forEach(write => write());
     });
   }
 
-  /* ==========================================================================
-     2. Header: shadow, mobile menu, Pages dropdown
-     ========================================================================== */
+  /* 2. Header: shadow, mobile menu, Pages dropdown */
   let isMenuOpen = false;
   let isPagesOpen = false;
 
-  // Add a soft shadow under the sticky header once the page has scrolled.
   function updateHeaderShadow() {
-    root.classList.toggle('is-scrolled', window.scrollY > 8);
+    const scrolled = window.scrollY > 8;
+    return () => root.classList.toggle('is-scrolled', scrolled);
   }
 
-  // Open or close the right-side drawer used on tablet and mobile.
   function setMobileMenu(open) {
     if (open === isMenuOpen) return;
     isMenuOpen = open;
@@ -98,7 +65,6 @@
     });
   }
 
-  // Open or close the desktop "Pages" dropdown.
   function setPagesMenu(open) {
     if (open === isPagesOpen) return;
     isPagesOpen = open;
@@ -106,9 +72,7 @@
     $$('[data-pages-toggle]').forEach(btn => btn.setAttribute('aria-expanded', String(open)));
   }
 
-  /* ==========================================================================
-     3. In-page links: scroll a section to just under the header
-     ========================================================================== */
+  /* 3. In-page links: scroll a section to just under the header */
   let pinFrame = null;
   let settleTimer = null;
 
@@ -117,8 +81,6 @@
     return header ? Math.round(header.getBoundingClientRect().height) : 80;
   }
 
-  // Eased scroll animation. It re-reads the target every frame, so it still lands
-  // exactly when images above the section finish loading mid-scroll.
   function glideTo(getTargetY, isCancelled, onDone) {
     const startY = window.scrollY, startTime = performance.now();
     const duration = Math.min(1400, Math.max(500, Math.abs(getTargetY() - startY) * 0.35));
@@ -132,8 +94,6 @@
     pinFrame = requestAnimationFrame(step);
   }
 
-  // Scroll so the section starts right under the header, then hold it there
-  // for a moment while late images change the page height.
   function scrollToSection(el, behavior) {
     const smooth = behavior === 'smooth' && !reduceMotion;
     const targetY = () => Math.max(0, Math.round(el.getBoundingClientRect().top + window.scrollY - getHeaderHeight()));
@@ -163,7 +123,6 @@
     el.focus({ preventScroll: true });
   }
 
-  // Handle clicks on links like href="#gallery" that point into this page.
   function handleInPageLink(event) {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const link = event.target.closest && event.target.closest('a[href^="#"]');
@@ -178,22 +137,16 @@
     requestAnimationFrame(() => scrollToSection(section, 'smooth'));
   }
 
-  // Arriving with a #hash (e.g. index.html#gallery from a subpage): land under the header.
   function scrollToHashOnLoad() {
     if (location.hash.length < 2) return;
     const section = document.getElementById(location.hash.slice(1));
     if (section) setTimeout(() => scrollToSection(section, 'instant'), 120);
   }
 
-  /* ==========================================================================
-     3b. Smooth wheel scrolling (mouse and trackpad, desktop only)
-     Each wheel step moves a target position; the page glides to it every frame.
-     Touch, keyboard and scrollbar scrolling stay native. Off with reduced motion.
-     ========================================================================== */
+  /* 3b. Smooth wheel scrolling (desktop mouse and trackpad) */
   const SMOOTH_EASE = 0.1; // share of the remaining distance covered per frame
   const smoothWheel = { target: 0, current: 0, frame: null };
 
-  // Scroll instantly, bypassing the CSS scroll-behavior:smooth.
   function jumpScrollTo(y) {
     root.style.scrollBehavior = 'auto';
     window.scrollTo(0, y);
@@ -205,7 +158,6 @@
     smoothWheel.frame = null;
   }
 
-  // Let inner scroll areas (the drawer, long menus) scroll themselves.
   function canScrollInside(el, deltaY) {
     for (let node = el; node && node !== document.body && node !== root; node = node.parentElement) {
       if (node.nodeType !== 1) continue;
@@ -244,7 +196,6 @@
     if (!smoothWheel.frame) smoothWheel.frame = requestAnimationFrame(stepSmoothWheel);
   }
 
-  // If something else moved the page (keyboard, scrollbar drag), stop gliding.
   function onNativeScrollDuringGlide() {
     if (smoothWheel.frame && Math.abs(window.scrollY - Math.round(smoothWheel.current)) > 2) stopSmoothWheel();
   }
@@ -257,10 +208,7 @@
     window.addEventListener('keydown', stopSmoothWheel);
   }
 
-  /* ==========================================================================
-     4. Scroll spy: highlight the menu item of the section in view
-     ========================================================================== */
-  // Section id -> menu item it belongs to.
+  /* 4. Scroll spy: highlight the menu item of the section in view */
   const SPY_SECTIONS = [['home', 'home'], ['about', 'about'], ['get-it-sold', 'about'], ['listings', 'listings'], ['gallery', 'gallery'], ['services', 'gallery'], ['contact', 'contact']];
   let activeMenuItem = null;
 
@@ -275,23 +223,18 @@
     if (active === activeMenuItem) return;
     activeMenuItem = active;
     const href = active === 'listings' ? '#listings' : '#' + active;
-    $$('[data-nav-link], [data-drawer-link]').forEach(link => {
+    return () => $$('[data-nav-link], [data-drawer-link]').forEach(link => {
       if (link.getAttribute('href') === href) link.setAttribute('aria-current', 'true');
       else if (link.getAttribute('aria-current') === 'true') link.removeAttribute('aria-current');
     });
   }
 
-  /* ==========================================================================
-     5. Home hero: intro fade and scroll-driven shrink
-     ========================================================================== */
-  // Fade the headline lines in once the page has painted.
+  /* 5. Home hero: intro fade and scroll-driven shrink */
   function playHeroIntro() {
     if (reduceMotion) { root.classList.add('is-hero-in'); return; }
     requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('is-hero-in')));
   }
 
-  // While the tall hero section is pinned, shrink the photo into a rounded card,
-  // fade the headline out and the opening-hours caption in.
   function updateHero() {
     const section = $('[data-ref="hero"]');
     const frame = $('[data-ref="hero-frame"]');
@@ -299,25 +242,25 @@
     const caption = $('[data-ref="hero-caption"]');
     if (!section || !frame || !text || !caption) return;
     if (reduceMotion) {
-      frame.style.clipPath = 'none'; text.style.opacity = '1'; text.style.transform = 'none'; caption.style.opacity = '0';
-      return;
+      return () => { frame.style.clipPath = 'none'; text.style.opacity = '1'; text.style.transform = 'none'; caption.style.opacity = '0'; };
     }
     const viewH = window.innerHeight - 80, viewW = window.innerWidth;
     const box = section.getBoundingClientRect();
     const progress = Math.min(1, Math.max(0, (80 - box.top) / Math.max(1, box.height - viewH)));
     const eased = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-    const top = eased * viewH * 0.05, bottom = eased * viewH * 0.16, side = eased * Math.max(16, viewW * 0.06), radius = eased * 24;
-    frame.style.clipPath = 'inset(' + top + 'px ' + side + 'px ' + bottom + 'px ' + side + 'px round ' + radius + 'px)';
+    const captionShare = viewW < 640 ? 0.22 : 0.16;
+    const top = eased * viewH * 0.05, bottom = eased * viewH * captionShare, side = eased * Math.max(16, viewW * 0.06), radius = eased * 24;
     const textOpacity = 1 - Math.min(1, progress / 0.45);
-    text.style.opacity = String(textOpacity);
-    text.style.transform = 'translateY(' + (-progress * 48) + 'px)';
-    text.style.visibility = textOpacity < 0.02 ? 'hidden' : 'visible';
-    caption.style.opacity = String(Math.min(1, Math.max(0, (progress - 0.55) / 0.35)));
+    return () => {
+      frame.style.clipPath = 'inset(' + top + 'px ' + side + 'px ' + bottom + 'px ' + side + 'px round ' + radius + 'px)';
+      text.style.opacity = String(textOpacity);
+      text.style.transform = 'translateY(' + (-progress * 48) + 'px)';
+      text.style.visibility = textOpacity < 0.02 ? 'hidden' : 'visible';
+      caption.style.opacity = String(Math.min(1, Math.max(0, (progress - 0.55) / 0.35)));
+    };
   }
 
-  /* ==========================================================================
-     6. Brush highlights behind key words
-     ========================================================================== */
+  /* 6. Brush highlights behind key words */
   function initBrushMarks() {
     const marks = $$('[data-mark]');
     if (reduceMotion || !hasObserver) { marks.forEach(m => m.classList.add('is-marked')); return; }
@@ -329,26 +272,21 @@
     marks.forEach(m => observer.observe(m));
   }
 
-  /* ==========================================================================
-     7. "Get it sold" timeline
-     ========================================================================== */
-  // Grow the line with scroll and switch each step on as it arrives.
+  /* 7. "Get it sold" timeline */
   function updateTimeline() {
     const box = $('[data-ref="timeline"]');
     const fill = $('[data-ref="timeline-fill"]');
     if (!box || !fill) return;
     const viewH = window.innerHeight, rect = box.getBoundingClientRect();
     const progress = reduceMotion ? 1 : Math.min(1, Math.max(0, (viewH * 0.62 - rect.top) / rect.height));
-    fill.style.transform = 'scaleY(' + progress + ')';
-    $$('[data-tl]', box).forEach(step => {
-      if (step.classList.contains('is-active')) return;
-      if (reduceMotion || step.getBoundingClientRect().top + step.offsetHeight * 0.3 < viewH * 0.85) step.classList.add('is-active');
-    });
+    const arrived = $$('[data-tl]:not(.is-active)', box).filter(step => reduceMotion || step.getBoundingClientRect().top + step.offsetHeight * 0.3 < viewH * 0.85);
+    return () => {
+      fill.style.transform = 'scaleY(' + progress + ')';
+      arrived.forEach(step => step.classList.add('is-active'));
+    };
   }
 
-  /* ==========================================================================
-     8. Photo gallery: column layout, reveal, lightbox, swipe
-     ========================================================================== */
+  /* 8. Photo gallery: column layout, reveal, lightbox, swipe */
   const photos = siteData.gallery || [];
   let galleryColumnCount = 0;
 
@@ -357,7 +295,6 @@
     return w >= 960 ? 3 : w >= 560 ? 2 : 1;
   }
 
-  // Masonry: place each photo in its column with its shape (4/5, 3/2, 1/1) for 1, 2 or 3 columns.
   function arrangeGalleryColumns() {
     const columns = $$('[data-gal-col]');
     const layouts = siteData.galleryLayouts;
@@ -378,7 +315,6 @@
     columns.forEach((column, c) => column.toggleAttribute('hidden', c >= count));
   }
 
-  // Fade and rise the tiles in one by one as they enter the viewport.
   function revealGalleryTile(tile, delay) {
     if (tile.classList.contains('is-revealed')) return;
     tile.style.transitionDelay = delay + 'ms';
@@ -396,22 +332,17 @@
     tiles.forEach(t => observer.observe(t));
   }
 
-  // Safety net while scrolling fast: reveal anything already near the viewport.
   function revealGalleryTilesInView() {
     const viewH = window.innerHeight;
-    let k = 0;
-    $$('[data-gal]:not(.is-revealed)').forEach(tile => {
-      if (tile.getBoundingClientRect().top < viewH * 0.95) revealGalleryTile(tile, (k++) * 90);
-    });
+    const inView = $$('[data-gal]:not(.is-revealed)').filter(tile => tile.getBoundingClientRect().top < viewH * 0.95);
+    if (inView.length) return () => inView.forEach((tile, k) => revealGalleryTile(tile, k * 90));
   }
 
-  // Lightbox
   const lightbox = { index: -1, lastFocus: null, built: false, touch: null };
   const lightboxDialog = () => $('[data-show="lightbox"]');
   const lightboxTrack = () => $('[data-ref="lightbox-track"]');
   const trackOffset = (i, extraPx) => 'translateX(calc(' + (-i * 100) + '% - ' + (i * 32) + 'px' + (extraPx ? ' + ' + extraPx + 'px' : '') + '))';
 
-  // Build one slide per photo (from #site-data) the first time the lightbox opens.
   function buildLightboxSlides() {
     const track = lightboxTrack();
     if (!track || lightbox.built) return;
@@ -429,7 +360,6 @@
     lightbox.built = true;
   }
 
-  // Move the strip to the current photo and update the counter.
   function showLightboxPhoto(animate) {
     const track = lightboxTrack(), dialog = lightboxDialog();
     if (!track || !dialog) return;
@@ -445,7 +375,6 @@
     setText('lbCount', (i + 1) + ' / ' + photos.length);
   }
 
-  // Stop the page behind the lightbox from scrolling (and keep the scrollbar gap).
   function lockPageScroll(lock) {
     const scrollbar = window.innerWidth - root.clientWidth;
     root.style.overflow = lock ? 'hidden' : '';
@@ -474,14 +403,12 @@
     if (lightbox.lastFocus) lightbox.lastFocus.focus({ preventScroll: true });
   }
 
-  // Go to the next (+1) or previous (-1) photo, wrapping around.
   function stepLightbox(direction) {
     if (lightbox.index < 0) return;
     lightbox.index = (lightbox.index + direction + photos.length) % photos.length;
     showLightboxPhoto(true);
   }
 
-  // Touch: drag the strip with the finger, then snap to the next or previous photo.
   function initLightboxSwipe() {
     const dialog = lightboxDialog();
     if (!dialog) return;
@@ -523,12 +450,9 @@
     setText('lbHint', coarse ? 'Swipe to browse photos' : 'Use arrow keys or buttons to browse');
   }
 
-  /* ==========================================================================
-     9. Scroll reveals: paragraphs, quote, service cards, [data-reveal] blocks
-     ========================================================================== */
+  /* 9. Scroll reveals: paragraphs, quote, service cards, [data-reveal] blocks */
   const fadeUp = (el, delay) => el.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 700, delay, easing: EASE_OUT, fill: 'backwards' });
 
-  // Wrap each word in a span so lines can animate separately; restore() puts the text back.
   function splitWords(p) {
     const original = Array.from(p.childNodes);
     if (!original.every(n => n.nodeType === 3)) return null;
@@ -548,7 +472,6 @@
     return { spans, restore() { while (p.firstChild) p.removeChild(p.firstChild); original.forEach(n => p.appendChild(n)); } };
   }
 
-  // A paragraph rises in line by line.
   function revealLines(p) {
     const split = splitWords(p);
     if (!split) { fadeUp(p, 0); return; }
@@ -564,7 +487,6 @@
     if (lastAnimation) lastAnimation.onfinish = () => split.restore(); else split.restore();
   }
 
-  // The quote: the mark pops in, then the words follow one after another.
   function revealQuote(quote) {
     const mark = $('[data-quote-mark]', quote);
     if (mark) mark.animate([{ opacity: 0, transform: 'scale(.4)' }, { opacity: 1, transform: 'scale(1.12)', offset: 0.6 }, { transform: 'scale(.96)', offset: 0.8 }, { opacity: 1, transform: 'scale(1)' }], { duration: 650, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'backwards' });
@@ -581,7 +503,6 @@
     if (lastAnimation) lastAnimation.onfinish = () => splits.forEach(s => s.restore());
   }
 
-  // Keyframes for each data-reveal="..." variant.
   const REVEAL_KEYFRAMES = {
     up: [{ opacity: 0, transform: 'translateY(32px)' }, { opacity: 1, transform: 'none' }],
     left: [{ opacity: 0, transform: 'translateX(-40px)' }, { opacity: 1, transform: 'none' }],
@@ -590,7 +511,6 @@
     form: [{ opacity: 0, transform: 'translateY(40px)' }, { opacity: 1, transform: 'none' }]
   };
 
-  // Play the entrance for one [data-reveal] block (and its form fields / sub-parts).
   function revealBlock(block) {
     const variant = block.getAttribute('data-reveal');
     const delay = (Number(block.getAttribute('data-reveal-i')) || 0) * 140;
@@ -611,7 +531,6 @@
     if (img) img.animate([{ transform: 'scale(1.08)' }, { transform: 'scale(1)' }], { duration: 1600, delay, easing: EASE_OUT });
   }
 
-  // Service cards rise in groups of three; their photos settle from a slight zoom.
   function revealServiceCard(card, i) {
     card.style.opacity = '';
     card.animate([{ opacity: 0, transform: 'translateY(32px)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: i * 160, easing: EASE_OUT, fill: 'backwards' });
@@ -623,11 +542,17 @@
     const main = document.getElementById('main');
     if (!main || reduceMotion || !hasObserver) return;
 
-    // Long paragraphs (outside forms, buttons, the hero, the gallery...) and the quote.
     const paragraphs = $$('p', main).filter(p => p.textContent.trim().length > 40 && !p.closest('form,button,a,label,blockquote,[aria-hidden="true"],[data-tl],[data-gal],#home,[role="dialog"]'));
     const quote = $('[data-quote]', main);
-    const textItems = quote ? paragraphs.concat(quote) : paragraphs;
+    const viewH = window.innerHeight;
+    const isBelowFold = el => el.getBoundingClientRect().top > viewH * 0.9;
+    const textItems = (quote ? paragraphs.concat(quote) : paragraphs).filter(isBelowFold);
+    const allCards = $$('[data-svc]', main);
+    const cards = allCards.filter(isBelowFold);
+    const waiting = $$('[data-reveal]', main).filter(isBelowFold);
     textItems.forEach(el => { el.style.opacity = '0'; });
+    cards.forEach(c => { c.style.opacity = '0'; });
+    waiting.forEach(b => { b.style.opacity = '0'; });
     const textObserver = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
@@ -637,20 +562,13 @@
     }), { rootMargin: '0px 0px -10% 0px', threshold: 0.2 });
     textItems.forEach(el => textObserver.observe(el));
 
-    const cards = $$('[data-svc]', main);
-    cards.forEach(c => { c.style.opacity = '0'; });
     const cardObserver = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       cardObserver.unobserve(entry.target);
-      revealServiceCard(entry.target, cards.indexOf(entry.target) % 3);
+      revealServiceCard(entry.target, allCards.indexOf(entry.target) % 3);
     }), { rootMargin: '0px 0px -12% 0px', threshold: 0.2 });
     cards.forEach(c => cardObserver.observe(c));
 
-    // Blocks already on screen stay as they are; the rest wait below the fold.
-    const blocks = $$('[data-reveal]', main);
-    const viewH = window.innerHeight;
-    const waiting = blocks.filter(b => b.getBoundingClientRect().top > viewH * 0.9);
-    waiting.forEach(b => { b.style.opacity = '0'; });
     const blockObserver = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       blockObserver.unobserve(entry.target);
@@ -659,16 +577,12 @@
     waiting.forEach(b => blockObserver.observe(b));
   }
 
-  /* ==========================================================================
-     10. Forms: listing search, contact message
-     ========================================================================== */
-  // The message line under a form (inside the form, or elsewhere in its section).
+  /* 10. Forms: listing search, contact message */
   function formMessage(form, kind) {
     const section = form.closest('section') || document;
     return $('[data-msg="' + kind + '"]', form) || $('[data-msg="' + kind + '"]', section);
   }
 
-  // Search: check the price range, then open the full listings on marcimetzger.com in a new tab.
   function searchListings(event, form) {
     event.preventDefault();
     const data = new FormData(form);
@@ -695,8 +609,6 @@
     }, 500);
   }
 
-  // Contact: check the email, then send through Netlify when hosted there,
-  // otherwise open the visitor's email app with the message filled in.
   function sendContactMessage(event, form) {
     event.preventDefault();
     const data = new FormData(form);
@@ -732,10 +644,7 @@
     show('mailto', 'Your email app has opened with your message. Press Send there to deliver it, or call (206) 919-6886.');
   }
 
-  /* ==========================================================================
-     11. Office hours and week days
-     ========================================================================== */
-  // Is the office open right now? Open daily 8:00 am - 7:00 pm, Pahrump (Pacific) time.
+  /* 11. Office hours and week days */
   function isOfficeOpenNow() {
     try {
       const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', hour: 'numeric', hour12: false }).formatToParts(new Date());
@@ -750,7 +659,6 @@
     setText('openLabel', open ? 'Open now' : 'Closed now');
   }
 
-  // Highlight today in the Mon-Sun hours list.
   function highlightToday() {
     const today = (new Date().getDay() + 6) % 7;
     $$('[data-weekday]').forEach((day, i) => {
@@ -758,21 +666,20 @@
     });
   }
 
-  /* ==========================================================================
-     12. Back-to-top button
-     ========================================================================== */
-  // Show after scrolling one screen; hide again once the footer comes into view.
+  /* 12. Back-to-top button */
   function updateBackToTop() {
     const viewH = window.innerHeight;
     const footer = document.getElementById('site-footer');
     const footerInView = !!footer && footer.getBoundingClientRect().top < viewH - 24;
     const visible = window.scrollY > viewH * 0.9 && !footerInView;
     if (visible === root.classList.contains('is-top-visible')) return;
-    root.classList.toggle('is-top-visible', visible);
-    $$('[data-on-click="scrollBackToTop"][data-floating]').forEach(btn => {
-      btn.tabIndex = visible ? 0 : -1;
-      if (visible) btn.removeAttribute('aria-hidden'); else btn.setAttribute('aria-hidden', 'true');
-    });
+    return () => {
+      root.classList.toggle('is-top-visible', visible);
+      $$('[data-on-click="scrollBackToTop"][data-floating]').forEach(btn => {
+        btn.tabIndex = visible ? 0 : -1;
+        if (visible) btn.removeAttribute('aria-hidden'); else btn.setAttribute('aria-hidden', 'true');
+      });
+    };
   }
 
   function scrollBackToTop() {
@@ -782,9 +689,7 @@
     if (main) main.focus({ preventScroll: true });
   }
 
-  /* ==========================================================================
-     13. Cookie notice
-     ========================================================================== */
+  /* 13. Cookie notice */
   const COOKIE_KEY = 'mm_cookie_ok';
 
   function initCookieNotice() {
@@ -799,11 +704,7 @@
     root.classList.remove('has-cookie');
   }
 
-  /* ==========================================================================
-     14. Image fallbacks
-     ========================================================================== */
-  // data-fallback="remove-card": drop the whole card (affiliation badges).
-  // data-fallback="show-placeholder": hide the photo and show its "photo unavailable" label (gallery).
+  /* 14. Image fallbacks */
   function handleBrokenImage(img) {
     const mode = img.dataset.fallback;
     if (mode === 'remove-card') {
@@ -823,10 +724,7 @@
     $$('img[data-fallback]').forEach(img => { if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) handleBrokenImage(img); });
   }
 
-  /* ==========================================================================
-     15. Click actions and keyboard
-     ========================================================================== */
-  // Elements name their action in data-on-click / data-on-submit.
+  /* 15. Click actions and keyboard */
   const CLICK_ACTIONS = {
     toggleMobileMenu: () => setMobileMenu(!isMenuOpen),
     closeMobileMenu: () => setMobileMenu(false),
@@ -872,9 +770,7 @@
     requestScrollUpdate();
   }
 
-  /* ==========================================================================
-     16. Start-up
-     ========================================================================== */
+  /* 16. Start-up */
   function init() {
     initImageFallbacks();
     initSmoothWheelScroll();
@@ -893,15 +789,16 @@
     onEveryScroll(updateBackToTop);
     window.addEventListener('scroll', requestScrollUpdate, { passive: true });
     window.addEventListener('resize', onResize);
+    window.addEventListener('load', () => { requestScrollUpdate(); if (location.hash) scrollToHashOnLoad(); }, { once: true });
     window.addEventListener('keydown', onKeyDown);
     document.addEventListener('click', onDocumentClick);
     document.addEventListener('submit', onDocumentSubmit);
     requestScrollUpdate();
 
     playHeroIntro();
-    setTimeout(() => { initGalleryReveal(); initScrollReveals(); }, 60);
-    setTimeout(initBrushMarks, 80);
     scrollToHashOnLoad();
+    const whenIdle = window.requestIdleCallback || (fn => setTimeout(fn, 120));
+    requestAnimationFrame(() => whenIdle(() => { initGalleryReveal(); initScrollReveals(); initBrushMarks(); }, { timeout: 600 }));
   }
 
   init();

@@ -1,4 +1,4 @@
-/* Marci Metzger Homes v4: light-beam.js. Three.js light beam on the Listings, Let's Move and About Us dark bands (<mm-light-beam>). */
+/* Marci Metzger Homes light-beam.js. Page-hero light beam (<mm-light-beam>). */
 (function () {
   if (customElements.get('mm-light-beam')) return;
   const BEAM = `
@@ -15,14 +15,27 @@
     connectedCallback() {
       Object.assign(this.style, { display: 'block', position: 'absolute', inset: '0', overflow: 'hidden', pointerEvents: 'none' });
       this.setAttribute('aria-hidden', 'true');
-      this.init();
+      this.whenWorthStarting();
     }
     disconnectedCallback() {
       this.dead = true;
+      this.gate && this.gate.disconnect();
       cancelAnimationFrame(this.raf);
       this.io && this.io.disconnect();
       this.ro && this.ro.disconnect();
       if (this.renderer) { this.renderer.dispose(); this.renderer.domElement.remove(); }
+    }
+    whenWorthStarting() {
+      const conn = navigator.connection || {};
+      const lite = window.matchMedia('(max-width: 767.98px), (prefers-reduced-motion: reduce)').matches || conn.saveData || /2g/.test(conn.effectiveType || '');
+      if (lite) { this.classList.add('is-static'); return; }
+      const start = () => { if (this.started || this.dead) return; this.started = true; (window.requestIdleCallback || setTimeout)(() => this.init(), { timeout: 1500 }); };
+      const watch = () => {
+        if (!('IntersectionObserver' in window)) { start(); return; }
+        this.gate = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { this.gate.disconnect(); start(); } }, { rootMargin: '200px' });
+        this.gate.observe(this);
+      };
+      if (document.readyState === 'complete') watch(); else window.addEventListener('load', watch, { once: true });
     }
     async init() {
       let THREE;
