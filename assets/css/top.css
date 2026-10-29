@@ -1,11 +1,7 @@
-/* Marci Metzger Homes v4: top.css (generated from v2 by build/build-v4.js, do not hand-edit). Components used only on this page. */
-
-/* Timeline steps: hidden until main.js adds .is-active */
+/* Marci Metzger Homes top.css Components used only on this page. */
 [data-tl]{--tl-op:0;--tl-card:translateX(48px);--tl-side:translateX(-48px);--tl-dot-bg:var(--dark);--tl-dot-tf:scale(.7);--tl-ripple:none;--tl-ripple2:none;--tl-num:#2A2625}
 @media (min-width:960px){[data-tl="0"],[data-tl="2"]{--tl-card:translateX(-48px);--tl-side:translateX(48px)}}
 html:not(.js) [data-tl],[data-tl].is-active{--tl-op:1;--tl-card:none;--tl-side:none;--tl-dot-bg:var(--accent-soft);--tl-dot-tf:scale(1);--tl-ripple:mmRipple 1.8s cubic-bezier(.2,.8,.2,1) 0s 3;--tl-ripple2:mmRipple 1.8s cubic-bezier(.2,.8,.2,1) .6s 3;--tl-num:#5A4848}
-
-/* Gallery tiles: shape, reveal and hover */
 [data-gal]{display:block;flex:none;transition:opacity 600ms cubic-bezier(.2,.8,.2,1),transform 700ms cubic-bezier(.2,.8,.2,1)}
 [data-ratio="4/5"]{aspect-ratio:4/5}
 [data-ratio="3/2"]{aspect-ratio:3/2}
@@ -15,8 +11,6 @@ html.js [data-gal]:not(.is-revealed){opacity:0;transform:translateY(28px)}
 [data-on-click="openLightbox"]{--g-img:none;--g-hov:0;--g-icon:translateY(-6px);--g-desc:0fr}
 @media (max-width:959.98px){[data-on-click="openLightbox"]{--g-hov:1;--g-desc:1fr}}
 [data-on-click="openLightbox"]:hover,[data-on-click="openLightbox"]:focus{--g-img:scale(1.04);--g-hov:1;--g-icon:none;--g-desc:1fr}
-
-/* Lightbox slides (built by main.js from #site-data) */
 .lightbox__viewport{width:100%;height:100%;overflow:hidden;touch-action:pan-y pinch-zoom}
 .lightbox__track{display:flex;height:100%;gap:32px;transition:transform 680ms cubic-bezier(.22,1,.36,1);will-change:transform}
 .lightbox__slide{display:flex;height:100%;flex:0 0 100%;align-items:center;justify-content:center}
@@ -52,7 +46,7 @@ html.js [data-gal]:not(.is-revealed){opacity:0;transform:translateY(28px)}
 .hero__span-6{display:inline-flex;font-family:var(--serif);align-items:center;gap:8px;font-style:italic}
 .hero__span-7{display:inline-flex;color:var(--ink);font-weight:600;align-items:center;gap:8px}
 .about__section{max-width:1280px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(24px,5vw,56px) clamp(64px,8vw,112px)}
-.about__div{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:40px clamp(32px,4.5vw,64px);align-items:stretch}
+.about__div{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,376px),1fr));gap:40px clamp(32px,4.5vw,64px);align-items:stretch}
 .about__div-2{position:relative;max-width:var(--about-max);width:100%;min-height:var(--about-min-h);justify-self:var(--about-js);aspect-ratio:var(--about-ratio)}
 .about__img{position:absolute;width:100%;height:100%;border-radius:4px;background:var(--bg-2);inset:0;object-fit:cover;object-position:center 18%}
 .about__div-3{position:absolute;bottom:-12px;left:-12px;width:44%;height:44%;border-bottom:1px solid var(--accent-soft);border-left:1px solid var(--accent-soft);pointer-events:none}
@@ -212,3 +206,4 @@ html.js [data-gal]:not(.is-revealed){opacity:0;transform:translateY(28px)}
 .contact__input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(111,90,90,.22), 0 0 0 9px rgba(173,140,140,.12)}
 .contact__input-2:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(111,90,90,.22), 0 0 0 9px rgba(173,140,140,.12)}
 .contact__textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(111,90,90,.22), 0 0 0 9px rgba(173,140,140,.12)}
+@media (max-width:639.98px){[data-ref="hero-caption"]{height:22%}}
