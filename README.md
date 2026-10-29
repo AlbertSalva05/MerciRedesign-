@@ -19,30 +19,39 @@ A static, framework-free website: plain HTML, CSS and JavaScript, with no build 
 ## Pages
 | Page | URL | Sections |
 |---|---|---|
-| Home | `/` | Hero, About, Get It Sold timeline, Find Your Dream Home search, Photo Gallery, Our Services, Call or Visit |
-| Listings | `/#/listings` | Dark band with image wall, What's New at The Ridge, Upcoming Virtual Showings |
-| Let's Move | `/#/lets-move` | Dark band with image wall, Contact Us form and office hours, search |
-| About Us | `/#/about-us` | Dark band with portrait, About, Get It Sold, Our Services |
+| Home | `/index.html` | Hero, About, Get It Sold timeline, Find Your Dream Home search, Photo Gallery, Our Services, Call or Visit |
+| Listings | `/listings.html` | Dark band with image wall, What's New at The Ridge, Upcoming Virtual Showings |
+| Let's Move | `/lets-move.html` | Dark band with image wall, Contact Us form and office hours, search |
+| About Us | `/about-us.html` | Dark band with portrait, About, Get It Sold, Our Services |
 | 404 | any unknown path | Not-found page |
 
 ## Tech stack
-- **HTML5, CSS and vanilla JavaScript**, with inline styles and CSS variables for colour, type and easing
-- `assets/js/runtime.js`: a small renderer for state, routing and DOM updates
+- **HTML5** pages, one per route, with the markup in a `<template>`
+- **CSS** in `assets/css/styles.css`: design tokens, base styles, BEM-style component classes (`section__element`), states, keyframes. Inline styles are used only for values that change at runtime (scroll progress, open/closed states).
+- **Vanilla JavaScript**:
+  - `assets/js/runtime.js` is a small renderer and state layer
+  - `assets/js/app.js` holds the page logic shared by all pages
 - **Three.js r160** (jsDelivr CDN): light-beam effect on the subpage dark bands
 - **Google Fonts**: Libre Caslon Display, Libre Caslon Text, Source Sans 3
 - **Google Maps** embed with a custom brand pin
 
 ## Project structure
 ```
-index.html            All four pages (hash routes)
+index.html            Home
+listings.html         Listings
+lets-move.html        Let's Move
+about-us.html         About Us
 404.html              Not-found page
 assets/
-  js/                 runtime.js, light-beam.js
-  img/                Photos, partner badges, logo, hero and brush SVGs
+  css/styles.css      All styles
+  js/runtime.js       Renderer and state
+  js/app.js           Page logic
+  js/light-beam.js    Three.js light beam (subpages only)
+  img/                Photos, badges, logo, hero and brush SVGs
   logo/               Favicons and app icons
   og-image.jpg        Social share image
 robots.txt            Crawler rules
-sitemap.xml           Sitemap
+sitemap.xml           Sitemap (4 pages)
 site.webmanifest      App manifest
 render.yaml           Render static-site blueprint
 ```
@@ -71,5 +80,5 @@ Serve the folder with any static server, for example `npx serve .`, then open ht
 3. Render serves `404.html` for unknown paths.
 
 ## Before going live
-- Replace `https://marci-metzger-homes.onrender.com` with the real domain in `index.html`, `404.html`, `robots.txt` and `sitemap.xml`.
+- Replace `https://marci-metzger-homes.onrender.com` with the real domain in all `.html` files, `robots.txt` and `sitemap.xml`.
 - Connect a form service (for example Formspree) so the contact form delivers messages.

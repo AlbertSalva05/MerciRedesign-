@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://marci-metzger-homes.onrender.com/</loc>
     <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <image:image><image:loc>https://marci-metzger-homes.onrender.com/assets/img/img_hero_01_hq.jpg</image:loc></image:image>
-    <image:image><image:loc>https://marci-metzger-homes.onrender.com/assets/img/img_about_01_hq.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://marci-metzger-homes.onrender.com/listings.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://marci-metzger-homes.onrender.com/lets-move.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://marci-metzger-homes.onrender.com/about-us.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
