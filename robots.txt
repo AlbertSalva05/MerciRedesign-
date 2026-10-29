@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marci-metzger-homes.onrender.com/sitemap.xml
