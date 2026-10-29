@@ -42,7 +42,6 @@
 <script src="assets/js/light-beam.js" defer></script>
 </head>
 <body data-route="about">
-<noscript><p>Marci Metzger - The Ridge Realty Group. Call <a href="tel:2069196886">(206) 919-6886</a>.</p></noscript>
 <div id="app"></div>
 <template id="tpl">
 
@@ -129,9 +128,9 @@
       <li aria-current="page" class="about-us-hero__li-3">About Us</li>
     </ol>
   </nav>
-  <div class="about-us-hero__div-2">
-    <div style="justify-self:{{ aboutImgJs }}" class="about-us-hero__div-3">
-      <img src="assets/img/img_about_01_hq.jpg" alt="Portrait of Marci J Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" decoding="async" class="about-us-hero__img">
+  <div style="grid-template-columns:{{ aboutHeroCols }}" class="about-us-hero__div-2">
+    <div style="max-width:{{ aboutImgMax }};justify-self:{{ aboutImgJs }}" class="about-us-hero__div-3">
+      <img src="assets/img/img_about_01_hq.jpg" alt="Portrait of Marci J Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" decoding="async" style="aspect-ratio:{{ aboutImgRatio }}" class="about-us-hero__img">
       <div aria-hidden="true" class="about-us-hero__div-4"></div>
     </div>
     <div class="about-us-hero__div-5">
