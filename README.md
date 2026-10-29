@@ -37,23 +37,24 @@ A static, framework-free website: plain HTML, CSS and JavaScript, with no build 
 
 ## Project structure
 ```
-index.html            Home
-listings.html         Listings
-lets-move.html        Let's Move
-about-us.html         About Us
-404.html              Not-found page
+index.html, listings.html, lets-move.html, about-us.html, 404.html
 assets/
-  css/styles.css      All styles
-  js/runtime.js       Renderer and state
-  js/app.js           Page logic
-  js/light-beam.js    Three.js light beam (subpages only)
-  img/                Photos, badges, logo, hero and brush SVGs
-  logo/               Favicons and app icons
-  og-image.jpg        Social share image
-robots.txt            Crawler rules
-sitemap.xml           Sitemap (4 pages)
-site.webmanifest      App manifest
-render.yaml           Render static-site blueprint
+  css/
+    common.css      tokens, base, header, footer, shared components, keyframes
+    top.css         home-only components
+    listings.css    Listings-only components
+    lets-move.css   Let's Move-only components
+    about.css       About Us-only components
+  js/
+    common.js       runtime + footer smoke + app logic (all pages)
+    light-beam.js   Three.js light beam (Listings, Let's Move, About Us)
+  img/
+    common/         logo, brush highlights, og-image.jpg, icons/ (favicons, app icons)
+    top/            home: hero, gallery, Get it Sold, services, partner badges
+    listings/       Listings image wall
+    lets-move/      Let's Move image wall
+    about/          Marci portrait
+robots.txt, sitemap.xml, site.webmanifest, render.yaml
 ```
 
 ## Design system

@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://marci-metzger-homes.onrender.com/about-us.html">
 <meta property="og:title" content="About Us | Marci Metzger | The Ridge Realty Group">
 <meta property="og:description" content="MARCI METZGER - THE RIDGE REALTY GROUP. Pahrump Realtor for nearly 3 decades. Call (206) 919-6886.">
-<meta property="og:image" content="https://marci-metzger-homes.onrender.com/assets/og-image.jpg">
+<meta property="og:image" content="https://marci-metzger-homes.onrender.com/assets/img/common/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,19 +26,21 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About Us | Marci Metzger | The Ridge Realty Group">
 <meta name="twitter:description" content="MARCI METZGER - THE RIDGE REALTY GROUP. Pahrump Realtor for nearly 3 decades.">
-<meta name="twitter:image" content="https://marci-metzger-homes.onrender.com/assets/og-image.jpg">
+<meta name="twitter:image" content="https://marci-metzger-homes.onrender.com/assets/img/common/og-image.jpg">
 <meta name="twitter:image:alt" content="Marci Metzger Homes logo and the words Pahrump Realtor beside a pond with fountains and desert mountains">
-<link rel="icon" href="assets/logo/logo_mark_01.svg" type="image/svg+xml">
-<link rel="icon" href="assets/logo/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="icon" href="assets/img/common/icons/logo_mark_01.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/common/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/common/icons/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Marci Metzger - The Ridge Realty Group","url":"https://marci-metzger-homes.onrender.com/","image":"https://marci-metzger-homes.onrender.com/assets/og-image.jpg","telephone":"+1-206-919-6886","address":{"@type":"PostalAddress","streetAddress":"3190 HW-160, Suite F","addressLocality":"Pahrump","addressRegion":"NV","postalCode":"89048","addressCountry":"US"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"19:00"},"sameAs":["https://www.facebook.com/MarciHomes/","https://www.instagram.com/marcimetzger_theridge/","https://www.linkedin.com/in/marci-metzger-30642496/","https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Marci Metzger - The Ridge Realty Group","url":"https://marci-metzger-homes.onrender.com/","image":"https://marci-metzger-homes.onrender.com/assets/img/common/og-image.jpg","telephone":"+1-206-919-6886","address":{"@type":"PostalAddress","streetAddress":"3190 HW-160, Suite F","addressLocality":"Pahrump","addressRegion":"NV","postalCode":"89048","addressCountry":"US"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"19:00"},"sameAs":["https://www.facebook.com/MarciHomes/","https://www.instagram.com/marcimetzger_theridge/","https://www.linkedin.com/in/marci-metzger-30642496/","https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=Source+Sans+3:wght@400;600&amp;display=swap">
-<link rel="stylesheet" href="assets/css/styles.css">
-<script src="assets/js/runtime.js" defer></script>
-<script src="assets/js/app.js" defer></script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" as="image" href="assets/img/about/img_about_01_hq.jpg" fetchpriority="high">
+<link rel="stylesheet" href="assets/css/common.css">
+<link rel="stylesheet" href="assets/css/about.css">
+<script src="assets/js/common.js" defer></script>
 <script src="assets/js/light-beam.js" defer></script>
 </head>
 <body data-route="about">
@@ -52,7 +54,7 @@
 <header class="site-header header__header" style="box-shadow:{{ hdrShadow }}">
   <div class="header__div">
     <a href="index.html" aria-label="Marci Metzger Homes, home" class="header__a">
-      <img src="assets/img/img_logo_01.png" alt="Marci Metzger Homes" width="154" height="48" class="header__img">
+      <img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="154" height="48" class="header__img">
     </a>
     <sc-if value="{{ hdrDesktop }}" hint-placeholder-val="{{ true }}">
       <nav class="nav-menu header__nav" aria-label="Main">
@@ -81,7 +83,7 @@
       <button type="button" onclick="{{ toggleMenu }}" aria-expanded="{{ menuOpenStr }}" aria-controls="mobile-nav" aria-label="{{ menuLabel }}" class="header__button-2">
         <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></sc-if>
         <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg></sc-if>
-        <span aria-hidden="true" class="header__span-5">{{ menuText }}</span>
+        <span aria-hidden="true">{{ menuText }}</span>
       </button>
     </sc-if>
   </div>
@@ -90,7 +92,7 @@
   <div aria-hidden="true" onclick="{{ closeMenu }}" class="app__div-2"></div>
   <nav id="mobile-nav" aria-label="Main" class="app__nav">
     <div class="app__div-3">
-      <a href="index.html" onclick="{{ closeMenu }}" aria-label="Marci Metzger Homes, home" class="app__a-2"><img src="assets/img/img_logo_01.png" alt="Marci Metzger Homes" width="128" height="40" class="app__img"></a>
+      <a href="index.html" onclick="{{ closeMenu }}" aria-label="Marci Metzger Homes, home" class="app__a-2"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="128" height="40" class="app__img"></a>
       <button type="button" onclick="{{ closeMenu }}" aria-label="Close menu" class="app__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>Close</button>
     </div>
     <ul class="app__ul">
@@ -130,11 +132,12 @@
   </nav>
   <div style="grid-template-columns:{{ aboutHeroCols }}" class="about-us-hero__div-2">
     <div style="max-width:{{ aboutImgMax }};justify-self:{{ aboutImgJs }}" class="about-us-hero__div-3">
-      <img src="assets/img/img_about_01_hq.jpg" alt="Portrait of Marci J Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" decoding="async" style="aspect-ratio:{{ aboutImgRatio }}" class="about-us-hero__img">
+      <img fetchpriority="high" src="assets/img/about/img_about_01_hq.jpg" alt="Portrait of Marci J Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" decoding="async" style="aspect-ratio:{{ aboutImgRatio }}" class="about-us-hero__img">
+      <span aria-hidden="true" class="about-us-hero__span"><span style="animation:{{ shimmerAnim }}" class="about-us-hero__span-2"></span></span>
       <div aria-hidden="true" class="about-us-hero__div-4"></div>
     </div>
     <div class="about-us-hero__div-5">
-      <h1 id="page-title" class="about-us-hero__h1"><span style="animation:{{ nameGlint }}" class="about-us-hero__span">Marci J Metzger</span></h1>
+      <h1 id="page-title" class="about-us-hero__h1"><span style="animation:{{ nameGlint }}" class="about-us-hero__span-3">Marci J Metzger</span></h1>
       <p class="about-us-hero__p">REALTOR for Nearly Three Decades</p>
       <div class="about-us-hero__div-6">
         <a href="tel:2069196886" class="about-us-hero__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg>Call Marci</a>
@@ -146,7 +149,7 @@
 
 <section id="about-bio" aria-labelledby="bio-title" data-screen-label="About bio" class="about-bio__section">
   <div class="about-bio__div">
-    <div class="about-bio__div-2">
+    <div data-reveal="left" class="about-bio__div-2">
       <div class="about-bio__div-3">
         <h2 id="bio-title" class="about-bio__h2"><span style="animation:{{ nameGlint }}" class="about-bio__span">Marci J Metzger</span></h2>
         <p class="about-bio__p">Marci was a REALTOR, then licensed Broker, in Washington State. Now, she is enjoying the sunshine, and helping clients in Southern Nevada. Having helped buyers and sellers in many markets since 1995, she is a wealth of knowledge.</p>
@@ -160,11 +163,11 @@
         </blockquote>
       </figure>
     </div>
-    <div class="about-bio__div-4">
-      <img src="assets/img/img_sold_02.jpg" alt="A white stucco home with a tile roof, lit covered patio and a free-form pool at dusk, mountains behind" width="1600" height="1065" loading="lazy" decoding="async" class="about-bio__img">
+    <div data-reveal="img" data-reveal-i="1" class="about-bio__div-4">
+      <img src="assets/img/top/img_sold_02.jpg" alt="A white stucco home with a tile roof, lit covered patio and a free-form pool at dusk, mountains behind" width="1600" height="1065" loading="lazy" decoding="async" style="animation:{{ driftAnim }}" class="about-bio__img">
       <div aria-hidden="true" class="about-bio__div-5"></div>
-      <div aria-hidden="true" class="about-bio__div-6"></div>
-      <div class="about-bio__div-7">
+      <div data-reveal-sub="frame" aria-hidden="true" class="about-bio__div-6"></div>
+      <div data-reveal-sub="caption" class="about-bio__div-7">
         <span aria-hidden="true" class="about-bio__span-4"></span>
         <span class="about-bio__span-5">Pahrump, Nevada</span>
       </div>
@@ -176,11 +179,12 @@
 </main>
 
 <footer id="site-footer" class="site-footer footer__footer" data-screen-label="Footer">
+  <mm-smoke class="footer__mm-smoke"></mm-smoke>
   <div class="footer__div">
     <button type="button" onclick="{{ toTop }}" aria-label="Back to top" class="footer__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
     <div style="grid-template-columns:{{ footCols }}" class="footer__div-2">
       <div style="grid-column:{{ footBrand }}" class="footer__div-3">
-        <a data-link="" href="index.html" aria-label="Marci Metzger Homes, home" class="footer__a"><img src="assets/img/img_logo_01.png" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></a>
+        <a data-link="" href="index.html" aria-label="Marci Metzger Homes, home" class="footer__a"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></a>
         <p class="footer__p">Marci Metzger - THE RIDGE REALTY GROUP</p>
       </div>
       <nav aria-labelledby="ft-explore" class="footer__nav">

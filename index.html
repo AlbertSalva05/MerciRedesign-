@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://marci-metzger-homes.onrender.com/">
 <meta property="og:title" content="Marci Metzger Homes | Pahrump Realtor">
 <meta property="og:description" content="MARCI METZGER - THE RIDGE REALTY GROUP. Pahrump Realtor for nearly 3 decades. Call (206) 919-6886.">
-<meta property="og:image" content="https://marci-metzger-homes.onrender.com/assets/og-image.jpg">
+<meta property="og:image" content="https://marci-metzger-homes.onrender.com/assets/img/common/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,20 +26,21 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Marci Metzger Homes | Pahrump Realtor">
 <meta name="twitter:description" content="MARCI METZGER - THE RIDGE REALTY GROUP. Pahrump Realtor for nearly 3 decades.">
-<meta name="twitter:image" content="https://marci-metzger-homes.onrender.com/assets/og-image.jpg">
+<meta name="twitter:image" content="https://marci-metzger-homes.onrender.com/assets/img/common/og-image.jpg">
 <meta name="twitter:image:alt" content="Marci Metzger Homes logo and the words Pahrump Realtor beside a pond with fountains and desert mountains">
-<link rel="icon" href="assets/logo/logo_mark_01.svg" type="image/svg+xml">
-<link rel="icon" href="assets/logo/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="icon" href="assets/img/common/icons/logo_mark_01.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/common/icons/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/common/icons/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Marci Metzger - The Ridge Realty Group","url":"https://marci-metzger-homes.onrender.com/","image":"https://marci-metzger-homes.onrender.com/assets/og-image.jpg","telephone":"+1-206-919-6886","address":{"@type":"PostalAddress","streetAddress":"3190 HW-160, Suite F","addressLocality":"Pahrump","addressRegion":"NV","postalCode":"89048","addressCountry":"US"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"19:00"},"sameAs":["https://www.facebook.com/MarciHomes/","https://www.instagram.com/marcimetzger_theridge/","https://www.linkedin.com/in/marci-metzger-30642496/","https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Marci Metzger - The Ridge Realty Group","url":"https://marci-metzger-homes.onrender.com/","image":"https://marci-metzger-homes.onrender.com/assets/img/common/og-image.jpg","telephone":"+1-206-919-6886","address":{"@type":"PostalAddress","streetAddress":"3190 HW-160, Suite F","addressLocality":"Pahrump","addressRegion":"NV","postalCode":"89048","addressCountry":"US"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"19:00"},"sameAs":["https://www.facebook.com/MarciHomes/","https://www.instagram.com/marcimetzger_theridge/","https://www.linkedin.com/in/marci-metzger-30642496/","https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="preload" as="image" href="assets/img/img_hero_01_w1280.jpg" imagesrcset="assets/img/img_hero_01_w1280.jpg 1280w, assets/img/img_hero_01_hq.jpg 2400w" imagesizes="100vw">
+<link rel="preload" as="image" href="assets/img/top/img_hero_01_w1280.jpg" imagesrcset="assets/img/top/img_hero_01_w1280.jpg 1280w, assets/img/top/img_hero_01_hq.jpg 2400w" imagesizes="100vw">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Libre+Caslon+Text:ital@0;1&amp;family=Source+Sans+3:wght@400;600&amp;display=swap">
-<link rel="stylesheet" href="assets/css/styles.css">
-<script src="assets/js/runtime.js" defer></script>
-<script src="assets/js/app.js" defer></script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="assets/css/common.css">
+<link rel="stylesheet" href="assets/css/top.css">
+<script src="assets/js/common.js" defer></script>
 </head>
 <body data-route="home">
 <div id="app"></div>
@@ -52,7 +53,7 @@
 <header class="site-header header__header" style="box-shadow:{{ hdrShadow }}">
   <div class="header__div">
     <a href="#home" aria-label="Marci Metzger Homes, home" class="header__a">
-      <img src="assets/img/img_logo_01.png" alt="Marci Metzger Homes" width="154" height="48" class="header__img">
+      <img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="154" height="48" class="header__img">
     </a>
     <sc-if value="{{ hdrDesktop }}" hint-placeholder-val="{{ true }}">
       <nav class="nav-menu header__nav" aria-label="Main">
@@ -81,7 +82,7 @@
       <button type="button" onclick="{{ toggleMenu }}" aria-expanded="{{ menuOpenStr }}" aria-controls="mobile-nav" aria-label="{{ menuLabel }}" class="header__button-2">
         <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></sc-if>
         <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg></sc-if>
-        <span aria-hidden="true" class="header__span-5">{{ menuText }}</span>
+        <span aria-hidden="true">{{ menuText }}</span>
       </button>
     </sc-if>
   </div>
@@ -90,7 +91,7 @@
   <div aria-hidden="true" onclick="{{ closeMenu }}" class="app__div-2"></div>
   <nav id="mobile-nav" aria-label="Main" class="app__nav">
     <div class="app__div-3">
-      <a href="#home" onclick="{{ closeMenu }}" aria-label="Marci Metzger Homes, home" class="app__a-2"><img src="assets/img/img_logo_01.png" alt="Marci Metzger Homes" width="128" height="40" class="app__img"></a>
+      <a href="#home" onclick="{{ closeMenu }}" aria-label="Marci Metzger Homes, home" class="app__a-2"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="128" height="40" class="app__img"></a>
       <button type="button" onclick="{{ closeMenu }}" aria-label="Close menu" class="app__button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg>Close</button>
     </div>
     <ul class="app__ul">
@@ -118,7 +119,7 @@
 <section id="home" ref="{{ heroRef }}" aria-labelledby="hero-title" data-screen-label="Hero" style="height:{{ heroH }}" class="hero__section">
   <div class="hero__div">
     <div ref="{{ heroFrame }}" class="hero__div-2">
-      <img src="assets/img/img_hero_01_w1280.jpg" srcset="assets/img/img_hero_01_w1280.jpg 1280w, assets/img/img_hero_01_hq.jpg 2400w" sizes="100vw" alt="Green lawn and a pond with fountains in front of tall pines, desert mountains and a clear blue sky in the Pahrump valley" width="2400" height="1594" fetchpriority="high" decoding="async" class="hero__img">
+      <img src="assets/img/top/img_hero_01_w1280.jpg" srcset="assets/img/top/img_hero_01_w1280.jpg 1280w, assets/img/top/img_hero_01_hq.jpg 2400w" sizes="100vw" alt="Green lawn and a pond with fountains in front of tall pines, desert mountains and a clear blue sky in the Pahrump valley" width="2400" height="1594" fetchpriority="high" decoding="async" class="hero__img">
       <div aria-hidden="true" class="hero__div-3"></div>
       <div aria-hidden="true" class="hero__div-4"></div>
     </div>
@@ -158,8 +159,8 @@
 
 <section id="about" aria-labelledby="about-title" data-screen-label="About" class="about__section">
   <div class="about__div">
-    <div style="aspect-ratio:{{ aboutRatio }}" class="about__div-2">
-      <img src="assets/img/img_about_01_hq.jpg" alt="Portrait of Marci Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" loading="lazy" decoding="async" class="about__img">
+    <div data-reveal="img" style="max-width:{{ aboutMax }};min-height:{{ aboutMinH }};justify-self:{{ aboutJs2 }};aspect-ratio:{{ aboutRatio }}" class="about__div-2">
+      <img src="assets/img/about/img_about_01_hq.jpg" alt="Portrait of Marci Metzger, smiling, in a navy blazer against a charcoal backdrop" width="1000" height="1250" loading="lazy" decoding="async" class="about__img">
       <div aria-hidden="true" class="about__div-3"></div>
     </div>
     <div class="about__div-4">
@@ -174,8 +175,8 @@
         <ul aria-labelledby="affil-label" class="about__ul">
         <sc-for list="{{ badges }}" as="b" hint-placeholder-count="4">
           <sc-if value="{{ b.ok }}" hint-placeholder-val="{{ false }}">
-            <li class="about__li">
-              <span class="about__span-2"><img src="{{ b.src }}" alt="{{ b.alt }}" height="60" loading="lazy" onerror="{{ b.onError }}" class="about__img-2"></span>
+            <li data-reveal="up" data-reveal-i="{{ $index }}" class="about__li">
+              <span class="about__span-2"><img decoding="async" src="{{ b.src }}" alt="{{ b.alt }}" width="60" height="60" loading="lazy" onerror="{{ b.onError }}" class="about__img-2"></span>
               <span class="about__span-3">{{ b.alt }}</span>
             </li>
           </sc-if>
@@ -198,7 +199,7 @@
     <div data-tl="0" style="grid-template-columns:{{ tlCols }};column-gap:{{ tlGap }}" class="get-it-sold__div-6">
       <article style="opacity:{{ tl0.op }};grid-column:{{ cardL }};transform:{{ tl0.cardTf }}" class="get-it-sold__article">
         <div class="get-it-sold__div-7">
-          <img src="assets/img/img_sold_01.jpg" alt="Bright open-plan kitchen with a white stone island, pendant lights and a living room with a stone fireplace beyond" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
+          <img src="assets/img/top/img_sold_01.jpg" alt="Bright open-plan kitchen with a white stone island, pendant lights and a living room with a stone fireplace beyond" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
           <div class="get-it-sold__div-9">
             <h3 class="get-it-sold__h3">Top Residential Sales Last 5 Years</h3>
@@ -225,7 +226,7 @@
     <div data-tl="1" style="grid-template-columns:{{ tlCols }};column-gap:{{ tlGap }}" class="get-it-sold__div-6">
       <article style="opacity:{{ tl1.op }};grid-column:{{ cardR }};transform:{{ tl1.cardTf }}" class="get-it-sold__article">
         <div class="get-it-sold__div-7">
-          <img src="assets/img/img_sold_02.jpg" alt="A white stucco home with a tile roof, lit covered patio and a free-form pool at dusk, mountains behind" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
+          <img src="assets/img/top/img_sold_02.jpg" alt="A white stucco home with a tile roof, lit covered patio and a free-form pool at dusk, mountains behind" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
           <div class="get-it-sold__div-9">
             <h3 class="get-it-sold__h3">Don't Just List it...</h3>
@@ -252,7 +253,7 @@
     <div data-tl="2" style="grid-template-columns:{{ tlCols }};column-gap:{{ tlGap }}" class="get-it-sold__div-6">
       <article style="opacity:{{ tl2.op }};grid-column:{{ cardL }};transform:{{ tl2.cardTf }}" class="get-it-sold__article">
         <div class="get-it-sold__div-7">
-          <img src="assets/img/img_sold_03.jpg" alt="House keys on a red house-shaped key ring, resting on weathered wood" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
+          <img src="assets/img/top/img_sold_03.jpg" alt="House keys on a red house-shaped key ring, resting on weathered wood" width="1600" height="1065" loading="lazy" decoding="async" class="get-it-sold__img">
           <div aria-hidden="true" class="get-it-sold__div-8"></div>
           <div class="get-it-sold__div-9">
             <h3 class="get-it-sold__h3">Guide to Buyers</h3>
@@ -285,7 +286,7 @@
     <h2 id="search-title" class="find-your-dream-home__h2">Find Your <span data-mark="1" class="find-your-dream-home__span">Dream Home<span aria-hidden="true" style="clip-path:{{ mark1 }}" class="find-your-dream-home__span-2"></span></span></h2>
     <div class="find-your-dream-home__div-2"><a href="listings.html" class="find-your-dream-home__a">Browse current listings<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a></div>
   </div>
-  <form name="listing-search" onsubmit="{{ onSearch }}" novalidate="" class="find-your-dream-home__form">
+  <form data-reveal="form" data-reveal-i="0" name="listing-search" onsubmit="{{ onSearch }}" novalidate="" class="find-your-dream-home__form">
     <h3 class="find-your-dream-home__h3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>Search Listings</h3>
     <div class="find-your-dream-home__div-3">
       <sc-for list="{{ selects }}" as="f" hint-placeholder-count="4">
@@ -372,17 +373,17 @@
     </div>
     <ul class="our-services__ul">
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-4"><img src="assets/img/img_services_01.jpg" alt="White pallet coffee table with a plant, a hyacinth and books in front of a grey sofa" width="737" height="722" loading="lazy" decoding="async" class="our-services__img"><span aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 21V5l8-2v18"></path><path d="M12 9h8v12"></path><path d="M2 21h20"></path><path d="M7 8h2"></path><path d="M7 12h2"></path><path d="M7 16h2"></path><path d="M15 13h2"></path><path d="M15 17h2"></path></svg></span></div>
+        <div class="our-services__div-4"><img src="assets/img/top/img_services_01.jpg" alt="White pallet coffee table with a plant, a hyacinth and books in front of a grey sofa" width="737" height="722" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 21V5l8-2v18"></path><path d="M12 9h8v12"></path><path d="M2 21h20"></path><path d="M7 8h2"></path><path d="M7 12h2"></path><path d="M7 16h2"></path><path d="M15 13h2"></path><path d="M15 17h2"></path></svg></span></div>
         <h3 class="our-services__h3">Nervous about your property adventure? Don't be.</h3>
         <p class="our-services__p-3">Whether you're getting ready to buy or sell your residence, looking at investment properties, or just curious about the markets, our team ensures you get the best experience possible!</p>
       </li>
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-4"><img src="assets/img/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="our-services__img"><span aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="15" r="4"></circle><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg></span></div>
+        <div class="our-services__div-4"><img src="assets/img/listings/img_listings_03.jpg" alt="Modern white two-story home with floor-to-ceiling glass, a lap pool and lawn, green mountains beyond" width="1059" height="710" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="8" cy="15" r="4"></circle><path d="M11 12l9-9"></path><path d="M16 7l3 3"></path></svg></span></div>
         <h3 class="our-services__h3">Large or small, condo or mansion</h3>
         <p class="our-services__p-3">We can find it and get at the price that's right. Fixer-uppers? Luxury? We can help with all of it! We live, work, and play in this community. Happy to help you find where to put your hard-earned dollars.</p>
       </li>
       <li data-svc="" class="our-services__div-3">
-        <div class="our-services__div-4"><img src="assets/img/img_services_03.jpg" alt="Smiling client shaking hands across a table with a laptop" width="600" height="520" loading="lazy" decoding="async" class="our-services__img"><span aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span></div>
+        <div class="our-services__div-4"><img src="assets/img/top/img_services_03.jpg" alt="Smiling client shaking hands across a table with a laptop" width="600" height="520" loading="lazy" decoding="async" class="our-services__img"><span data-svc-ic="" aria-hidden="true" class="our-services__span-3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span></div>
         <h3 class="our-services__h3">Rely on Expertise</h3>
         <p class="our-services__p-3">If you have questions about affordability, credit, and loan options, trust us to connect you with the right people to get the answers you need in a timely fashion. We make sure you feel confident and educated every step of the way.</p>
       </li>
@@ -400,7 +401,7 @@
   </div>
   <div class="contact__div-3">
     <div class="contact__div-4">
-      <div style="aspect-ratio:{{ mapRatio }}" class="contact__div-5">
+      <div data-reveal="img" style="aspect-ratio:{{ mapRatio }}" class="contact__div-5">
         <iframe title="Map showing 3190 HW-160, Suite F, Pahrump, Nevada" src="https://maps.google.com/maps?q=3190%20HW-160%20Suite%20F%2C%20Pahrump%2C%20NV%2089048&amp;z=14&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="contact__iframe"></iframe>
         <div aria-hidden="true" class="contact__div-6">
           <span style="animation:{{ pinPulse }}" class="contact__span-3"></span>
@@ -410,13 +411,13 @@
         </div>
       </div>
       <address class="contact__address">
-        <div class="contact__div-7"><span aria-hidden="true" class="contact__span-6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span>
+        <div data-reveal="up" data-reveal-i="1" class="contact__div-7"><span aria-hidden="true" class="contact__span-6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span>
           <div class="contact__div-8"><span class="contact__span-7">Phone</span><a data-link="" href="tel:2069196886" class="contact__a">(206) 919-6886</a></div>
         </div>
-        <div class="contact__div-7"><span aria-hidden="true" class="contact__span-6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span>
+        <div data-reveal="up" data-reveal-i="2" class="contact__div-7"><span aria-hidden="true" class="contact__span-6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg></span>
           <div class="contact__div-9"><span class="contact__span-7">Address</span><span class="contact__span-8">3190 HW-160, Suite F<br>Pahrump, Nevada 89048, United States</span></div>
         </div>
-        <div class="contact__div-7"><span aria-hidden="true" class="contact__span-6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
+        <div data-reveal="up" data-reveal-i="3" class="contact__div-7"><span aria-hidden="true" class="contact__span-6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>
           <div class="contact__div-10">
             <div class="contact__div-11"><span class="contact__span-7">Office Hours</span><span class="contact__span-9"><span aria-hidden="true" style="background:{{ openDot }}" class="contact__span-10"></span>{{ openLabel }}</span></div>
             <p class="contact__p-2"><span class="contact__span-11">Open daily</span><span class="contact__span-12">8:00 am - 7:00 pm</span></p>
@@ -426,7 +427,7 @@
       </address>
       <a href="https://www.google.com/maps/dir/?api=1&amp;destination=3190+HW-160+Suite+F+Pahrump+NV+89048" target="_blank" rel="noopener" class="contact__a-2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 11l18-8-8 18-2-8z"></path></svg>Get directions<span class="contact__span-13"> (opens Google Maps in a new tab)</span></a>
     </div>
-    <form name="contact" method="POST" onsubmit="{{ onContact }}" novalidate="" class="contact__form">
+    <form data-reveal="form" data-reveal-i="0" name="contact" method="POST" onsubmit="{{ onContact }}" novalidate="" class="contact__form">
       <input type="hidden" name="form-name" value="contact">
       <h3 class="contact__h3-2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>Send Message</h3>
       <div class="contact__div-12">
@@ -458,11 +459,12 @@
 </main>
 
 <footer id="site-footer" class="site-footer footer__footer" data-screen-label="Footer">
+  <mm-smoke class="footer__mm-smoke"></mm-smoke>
   <div class="footer__div">
     <button type="button" onclick="{{ toTop }}" aria-label="Back to top" class="footer__button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"></path><path d="M6 11l6-6 6 6"></path></svg></button>
     <div style="grid-template-columns:{{ footCols }}" class="footer__div-2">
       <div style="grid-column:{{ footBrand }}" class="footer__div-3">
-        <a data-link="" href="#home" aria-label="Marci Metzger Homes, home" class="footer__a"><img src="assets/img/img_logo_01.png" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></a>
+        <a data-link="" href="#home" aria-label="Marci Metzger Homes, home" class="footer__a"><img decoding="async" src="assets/img/common/img_logo_01.png" alt="Marci Metzger Homes" width="192" height="60" loading="lazy" class="footer__img"></a>
         <p class="footer__p">Marci Metzger - THE RIDGE REALTY GROUP</p>
       </div>
       <nav aria-labelledby="ft-explore" class="footer__nav">
