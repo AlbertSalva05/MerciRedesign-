@@ -5,9 +5,13 @@
 @font-face{font-family:'Libre Caslon Text';font-style:italic;font-weight:400;font-display:swap;src:url(../fonts/libre-caslon-text-italic-400.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/libre-caslon-text-normal-400.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
 @font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400 600;font-display:swap;src:url(../fonts/source-sans-3-variable.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Caslon Display Fallback';src:local('Times New Roman'),local('Liberation Serif');size-adjust:96.25%;ascent-override:100.8%;descent-override:28.05%;line-gap-override:0%}
+@font-face{font-family:'Caslon Text Fallback';font-style:normal;src:local('Times New Roman'),local('Liberation Serif');size-adjust:120.3%;ascent-override:80.65%;descent-override:21.6%;line-gap-override:0%}
+@font-face{font-family:'Caslon Text Fallback';font-style:italic;src:local('Times New Roman Italic'),local('TimesNewRomanPS-ItalicMT'),local('Liberation Serif Italic');size-adjust:125.4%;ascent-override:77.3%;descent-override:20.7%;line-gap-override:0%}
+@font-face{font-family:'Source Sans Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:93.4%;ascent-override:109.2%;descent-override:42.8%;line-gap-override:0%}
 
 /* Base */
-:root{--bg:#FAF8F5;--bg-2:#F1EDE8;--surface:#FFFFFF;--ink:#1B1B1B;--ink-2:#575757;--line:#DCD6D0;--accent:#6F5A5A;--accent-hover:#574545;--accent-soft:#AD8C8C;--dark:#161616;--on-dark:#F6F3F0;--on-dark-2:#C9C1BB;--display:'Libre Caslon Display',Georgia,serif;--serif:'Libre Caslon Text',Georgia,serif;--sans:'Source Sans 3','Source Sans Pro',Arial,sans-serif;--ease:cubic-bezier(.2,.8,.2,1);--shadow-2:0 4px 12px rgba(22,22,22,.10);--shadow-3:0 12px 32px rgba(22,22,22,.16)}
+:root{--bg:#FAF8F5;--bg-2:#F1EDE8;--surface:#FFFFFF;--ink:#1B1B1B;--ink-2:#575757;--line:#DCD6D0;--accent:#6F5A5A;--accent-hover:#574545;--accent-soft:#AD8C8C;--dark:#161616;--on-dark:#F6F3F0;--on-dark-2:#C9C1BB;--display:'Libre Caslon Display','Caslon Display Fallback',serif;--serif:'Libre Caslon Text','Caslon Text Fallback',serif;--sans:'Source Sans 3','Source Sans Fallback',sans-serif;--ease:cubic-bezier(.2,.8,.2,1);--shadow-2:0 4px 12px rgba(22,22,22,.10);--shadow-3:0 12px 32px rgba(22,22,22,.16)}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-size:1rem;font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -70,7 +74,7 @@ html:not(.js) [data-mark],[data-mark].is-marked{--mark-clip:inset(0 0% 0 0)}
 .header__header{position:sticky;top:0;z-index:40;border-bottom:1px solid var(--line);background:var(--bg);box-shadow:var(--header-shadow);transition:box-shadow 200ms var(--ease)}
 .header__div{display:flex;max-width:1280px;height:80px;margin:0 auto;padding:0 clamp(24px,5vw,56px);align-items:center;gap:16px}
 .header__a{display:flex;min-height:48px;margin-right:auto;align-items:center}
-.header__img{width:auto;height:48px}
+.header__img{width:154px;height:48px}
 .header__nav{display:flex;align-items:center;gap:24px}
 .header__ul{display:flex;margin:0;padding:0;list-style:none;gap:4px}
 .header__a-2{display:flex;min-height:48px;padding:0 16px;border-bottom:2px solid var(--nav-line);color:var(--nav-color);font-size:1rem;font-weight:var(--nav-weight);white-space:nowrap;text-decoration:none;align-items:center;gap:8px;transition:color 160ms var(--ease), border-color 160ms var(--ease)}
@@ -93,7 +97,7 @@ html:not(.js) [data-mark],[data-mark].is-marked{--mark-clip:inset(0 0% 0 0)}
 .drawer__nav{display:flex;position:fixed;top:0;right:0;bottom:0;z-index:61;max-width:360px;width:100%;padding:16px 24px;background:var(--surface);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;flex-direction:column;box-shadow:var(--shadow-3);animation:mmDrawer 320ms var(--ease)}
 .drawer__div{display:flex;min-height:48px;margin-bottom:8px;align-items:center;justify-content:space-between;gap:16px;flex:none}
 .drawer__a{display:flex;min-height:48px;align-items:center}
-.drawer__img{width:auto;height:32px}
+.drawer__img{width:102px;height:32px}
 .drawer__button{display:inline-flex;min-height:48px;padding:0 16px;border:1px solid var(--ink);border-radius:2px;background:transparent;color:var(--ink);font-size:1rem;font-weight:600;cursor:pointer;align-items:center;gap:8px;transition:background 160ms var(--ease), color 160ms var(--ease)}
 .drawer__ul{display:flex;margin:0;padding:0;list-style:none;flex-direction:column}
 .drawer__li{border-bottom:1px solid var(--line)}
@@ -134,7 +138,7 @@ html:not(.js) [data-mark],[data-mark].is-marked{--mark-clip:inset(0 0% 0 0)}
 .footer__div-2{display:grid;padding-bottom:48px;grid-template-columns:var(--foot-cols);gap:40px 48px}
 .footer__div-3{display:flex;grid-column:var(--foot-brand);flex-direction:column;gap:16px}
 .footer__a{display:flex;min-height:48px;align-self:flex-start}
-.footer__img{width:auto;height:56px;filter:invert(1)}
+.footer__img{width:179px;height:56px;filter:invert(1)}
 .footer__p{max-width:36ch;color:var(--on-dark-2);font-size:1rem}
 .footer__nav{display:flex;min-width:0;flex-direction:column}
 .footer__h2{margin:0 0 8px;color:var(--on-dark-2);font-size:0.875rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
@@ -206,4 +210,5 @@ html:not(.js) [data-mark],[data-mark].is-marked{--mark-clip:inset(0 0% 0 0)}
 picture{display:contents}
 mm-smoke.is-static{background:radial-gradient(120% 90% at 50% 100%,rgba(180,131,141,.42) 0%,rgba(122,88,102,.24) 45%,rgba(22,22,22,0) 80%)}
 mm-light-beam.is-static{background:linear-gradient(128deg,rgba(233,214,207,.16) 0%,rgba(233,214,207,.06) 28%,rgba(233,214,207,0) 52%)}
+html.is-loading *,html.is-loading *::before,html.is-loading *::after{transition:none!important}
 .icon-toggle:not([hidden]){display:contents}

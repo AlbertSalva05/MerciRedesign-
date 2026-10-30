@@ -38,7 +38,7 @@ html.js [data-gal]:not(.is-revealed){opacity:0;transform:translateY(28px)}
 .hero__a-2{display:inline-flex;min-height:56px;padding:0 24px;border:1px solid #FFFFFF;border-radius:2px;color:#FFFFFF;font-size:1rem;font-weight:600;text-decoration:none;letter-spacing:.06em;align-items:center;gap:8px;text-transform:uppercase;transition:background 200ms var(--ease), color 200ms var(--ease)}
 .hero__a-3{display:grid;position:relative;width:clamp(104px,10vw,144px);height:clamp(104px,10vw,144px);border:1px solid rgba(255,255,255,.4);border-radius:50%;background:rgba(24,20,19,.62);color:#FFFFFF;text-decoration:none;flex:none;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background 250ms var(--ease), transform 250ms var(--ease)}
 .hero__svg{position:absolute;width:100%;height:100%;inset:0;animation:mmSpin 28s linear infinite}
-.hero__text{font-size:12px;font-weight:600;font-family:'Source Sans 3',Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+.hero__text{font-size:12px;font-weight:600;font-family:var(--sans);letter-spacing:.18em;text-transform:uppercase}
 .hero__span-5{display:grid;position:relative;width:44%;height:44%;border-radius:50%;background:#FAF8F5;color:var(--accent);place-items:center}
 .hero__svg-2{animation:mmBob 1.6s ease-in-out infinite}
 .hero__div-9{display:flex;position:absolute;right:0;bottom:0;left:0;height:16%;opacity:0;align-items:center;justify-content:center;pointer-events:none}
