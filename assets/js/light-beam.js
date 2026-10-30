@@ -35,7 +35,10 @@
         this.gate = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) { this.gate.disconnect(); start(); } }, { rootMargin: '200px' });
         this.gate.observe(this);
       };
-      if (document.readyState === 'complete') watch(); else window.addEventListener('load', watch, { once: true });
+      const EV = ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart', 'scroll'];
+      const onFirstInput = () => { EV.forEach(e => window.removeEventListener(e, onFirstInput)); watch(); };
+      const arm = () => EV.forEach(e => window.addEventListener(e, onFirstInput, { once: true, passive: true }));
+      if (document.readyState === 'complete') arm(); else window.addEventListener('load', arm, { once: true });
     }
     async init() {
       let THREE;

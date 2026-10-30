@@ -793,7 +793,9 @@
     window.addEventListener('keydown', onKeyDown);
     document.addEventListener('click', onDocumentClick);
     document.addEventListener('submit', onDocumentSubmit);
-    requestScrollUpdate();
+    requestAnimationFrame(() => setTimeout(requestScrollUpdate, 0));
+    const endLoading = () => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove('is-loading')));
+    if (document.readyState === 'complete') endLoading(); else window.addEventListener('load', endLoading, { once: true });
 
     playHeroIntro();
     scrollToHashOnLoad();
